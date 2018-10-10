@@ -8,6 +8,8 @@ module.exports.start = function() {
   // app.listen using process.env.PORT to run with heroku
   // may not need, or can use localhost for testing
   app.listen(process.env.PORT || 3000, function() {
-    console.log('App listening on port', process.env.PORT);
+    var host = app.address().address;
+    var port = app.address().port;
+    console.log('App listening at http://%s:%s', host, port);
   });
 };
