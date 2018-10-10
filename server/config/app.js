@@ -1,4 +1,3 @@
-
 var config = require('./config'),
   mongoose = require('mongoose'),
   express = require('./express');
