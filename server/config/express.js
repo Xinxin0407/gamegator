@@ -26,11 +26,12 @@ module.exports.init = function() {
   app.use(cors());
 
   // Serve static files
-  
+
   // Use the events router for requests to the api */
 
   // go to homepage for all routes not specified */
   app.all('/*', function(req, res) {
+    console.log('redirected.\n')
     res.redirect('/');
   });
 

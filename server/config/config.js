@@ -8,5 +8,5 @@ module.exports = {
     // dbuser: gg_admin , dbpassword: GamerGator3031
     uri: 'mongodb://gg_admin:GamerGator3031@ds113703.mlab.com:13703/game_gator',
   },
-  port: 8080
+  port: 3000
 };
