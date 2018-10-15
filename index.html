@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
 <html>
 <head>
   <title>GamerGator</title>
@@ -6,9 +7,99 @@
     p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Courier New'}
     p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Courier New'; min-height: 14.0px}
     span.Apple-tab-span {white-space:pre}
+/*styling from online, we'll probably move this to a CSS file*/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+    background-color: #FFA500;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+    float: middle;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+    float: right;
+    width: 30%;
+    height: 500px; /*only for demonstration, should be removed */
+    background: #ccc;
+    padding: 20px;
+}
+
+article {
+    float: left;
+    padding: 20px;
+    width: 70%;
+    background-color: #f1f1f1;
+    height: 500px;  /*only for demonstration, should be removed */
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+    nav, article {
+        width: 100%;
+        height: auto;
+    }
+}
+
+h3 {
+    display: inline;
+}
+img {
+    display: inline;
+}
+.eventNav {
+    float: right;
+}
+.headerLink {
+    color: white;
+	
+    /* make hover blue */
+}
+
   </style>
 </head>
+
 <body>
-<p>Hello, world!</p>
+
+<header>
+<!-- figure out less-ghetto spacing. -->
+<h3>GamingGator</h3> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<h3>Search</h3> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<h3><a href="about.html" class="headerLink" style="text-decoration: none">About</a></h3> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<h3><a href="myevents.html" class="headerLink" style="text-decoration: none">My Events</a></h3> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="profile.png" alt="Default Profile Pic" style="width:75px;height:75px;">
+</header>
+
+<section>
+<article>
+<h3>Upcoming Events</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<select class="eventNav">
+  <option value="Most Recent">Most Recent</option>
+  <option value="Most Popular">Most Popular</option>
+  <option value="No buy-in">No Buy-in</option>
+  <option value="Tournaments">Tournaments</option>
+  <option value="Casual">Casual</option>
+</select>
+</article>
+</section>
+
+<nav>
+<h3>Tags</h3>
+
+</nav>
+</section>
+
+
 </body>
+
 </html>
