@@ -13,7 +13,6 @@ router.route('/')
   .get(events.list)
   .post(events.create);
 
-
 /*
   The ':' specifies a URL parameter.
  */
