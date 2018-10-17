@@ -4,8 +4,8 @@ var path = require('path'),
   morgan = require('morgan'),
   bodyParser = require('body-parser'),
   config = require('./config'),
-  cors = require('cors');
-  // may need --> eventsRouter = require('../routes/events.server.routes')
+  cors = require('cors'),
+  eventsRouter = require('../routes/events.server.routes');
 
 module.exports.init = function() {
   // connect to database
@@ -26,12 +26,14 @@ module.exports.init = function() {
   app.use(cors());
 
   // Serve static files
-
+  app.use('/', express.static(__dirname + '/../../client'));
+  app.use('/MyEvents', express.static(__dirname + '/../../client/MyEvents'));
+  app.use('/About', express.static(__dirname + '/../../client/About'));
   // Use the events router for requests to the api */
+  app.use(eventsRouter);
 
   // go to homepage for all routes not specified */
   app.all('/*', function(req, res) {
-    console.log('redirected.\n')
     res.redirect('/');
   });
 
