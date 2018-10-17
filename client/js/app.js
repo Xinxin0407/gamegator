@@ -38,3 +38,17 @@ new Vue({
     greeting: "hi"
   }
 });
+
+new Vue({
+  el: "#tags",
+  data: {
+    options: [
+      {text: "Most Recent"},
+      {text: "Most Popular"},
+      {text: "No buy-in"},
+      {text: "Tournaments"},
+      {text: "Casual"},
+      {text: "Prizes"}
+    ]
+  }
+});

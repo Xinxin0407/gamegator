@@ -50,7 +50,7 @@
       <ul id="listings">
         <li v-for="event in events">
           <p><h1>{{event.title}}</h1></p>
-          <p><h3>{{event.desc}}</h3></p>
+          <p>{{event.desc}}</p>
         </li>
       </ul>
     </article>
@@ -60,11 +60,7 @@
   <nav id="tags">
     <p style="color: white;padding:20px;font-size: 20px;">Tags
       <select class="eventNav" style="float:right;margin: 0px 20px;margin-top: 6px">
-        <option value="Most Recent">Most Recent</option>
-        <option value="Most Popular">Most Popular</option>
-        <option value="No buy-in">No Buy-in</option>
-        <option value="Tournaments">Tournaments</option>
-        <option value="Casual">Casual</option>
+        <option v-for="option in options" value="option.text">{{option.text}}</option>
       </select>
     </p>
   </nav>
