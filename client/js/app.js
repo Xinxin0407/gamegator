@@ -11,7 +11,6 @@ angular.module('events', []);
 var app = angular.module('gamergatorApp', ['events']);
 */
 
-
 new Vue({
   el: "#listings",
   data: {
