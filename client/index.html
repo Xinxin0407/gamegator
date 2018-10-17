@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <title>GamingGator</title>
+  <link rel="shortcut icon" href="http://spyrestudios.com/favicon.ico">
+  <link rel="icon" href="http://spyrestudios.com/favicon.ico">
+  <link rel="stylesheet" type="text/css" media="all" href="styles/styles.css">
+  <link rel="stylesheet" type="text/css" media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+</head>
+
+<body ng-app="gamegatorApp">
+
+  <!-- top nav bar -->
+  <header id="topbar" class="clearfix">
+    <nav id="topnav">
+      <ul>
+        <li><a href="#" style="font-size:30px;">GamingGator</a></li>
+        <li><a href="#" id="searchtoggl" style="font-size:30px;">Search  </a></li>
+        <li><a href="/About" class="headerLink" style="text-decoration: none;font-size:30px;">About</a></li>
+        <li><a href="/MyEvents" style="font-size:30px;">My Events</a></li>
+        <li>
+          <a href="">
+            <div class="dropdown" style="float:right;">
+              <img src="profile.png" class="dropimg" alt="Default Profile Pic" style="width:75px;height:75px;float:right;margin: 0px 20px" vspace="0"></a>
+          <div class="dropdown-content">
+            <a href="#" style="color: #000000">Edit Profile</a>
+            <a href="#" style="color: #000000">Favorited Events</a>
+            <a href="#" style="color: #000000">Log Off</a>
+          </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="searchbar" class="clearfix">
+    <form id="searchform" method="get" action="searchpage.php">
+      <button type="submit" id="searchsubmit" class="fa fa-search fa-4x"></button>
+      <input type="search" name="s" id="s" placeholder="Keywords..." autocomplete="off">
+    </form>
+  </div>
+
+  <!-- Events section -->
+  <section>
+    <article>
+      <h2 style="color: black;font-size: 20px;">Upcoming Events </h2>
+    </article>
+  </section>
+
+  <!-- Tags section -->
+  <nav id="tags">
+    <p style="color: white;padding:20px;font-size: 20px;">Tags
+      <select class="eventNav" style="float:right;margin: 0px 20px;margin-top: 6px">
+        <option value="Most Recent">Most Recent</option>
+        <option value="Most Popular">Most Popular</option>
+        <option value="No buy-in">No Buy-in</option>
+        <option value="Tournaments">Tournaments</option>
+        <option value="Casual">Casual</option>
+      </select>
+    </p>
+  </nav>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+
+</html>

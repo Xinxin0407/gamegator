@@ -1,24 +1,24 @@
 // similar to listings.server.model.js
 
 /* Import mongoose and define any variables needed to create the schema */
-var mongoose = require('mongoose'), 
+var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-    
+
 /* Create schema */
-var eventSchema = new Schema({ 
+var eventSchema = new Schema({
   organizer: {
     type: String,
     required: true
-  }
+  },
   name: {
-    type: String, 
+    type: String,
     required: true
-  }, 
+  },
   address: {
-    type: String, 
-    required: true 
-  }, 
-  time: { 
+    type: String,
+    required: true
+  },
+  time: {
     type: Date,
     required: true
   },

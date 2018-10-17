@@ -15,7 +15,6 @@ article {
     height: 500px;  only for demonstration, /*should be removed */
 }
 
-
 /************************************************************* SEARCH BAR ****************************************************************/
 @import url('https://fonts.googleapis.com/css?family=Archivo+Black');
 
@@ -43,16 +42,16 @@ body {
   padding-bottom: 55px;
 }
 
-br { display: block; line-height: 1.6em; } 
+br { display: block; line-height: 1.6em; }
 
-input, textarea { 
+input, textarea {
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  outline: none; 
+  outline: none;
 }
 
 h1 {
@@ -88,12 +87,12 @@ a:hover {
 }
 
 #topnav {
-  
+
 }
-#topnav ul { 
+#topnav ul {
   list-style: none;
   width: 100%;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 #topnav ul li {
   color: #fff;
@@ -170,22 +169,22 @@ a:hover {
 }
 
 /** clearfix **/
-.clearfix:after { content: "."; 
-display: block; 
-clear: both; 
-visibility: hidden; 
-line-height: 0; 
+.clearfix:after { content: ".";
+display: block;
+clear: both;
+visibility: hidden;
+line-height: 0;
 height: 0;
 }
-.clearfix { 
-  display: inline-block; 
+.clearfix {
+  display: inline-block;
 }
- 
-html[xmlns] .clearfix { 
-  display: block; 
+
+html[xmlns] .clearfix {
+  display: block;
 }
-* html .clearfix { 
-  height: 1%; 
+* html .clearfix {
+  height: 1%;
 }
 
 /******************************************************* Dropdown Button *******************************************************/
