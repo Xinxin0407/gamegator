@@ -1,22 +1,9 @@
 
 
-events = new Vue ({
+const events = new Vue ({
   el: "#listings",
   data: {
-    events: [
-      {
-        title: "Online tournament",
-        desc: "very cool event"
-      },
-      {
-        title: "Merch sale",
-        desc: "Lots to sell"
-      },
-      {
-        title: "Call of Duty 1v1",
-        desc: "no scope only"
-      }
-    ]
+    events: []
   }
 });
 
@@ -26,7 +13,10 @@ const getEvents = () => {
   xhr.onreadystatechange = () => {
     if (xhr.readystate === 4 && xhr.status === 200){
       events.data.events = xhr.response.events;
+      console.log(xhr.response);
+      console.log(xhr);
     }
   };
+  console.log(xhr);
   xhr.send();
 }
