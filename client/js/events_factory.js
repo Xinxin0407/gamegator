@@ -8,15 +8,17 @@ const events = new Vue ({
 });
 
 const getEvents = () => {
+  console.log(events);
   const xhr = new XMLHttpRequest();
   xhr.open("GET", "/events", true);
   xhr.onreadystatechange = () => {
-    if (xhr.readystate === 4 && xhr.status === 200){
-      events.data.events = xhr.response.events;
+    console.log(xhr);
+    if (xhr.readyState === 4){
       console.log(xhr.response);
-      console.log(xhr);
+      events._data.events = JSON.parse(xhr.response);
+      console.log("updated");
+      console.log(events);
     }
   };
-  console.log(xhr);
   xhr.send();
 }
