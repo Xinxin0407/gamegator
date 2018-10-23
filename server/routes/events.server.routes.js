@@ -2,6 +2,7 @@
 
 /* Dependencies */
 var events = require('../controllers/events.server.controller.js'),
+    users = require('../controllers/users.server.controller.js'),
     express = require('express'),
     router = express.Router();
 
@@ -13,6 +14,10 @@ router.route('/events')
   .get(events.list)
   .post(events.create);
 
+router.route(':users')
+  .get(users.list)
+  .post(users.create);
+
 /*
   The ':' specifies a URL parameter.
  */
@@ -20,6 +25,11 @@ router.route('/:eventId')
   .get(events.read)
   .put(events.update)
   .delete(events.delete);
+
+router.route(':users/:userId')
+  .get(users.read)
+  .put(users.update)
+  .delete(users.delete);
 
 /*
   The 'router.param' method allows us to specify middleware we would like to use to handle
@@ -32,5 +42,6 @@ router.route('/:eventId')
   get, update, or delete that specific listing (depending on the HTTP verb specified)
  */
 router.param('eventId', events.eventByID);
+router.param('userId', users.userByID);
 
 module.exports = router;
