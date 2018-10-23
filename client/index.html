@@ -59,11 +59,11 @@
     <article>
       <h2 style="color: black;font-size: 20px;">Upcoming Events </h2>
       <ul id="listings">
-        <li v-for="event in events">
-          <p><h1>{{event.title}}</h1></p>
-          <p><h3>{{event.desc}}</h3></p>
-        </li>
         <button onclick="getEvents()">Load events (debug)</button>
+        <li v-for="event in events">
+          <p><h1>{{event.name}}</h1></p>
+          <p><h3>{{event.address}}</h3></p>
+        </li>
       </ul>
     </article>
   </section>
