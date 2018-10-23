@@ -13,12 +13,8 @@ const getEvents = () => {
   xhr.open("GET", "/events", true);
   xhr.onreadystatechange = () => {
     console.log(xhr);
-    if (xhr.readyState === 4){
-      console.log(xhr.response);
+    if (xhr.readyState === 4)
       events._data.events = JSON.parse(xhr.response);
-      console.log("updated");
-      console.log(events);
-    }
   };
   xhr.send();
 }
