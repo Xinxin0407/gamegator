@@ -12,6 +12,8 @@
   <link rel="stylesheet" type="text/css" media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="js/script.js"></script>
+
+
 </head>
 
 
@@ -22,7 +24,7 @@
     <nav id="topnav">
 
       <ul>
-        <li><a href="#" style="font-size:30px;">GamerGator</a></li>
+        <li><a href="index.html" style="font-size:30px;background: #0021A5">GamerGator</a></li>
         <li><a href="#" id="searchtoggl" style="font-size:30px;">Search  </a></li>
         <li><a href="/About" class="headerLink" style="text-decoration: none;font-size:30px;">About</a></li>
         <li><a href="/MyEvents" style="font-size:30px;">My Events</a></li>
@@ -57,23 +59,24 @@
   <!-- Events section -->
   <section>
     <article>
-      <h2 style="color: black;font-size: 20px;">Upcoming Events </h2>
+      <h2 style="color: black;font-size: 20px;">My Events </h2>
+
+ 
+
       <ul id="listings">
-        <button onclick="getEvents()">Load events (debug)</button>
         <li v-for="event in events">
-          <p><h1>{{event.name}}</h1></p>
-          <p><h3>{{event.address}}</h3></p>
+          <p><h1>{{event.title}}</h1></p>
+          <p><h3>{{event.desc}}</h3></p>
         </li>
+        <button onclick="getEvents()">Load events (debug)</button>
       </ul>
     </article>
   </section>
 
-
-
   <!-- Tags section -->
 <div class="nav">
   <nav id="tags">
-    <p style="color: white;padding:20px;font-size: 20px;">Tags
+    <p style="color: white;padding:10px;font-size: 30px;">Tags
       <select class="eventNav" style="float:right;margin: 0px 20px;margin-top: 6px">
         <option value="Most Recent">Most Recent</option>
         <option value="Most Popular">Most Popular</option>
@@ -82,13 +85,30 @@
         <option value="Casual">Casual</option>
       </select>
     </p>
-    <ul>
-      <li><a href="#">Role Playing</a></li>
-      <li><a href="#">Board Games</a></li>
-      <li><a href="#">PC Games</a></li>
-      <li><a href="#">Console Games</a></li>
-      <li><a href="#">Card Games</a></li>
-    </ul>
+    <label class="container">Role Playing
+    <input type="checkbox" checked="checked">
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Board Games
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">PC Games
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Console Games
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label> 
+
+    <label class="container">Card Games
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label> 
   </nav>
 </div>
 
