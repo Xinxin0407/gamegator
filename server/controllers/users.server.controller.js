@@ -7,10 +7,10 @@ var mongoose = require('mongoose'),
 /* Create a listing */
 exports.create = function(req, res) {
 
-    /* Instantiate a Event */
+    /* Instantiate user */
     var user = new User(req.body);
 
-    /* Then save the event */
+    /* Then save the user */
     user.save(function(err) {
         if(err) {
             console.log(err);
@@ -21,13 +21,13 @@ exports.create = function(req, res) {
     });
 };
 
-/* Show the current event */
+/* Show the current user */
 exports.read = function(req, res) {
     /* send back the event as json from the request */
     res.json(req.user);
 };
 
-/* Update an event */
+/* Update an user */
 exports.update = function(req, res) {
     var user = req.user;
     /* Replace the article's properties with the new properties found in req.body */
