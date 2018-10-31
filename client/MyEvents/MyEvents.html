@@ -1,0 +1,142 @@
+<!doctype html>
+
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <title>GamerGator</title>
+  <link rel="shortcut icon" href="http://spyrestudios.com/favicon.ico">
+  <link rel="icon" href="http://spyrestudios.com/favicon.ico">
+  <link rel="stylesheet" type="text/css" media="all" href="styles/styles.css"> <!-- change back to styles/styles.css -->
+  <link rel="stylesheet" type="text/css" media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="js/script.js"></script>
+</head>
+
+
+<body id="gamegatorApp">
+
+  <!-- top nav bar -->
+  <header id="topbar" class="clearfix">
+    <nav id="topnav">
+
+      <ul>
+        <li><a href="../index.html" style="font-size:30px;">GamerGator</a></li>
+        <li><a href="#" id="searchtoggl" style="font-size:30px;">Search  </a></li>
+        <li><a href="About/about.html" class="headerLink" style="text-decoration: none;font-size:30px;">About</a></li>
+        <li><a href="MyEvents/myevents.html" style="font-size:30px;background: #0021A5">My Events</a></li>
+        <li>
+          <a href="#" style="padding-bottom: -16px;padding-left: 50px;"> <!-- profile view pop up -->
+            <div class="dropdown" style="float:right;">
+              <input type="image"  id="profile dropdown" src="profile.png " alt="User Options" width="75" height="75"  />
+              <!--
+              <button class="dropbtn">Dropdown </button>
+               <img src="profile.png" class="dropimg" alt="Default Profile Pic" style="width:75px;height:75px;float:right;margin: 0px 20px" vspace="0"> --></a>
+              <div class="dropdown-content">
+                <a href="#" style="color: #000000">View Profile</a>
+                <a href="#" style="color: #000000">Favorited Events</a>
+                <a href="#" style="color: #000000">Log Off</a>
+              </div>
+            </div>
+         </li>
+      </ul>
+     </nav>
+   </header>
+
+
+  <div id="searchbar" class="clearfix">
+    <form id="searchform" method="get" action="searchpage.php">
+      <button type="submit" id="searchsubmit" class="fa fa-search fa-4x"></button>
+      <input type="search" name="s" id="s" placeholder="Keywords..." autocomplete="off">
+    </form>
+  </div>
+
+
+
+  <!-- Events section -->
+  <section>
+    <article>
+    <div align="center">
+    <h2 style="color: #0021A5;font-size: 30px;margin-top: 15px;margin-bottom: 15px;">Your Events </h2>
+<hr>
+	<label class="events">Created Events</label>
+    <input type="checkbox" checked>
+    <span class="checkmark"></span>
+    </label>
+    <label class="events">Favorited Events</label>
+    <input type="checkbox" checked>
+    <span class="checkmark"></span>
+    </label>
+    <label class="events">RSVPed Events</label>
+    <input type="checkbox" checked>
+    <span class="checkmark"></span>
+    </label>
+    </div>
+    <hr>
+
+      <ul id="listings">
+        <li v-for="event in events">
+          <p><h1>{{event.title}}</h1></p>
+          <p><h3>{{event.desc}}</h3></p>
+        </li>
+        <button onclick="getEvents()">Load events (debug)</button>
+      </ul>
+    </article>
+  </section>
+
+
+
+  <!-- Tags section -->
+<div class="nav">
+  <nav id="tags">
+    <p style="color: white;padding:10px;font-size: 30px;">Tags
+      <select class="eventNav" style="float:right;margin: 0px 20px;margin-top: 6px">
+        <option value="Most Recent">Most Recent</option>
+        <option value="Most Popular">Most Popular</option>
+        <option value="No buy-in">No Buy-in</option>
+        <option value="Tournaments">Tournaments</option>
+        <option value="Casual">Casual</option>
+      </select>
+    </p>
+
+    <label class="container">Role Playing
+    <input type="checkbox">
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Board Games
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">PC Games
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Console Games
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label> 
+
+    <label class="container">Card Games
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label> 
+  </nav>
+</div>
+
+
+
+  <!-- JQUERY -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+  <!-- VUE JS -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- OUR APP JS -->
+  <script src="js/app.js"></script>
+  <script src="js/events_factory.js"></script>
+ </body>
+</html>
