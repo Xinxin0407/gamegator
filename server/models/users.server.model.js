@@ -8,6 +8,7 @@ var mongoose = require('mongoose'),
 
 /* Create schema */
 var userSchema = new Schema({
+<<<<<<< HEAD
   username: {
     type: String,
     required: true,
@@ -27,6 +28,28 @@ var userSchema = new Schema({
   },
   created_at: Date,
   updated_at: Date
+=======
+    username: {
+        type: String,
+        required: true,
+        index: { unique: true }
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    profile_img: {
+        data: Buffer,
+        contentType: String
+    },
+    admin: Boolean,
+    created_at: Date,
+    updated_at: Date
+>>>>>>> c9b0d7ef0ab02e3cde530a3a5b1a3258c98acac7
 });
 
 /* 'pre' function that adds the updated_at (and created_at if not already there) property */
