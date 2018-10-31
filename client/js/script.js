@@ -17,7 +17,7 @@ $(function(){
       $searchbar.slideToggle(300, function(){
         // callback after search bar animation
       });
-    }
+    } else {  }
   });
   
   $('#searchform').submit(function(e){

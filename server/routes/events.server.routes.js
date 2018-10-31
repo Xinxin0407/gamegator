@@ -15,8 +15,8 @@ router.route('/events')
   .post(events.create);
 
 router.route(':users')
-  .get(users.list)
-  .post(users.create);
+  .get(users.display_all_users)
+  .post(users.create_user);
 
 /*
   The ':' specifies a URL parameter.
@@ -26,10 +26,10 @@ router.route('/:eventId')
   .put(events.update)
   .delete(events.delete);
 
-router.route(':users/:userId')
-  .get(users.read)
-  .put(users.update)
-  .delete(users.delete);
+router.route(':users/:username')
+  .get(users.display_user)
+  .put(users.update_user)
+  .delete(users.delete_user);
 
 /*
   The 'router.param' method allows us to specify middleware we would like to use to handle
@@ -42,6 +42,6 @@ router.route(':users/:userId')
   get, update, or delete that specific listing (depending on the HTTP verb specified)
  */
 router.param('eventId', events.eventByID);
-router.param('userId', users.userByID);
+router.param('username', users.userByName);
 
 module.exports = router;
