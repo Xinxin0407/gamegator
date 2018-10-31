@@ -24,7 +24,8 @@ var userSchema = new Schema({
     profile_img: {
         data: Buffer,
         contentType: String
-    }
+    },
+    admin: Boolean,
     created_at: Date,
     updated_at: Date
 });
