@@ -31,7 +31,6 @@ body {
   font-size: 62.5%;
   line-height: 1;
   color: #414141;
-  padding-bottom: 55px;
 }
 
 br { display: block; line-height: 1.6em; }
@@ -65,9 +64,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
-}
+a:hover { color: blue; text-decoration: none; font-weight: none }
 
 /** page structure **/
 #topbar {
@@ -97,7 +94,7 @@ a:hover {
   font-family: Arial;
   transition: 0.5s;
   position: relative;
-  height: 25px;
+  height: 10px;
 }
 
 #topnav ul li a {
@@ -117,7 +114,7 @@ a:hover {
   background: #0021A5;
 }
 
-#topnav ul li a#searchtoggl {
+#topnav ul li a #searchtoggl {
   margin-right: 0;
 }
 
@@ -186,8 +183,10 @@ html[xmlns] .clearfix {
 /******************************************************* Dropdown Button *******************************************************/
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-    position: absolute;
-    display: inline-block;
+    position: relative;
+    display: inline;
+    width: 252px;
+    height: 112px;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -209,18 +208,22 @@ html[xmlns] .clearfix {
     text-decoration: none;
     background: white;
     display: block;
+     width: 244px;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #FFF;}
+.dropdown-content a:hover {
+  background-color: #FF4616;
+
+}
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #FFF;} 
 
-/***************************** Tags Section ****************/
+/***************************** Tags Section ***************************************************************/
 #tags{
    float: left;
    width: 20%;
@@ -358,3 +361,158 @@ html[xmlns] .clearfix {
     -ms-user-select: none;
     user-select: none;
 }
+
+
+/*********************************************Pop up login ********************************************/
+
+/* Full-width input fields */
+.login input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+.login button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.navbut button {
+    background-color: #0021A5;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.login button:hover {
+    opacity: 0.8;
+}
+
+.login {
+      font-size: 16px;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+    text-align: center;
+    margin: 12px 0 12px 0;
+    position: relative;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 20%;
+    height: 300px;
+    width: 200px;
+}
+
+.login {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 10px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #000000;
+    margin: 1% auto 10% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+.inner
+{
+    display: inline-block;
+}
+
+#outer
+{
+    width:100%;
+    text-align: center;
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+
+.bottom {
+    padding: 16px;
+    font-size: 16px;
+}
+
