@@ -12,8 +12,6 @@
   <link rel="stylesheet" type="text/css" media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="js/script.js"></script>
-
-
 </head>
 
 
@@ -26,22 +24,21 @@
       <ul>
         <li><a href="index.html" style="font-size:30px;background: #0021A5">GamerGator</a></li>
         <li><a href="#" id="searchtoggl" style="font-size:30px;">Search  </a></li>
-        <li><a href="/About" class="headerLink" style="text-decoration: none;font-size:30px;">About</a></li>
-        <li><a href="/MyEvents" style="font-size:30px;">My Events</a></li>
+        <li><a href="about.html" class="headerLink" style="text-decoration: none;font-size:30px;">About</a></li>
+        <li><a href="myevents.html" style="font-size:30px;">My Events</a></li>
+        <nav id="yeet">
         <li>
+          <div class="dropdown" style="float: right;">
           <a href="#" style="padding-bottom: -16px;padding-left: 50px;"> <!-- profile view pop up -->
-            <div class="dropdown" style="float:right;">
-              <input type="image"  id="profile dropdown" src="profile.png " alt="User Options" width="75" height="75"  />
-              <!--
-              <button class="dropbtn">Dropdown </button>
-               <img src="profile.png" class="dropimg" alt="Default Profile Pic" style="width:75px;height:75px;float:right;margin: 0px 20px" vspace="0"> --></a>
-              <div class="dropdown-content">
+            <input type="image"  id="profile dropdown" src="profile.png " alt="User Options" width="75" height="75" /></a>
+              <div class="dropdown-content" id="dropdown-content">
                 <a href="#" style="color: #000000">View Profile</a>
                 <a href="#" style="color: #000000">Favorited Events</a>
                 <a href="#" style="color: #000000">Log Off</a>
               </div>
             </div>
          </li>
+         </nav>
       </ul>
      </nav>
    </header>
@@ -86,7 +83,7 @@
       </select>
     </p>
     <label class="container">Role Playing
-    <input type="checkbox" checked="checked">
+    <input type="checkbox">
     <span class="checkmark"></span>
     </label>
 
