@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="en-US">
 
 <head>
@@ -8,24 +7,24 @@
   <title>GamerGator</title>
   <link rel="shortcut icon" href="http://spyrestudios.com/favicon.ico">
   <link rel="icon" href="http://spyrestudios.com/favicon.ico">
-  <link rel="stylesheet" type="text/css" media="all" href="styles/styles.css"> <!-- change back to styles/styles.css -->
+  <link rel="stylesheet" type="text/css" media="all" href="../styles/styles.css"> 
   <link rel="stylesheet" type="text/css" media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script src="js/script.js"></script>
+  <script src="../js/script.js"></script>
 </head>
 
 
 <body id="gamegatorApp" background="background.png" style="background-color: #A9A9A9;">
 
-  <!-- top nav bar -->
+  <!------------------------------------------------- top nav bar ----------------------------------------------------------------------->
   <header id="topbar" class="clearfix">
     <nav id="topnav">
 
       <ul>
-        <li><a href="index.html" style="font-size:30px;">GamerGator</a></li>
+        <li><a href="../index.html" style="font-size:30px;">GamerGator</a></li>
         <li><a href="#" id="searchtoggl" style="font-size:30px;">Search  </a></li>
         <li><a href="about.html" class="headerLink" style="text-decoration: none;font-size:30px;background: #0021A5">About</a></li>
-        <li><a href="myevents.html" style="font-size:30px;">My Events</a></li>
+        <li><a href="../myevents/myevents.html" style="font-size:30px;">My Events</a></li>
         <li>
           <a href="#" style="padding-bottom: -16px;padding-left: 50px;"> <!-- profile view pop up -->
             <div class="dropdown" style="float:right;">
@@ -41,7 +40,7 @@
      </nav>
    </header>
 
-
+  <!----------------------------------------------- SEARCH BAR ---------------------------------------------->
   <div id="searchbar" class="clearfix">
     <form id="searchform" method="get" action="searchpage.php">
       <button type="submit" id="searchsubmit" class="fa fa-search fa-4x"></button>
@@ -51,8 +50,8 @@
 
       <p style="font-size:17px;padding-left: 35px; padding-right: 35px; padding-bottom: 35px;padding-top: 25px;text-align:center;color: white" >
       	Michael Levecque recently opened a new comic book and gaming store in the Gainesville area close to campus.  He is passionate gamer and devout D&D adventurer.  To ramp up business and community relations, the owner hosts several gaming events including console tournaments and mini role-playing conventions just to name a few!  He approved the development of an app to serve as a hub for all things gaming, from free events to registered tournaments and anything in between.  The purpose of this GamingGators app is to provide the UF and nearby Gainesville gaming community a central web application that informs them of all local gaming events for a wide variety of fandoms and platforms.  This new web-app supports everything from organizing and posting an event or tournament, provides all the necessary information participants need to know, allows for all potential participants to pre-register or RSVP, and so much more!  Ultimately, the goal is to keep the gaming community informed, united and strong.
-		</br></br></br></br></br></br></br></br></br></br>Make your free account today!
 
+		    </br></br></br></br></br></br></br></br></br></br>Make your free account today!
       </p>
 
 
@@ -65,19 +64,6 @@
   <!-- OUR APP JS -->
   <script src="js/app.js"></script>
   <script src="js/events_factory.js"></script>
-<!------------------------------ TEST-------------------------->
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-  <!------------------------------END TEST-------------------------->
 
  </body>
 </html>
