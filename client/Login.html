@@ -1,157 +1,54 @@
 <!doctype html>
 
 <html lang="en-US">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html">
   <title>GamerGator</title>
- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script src="script.js"></script>
-  <style>
-    /*********************************************Pop up login ********************************************/
+  <link rel="shortcut icon" href="http://spyrestudios.com/favicon.ico">
+  <link rel="icon" href="http://spyrestudios.com/favicon.ico">
+  <link rel="stylesheet" type="text/css" media="all" href="styles/styles.css"> <!-- change back to styles/styles.css -->
+  <link rel="stylesheet" type="text/css" media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="js/script.js"></script>
 
-/* Full-width input fields */
-.login input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
 
-/* Set a style for all buttons */
-.login button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
-.login button:hover {
-    opacity: 0.8;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-}
-
-/* Center the image and position the close button */
-.imgcontainer {
-    text-align: center;
-    margin: 12px 0 12px 0;
-    position: relative;
-}
-
-img.avatar {
-    width: 40%;
-    border-radius: 20%;
-    height: 300px;
-    width: 200px;
-}
-
-.login {
-    padding: 16px;
-}
-
-span.psw {
-    float: right;
-    padding-top: 16px;
-}
-
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 10px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-    background-color: #000000;
-    margin: 1% auto 10% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 40%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button (x) */
-.close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: red;
-    cursor: pointer;
-}
-
-/* Add Zoom Animation */
-.animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-}
-
-.inner
-{
-    display: inline-block;
-}
-
-#outer
-{
-    width:100%;
-    text-align: center;
-}
-
-@-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
-}
-    
-@keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-    .cancelbtn {
-       width: 100%;
-    }
-}
-
-  </style>
 </head>
+
 
 <body id="gamegatorApp">
 
+  <!------------------------------------------------- top nav bar ----------------------------------------------------------------------->
+  <header id="topbar" class="clearfix">
+    <nav id="topnav">
+      <div class="yeet">
+      <ul>
+        <li><a href="index.html" style="font-size:30px;background: #0021A5">GamerGator</a></li>
+        <li><a href="#" id="searchtoggl" style="font-size:30px;">Search  </a></li>
+        <li><a href="About/about.html" class="headerLink" style="text-decoration: none;font-size:30px;">About</a></li>
+        <li><a href="#" style="font-size:30px;">My Events</a></li>
+        </div>
+        <li>
+          <div class="navbut" style="float: right;padding-right: 20px;">      
+          <a href="#" style="padding-bottom: 5px;padding-left: 5px;"> <!-- profile view pop up -->
+            <button onclick="document.getElementById('id01').style.display='block'" style="border-radius: 12px;border: 2px solid #000000;font-size : 20px;height: 60px;width:200px"><h2>Login</h2></button>
+          </a>
+        </div>
+         </li>
+      </ul>
+     </nav>
+   </header>
 
+  <!----------------------------------------------- SEARCH BAR ---------------------------------------------->
+  <div id="searchbar" class="clearfix">
+    <form id="searchform" method="get" action="searchpage.php">
+      <button type="submit" id="searchsubmit" class="fa fa-search fa-4x"></button>
+      <input type="search" name="s" id="s" placeholder="Keywords..." autocomplete="off">
+    </form>
+  </div>
 
-
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-
+<!--------------------------------------------------Pop up log in form -------------------------------------->
 <div id="id01" class="modal">
   
   <form class="modal-content animate" action="/action_page.php">
@@ -168,7 +65,7 @@ span.psw {
       <input type="password" placeholder="Enter Password" name="psw" required>
         
       <div id="outer">
-      <div class="inner"><button type="submit">Login</button></div>
+      <div class="inner"><button type="submit" onclick="location.href='index.html';">Login</button></div>
       <div class="inner"><button type="new submit">Create Account</button></div>
       </div>
       
@@ -178,7 +75,7 @@ span.psw {
       </label>
     </div>
 
-    <div class="container" style="background-color:#f1f1f1">
+    <div class="bottom" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
       <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
@@ -186,6 +83,59 @@ span.psw {
 </div>
 
 
+  <!---------------------------------------------------------- Events section ------------------------------------------------->
+  <section>
+    <article>
+      <h2 style="color: black;font-size: 20px;">My Events </h2>
+
+      <ul id="listings">
+        <li v-for="event in events">
+          <p><h1>{{event.title}}</h1></p>
+          <p><h3>{{event.desc}}</h3></p>
+        </li>
+        <button onclick="getEvents()">Load events (debug)</button>
+      </ul>
+    </article>
+  </section>
+
+  <!-------------------------------------------------------- Tags section -------------------------------------------------------->
+<div class="nav">
+  <nav id="tags">
+    <p style="color: white;padding:10px;font-size: 30px;">Tags
+      <select class="eventNav" style="float:right;margin: 0px 20px;margin-top: 6px">
+        <option value="Most Recent">Most Recent</option>
+        <option value="Most Popular">Most Popular</option>
+        <option value="No buy-in">No Buy-in</option>
+        <option value="Tournaments">Tournaments</option>
+        <option value="Casual">Casual</option>
+      </select>
+    </p>
+    <label class="container">Role Playing
+    <input type="checkbox">
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Board Games
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">PC Games
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Console Games
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label> 
+
+    <label class="container">Card Games
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label> 
+  </nav>
+</div>
 
 
 
