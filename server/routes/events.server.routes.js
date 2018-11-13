@@ -42,6 +42,6 @@ router.route(':users/:username')
   get, update, or delete that specific listing (depending on the HTTP verb specified)
  */
 router.param('eventId', events.eventByID);
-//router.param('username', users.userByName);
+router.param('username', users.UserByName);
 
 module.exports = router;
