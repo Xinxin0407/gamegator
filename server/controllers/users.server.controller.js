@@ -59,11 +59,21 @@ exports.display_user = function(req, res) {
 exports.update_user = function(req,res){
     connection((db) => {
         db.collection('User')
-        update({username: req.params.username},
-            {"$set": { password: req.body.password, email: req.body.email,
-                created_at: req.body.created_at, updated_at: req.body.updated_at,
-                profile_img.data: fs.readFileSync(req.files.userPhoto.path),
-                profile_img.contentType: 'imapge/png'}}).exec(function(err,user){
+        update({
+                username: req.params.username
+            },
+            {
+                "$set": {
+                    password: req.body.password,
+                    email: req.body.email,
+                    created_at: req.body.created_at,
+                    updated_at: req.body.updated_at,
+                    profile_img: {
+                        data: fs.readFileSync(req.files.userPhoto.path),
+                        contentType: 'image/png'
+                    }
+                }
+            }).exec(function(err,user){
                     if (err){
                         console.log(err);
                         res.status(400).send(err);
@@ -150,7 +160,7 @@ exports.user_reigster = function (req, res, next) {
  */
 
 exports.UserByName = function(req, res, next, name) {
-    User.findOne(username:name).exec(function(err, user) {
+    User.findOne({username:name}).exec(function(err, user) {
         if(err) {
             res.status(400).send(err);
         } else {

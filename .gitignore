@@ -7,3 +7,5 @@
 .idea/modules.xml
 .idea/vcs.xml
 .idea/workspace.xml
+*.json
+node_modules/bcrypt/package.json

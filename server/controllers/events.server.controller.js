@@ -94,24 +94,25 @@ exports.delete = function(req, res) {
         });
     }
     //else if the user is admin
-    else{
+    else {
         connection((db) => {
             db.collection('User')
-                .find({ username: req.body.username, admin: true})
+                .find({username: req.body.username, admin: true})
                 .then((user) => {
-                    event.remove(function(err) {
+                    event.remove(function (err) {
                         if (err) {
                             console.log(err);
                             res.status(400).send(err);
-                        } else{
+                        } else {
                             res.end();
                         }
                     });
                 });
-        }
+        })
+    }
 
 
-    };
+};
 
     /* Retreive all the directory listings, sorted alphabetically by listing code */
     exports.list = function(req, res) {
