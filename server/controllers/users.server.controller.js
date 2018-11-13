@@ -1,10 +1,10 @@
 // similar to listings.server.controller.js
 
-/* Dependencies */
+// dependencies
 var mongoose = require('mongoose'),
     User = require('../models/users.server.model.js');
 
-/* create a user */
+// create a user
 exports.create_user = function(req, res){
     var newUser = req.body;
     if (!req.body.username){
@@ -81,7 +81,6 @@ exports.delete_user = function(req,res){
         bind it to the request object as the property 'listing',
         then finally call next
  */
-
 exports.UserByName = function(req, res, next, name) {
     User.findOne(username:name).exec(function(err, user) {
         if(err) {
@@ -92,4 +91,3 @@ exports.UserByName = function(req, res, next, name) {
         }
     });
 };
-

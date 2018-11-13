@@ -1,5 +1,3 @@
-
-
 const events = new Vue ({
   el: "#listings",
   data: {

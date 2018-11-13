@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /* Create schema */
-var eventSchema = new Schema({
+var EventSchema = new Schema({
   organizer: {
     type: String,
     required: true
@@ -28,7 +28,7 @@ var eventSchema = new Schema({
 });
 
 /* 'pre' function that adds the updated_at (and created_at if not already there) property */
-eventSchema.pre('save', function(next) {
+EventSchema.pre('save', function(next) {
   var currentTime = new Date;
   this.updated_at = currentTime;
   if(!this.created_at)
@@ -39,7 +39,7 @@ eventSchema.pre('save', function(next) {
 });
 
 /* Instantiate Mongoose model */
-var Event = mongoose.model('Event', eventSchema);
+var Event = mongoose.model('Event', EventSchema);
 
 /* Export to make it available to other parts of application */
 module.exports = Event;
