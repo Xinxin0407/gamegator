@@ -17,4 +17,4 @@ const getEvents = () => {
       events._data.events = JSON.parse(xhr.response);
   };
   xhr.send();
-}
+};
