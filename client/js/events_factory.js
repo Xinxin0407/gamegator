@@ -1,4 +1,9 @@
-
+const search = new Vue({
+    el: "#searchbar",
+    data: {
+      search: ""
+    }
+});
 
 const events = new Vue ({
   el: "#listings",
@@ -20,12 +25,10 @@ const events = new Vue ({
   },
 
   computed: {
-    filteredList: function (keywords){
+    filteredList: function (){
+      let keywords = search._data.search;
       return this.events.filter(event => {
-        for (property in event){
-          if (property.toLowerCase().includes(keywords.toLowerCase())) return true;
-        }
-        return false;
+        return event.name.toLowerCase().includes(keywords.toLowerCase());
       })
     }
   }
