@@ -11,7 +11,7 @@ module.exports.start = function() {
     var port = server.address().port;
     console.log('App listening at http://%s:%s', host, port);
   });
-  
+  /*
   //use sessions for tracking logins
   app.use(session({
     secret: 'work hard',
@@ -21,4 +21,5 @@ module.exports.start = function() {
       mongooseConnection: db
     })
   }));
+  */
 };
