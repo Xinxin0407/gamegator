@@ -58,7 +58,7 @@
       <h2 style="color: black;font-size: 50px; padding: 15px;">Upcoming Events</h2>
       <div class="container" id="listings">
 
-        <div class='card' v-for="(event, index) in events">
+        <div class='card' v-for="(event, index) in filteredList">
           <div class="container">
             <h4 class="event-name"><b>{{event.name}}</b></h4>
             <br>
