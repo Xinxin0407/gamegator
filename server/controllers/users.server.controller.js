@@ -157,7 +157,7 @@ exports.user_reigster = function (req, res, next) {
  */
 
 exports.UserByName = function(req, res, next, name) {
-    User.findOne(username:name).exec(function(err, user) {
+    User.findOne({username:name}).exec(function(err, user) {
         if(err) {
             res.status(400).send(err);
         } else {
