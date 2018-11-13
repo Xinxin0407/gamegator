@@ -58,8 +58,8 @@
       <h2 style="color: black;font-size: 20px;">My Events </h2>
       <ul id="listings">
         <li v-for="event in events">
-          <p><h1>{{event.title}}</h1></p>
-          <p><h3>{{event.desc}}</h3></p>
+          <p><h1>Title: {{event.name}}</h1></p>
+          <p><h3>Event: {{event.address}}</h3></p>
         </li>
         <button onclick="getEvents()">Load events (debug)</button>
       </ul>
@@ -116,5 +116,6 @@
   <!-- OUR APP JS -->
   <script src="js/app.js"></script>
   <script src="js/events_factory.js"></script>
+<script>window.onload = getEvents();</script>
  </body>
 </html>
