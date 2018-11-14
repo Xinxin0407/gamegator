@@ -6,7 +6,6 @@ var path = require('path'),
   bodyParser = require('body-parser'),
   config = require('./config'),
   cors = require('cors'),
-  eventsRouter = require('../routes/events.server.routes'),
   MongoStore = require('connect-mongo')(session);
 
 module.exports.init = function() {
@@ -46,7 +45,7 @@ module.exports.init = function() {
   app.use(cors());
 
   // Serve static files
-  app.use('/', express.static(__dirname + '/../../templateLogReg'));
+  app.use('/', express.static(__dirname + '/../../client/LogReg'));
   app.use('/Home', express.static(__dirname + '/../../client'));
   app.use('/MyEvents', express.static(__dirname + '/../../client/MyEvents'));
   app.use('/About', express.static(__dirname + '/../../client/About'));
@@ -54,7 +53,9 @@ module.exports.init = function() {
   // app.use(eventsRouter);
   // include routes
   var userRoutes = require('../routes/users.server.routes.js');
+  var eventRouter = require('../routes/events.server.routes');
   app.use('/', userRoutes);
+  app.use('/Home', eventRouter);
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {
