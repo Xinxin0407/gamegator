@@ -46,7 +46,7 @@ module.exports.init = function() {
 
   // Serve static files
   app.use('/', express.static(__dirname + '/../../client/LogReg'));
-  app.use('/Home', express.static(__dirname + '/../../client'));
+  app.use('/Home', express.static(__dirname + '/../../client/'));
   app.use('/MyEvents', express.static(__dirname + '/../../client/MyEvents'));
   app.use('/About', express.static(__dirname + '/../../client/About'));
   // Use the events router for requests to the api */
