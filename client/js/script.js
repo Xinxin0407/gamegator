@@ -3,7 +3,7 @@ $(function(){
   var $searchbar  = $('#searchbar');
   
   $('#topnav ul li a').on('click', function(e){
-    e.preventDefault();
+
     
     if($(this).attr('id') == 'searchtoggl') {
       if(!$searchbar.is(":visible")) { 
