@@ -3,23 +3,35 @@
 /* Dependencies */
 var express = require('express'),
   router = express.Router(),
-  Events = require('../controllers/events.server.controller.js');
+  users = require('../controllers/users.server.controller.js'),
+  events = require('../controllers/events.server.controller.js');
 
 /*
   These method calls are responsible for routing requests to the correct request handler.
   Take note that it is possible for different controller functions to handle requests to the same route.
  */
-router.route('/events')
-  .get(Events.list)
-  .post(Events.create);
+router.route('/Home/Events')
+  .get(events.list)
+  .post(events.create);
+
+router.route(':users')
+  .get(users.display_all_users)
+  .post(users.create_user);
+
 
 /*
   The ':' specifies a URL parameter.
  */
 router.route('/:eventId')
-  .get(Events.read)
-  .put(Events.update)
-  .delete(Events.delete);
+  .get(events.read)
+  .put(events.update)
+  .delete(events.delete);
+
+router.route(':users/:username')
+  .get(users.display_user)
+  .put(users.update_user)
+  .delete(users.delete_user);
+
 
 /*
   The 'router.param' method allows us to specify middleware we would like to use to handle
@@ -31,11 +43,8 @@ router.route('/:eventId')
   It will then pass control to the routing function specified above, where it will either
   get, update, or delete that specific listing (depending on the HTTP verb specified)
  */
-<<<<<<< HEAD
-router.param('eventId', Events.eventByID);
-=======
+
 router.param('eventId', events.eventByID);
-//router.param('username', users.userByName);
->>>>>>> 12e20389f197212c4b055b1e4bba59b7f607dee5
+router.param('username', users.userByName);
 
 module.exports = router;
