@@ -82,6 +82,18 @@
         </li>
         <button onclick="getEvents()">Load events (debug)</button>
       </ul>
+	  
+	  		<div class="eventInfo">
+		<h3>Add your event!</h3>
+        <form novalidate class = "simple-form">
+			<input type="text" name="eventname" placeholder="Event Name"><br>
+			<input type="text" name="eventAd" placeholder="Address"><br>
+			<input type="text" name="eventTime" placeholder="Time/Date"><br>
+			<input type="text" name="eventFee" placeholder="Entry Fee"><br>
+					
+			<button ng-click="create()">Create Event</button>             
+        </form>	
+		</div>
     </article>
   </section>
 
