@@ -1,11 +1,11 @@
 // router for users
 var express = require('express'),
   router = express.Router(),
-  Users = require('../models/users.server.model.js');
+  users = require('../models/users.server.model.js');
 
 // GET route for reading data
 router.get('/', function(req, res, next) {
-  return res.sendFile(path.join(__dirname + '/templateLogReg/index.html'));
+  return res.sendFile(path.join(__dirname + '/LogReg'));
 });
 
 // POST route for updating data
@@ -31,7 +31,7 @@ router.post('/', function (req, res, next) {
     }
 
     // use schema.create to insert data into the db
-    Users.create(userData, function (error, user) {
+    users.create(userData, function (error, user) {
       if (error) {
         return next(error);
       } else {
@@ -41,14 +41,15 @@ router.post('/', function (req, res, next) {
     });
 
   } else if (req.body.logemail && req.body.logpassword) {
-    Users.authenticate(req.body.logemail, req.body.logpassword, function (error, user) {
+    users.authenticate(req.body.logemail, req.body.logpassword, function (error, user) {
       if (error || !user) {
         var err = new Error('Wrong email or password.');
         err.status = 401;
         return next(err);
       } else {
         req.session.userId = user._id;
-        return res.redirect('/profile');
+        //return res.redirect('/profile');
+        return res.redirect('/Home');
       }
     });
   } else {
@@ -60,7 +61,7 @@ router.post('/', function (req, res, next) {
 
 // GET route after registering
 router.get('/profile', function (req, res, next) {
-  Users.findById(req.session.userId)
+  users.findById(req.session.userId)
     .exec(function (error, user) {
       if (error) {
         return next(error);
@@ -85,7 +86,7 @@ router.get('/logout', function (req, res, next) {
       if (err) {
         return next(err);
       } else {
-        return res.redirect('/');
+        return res.redirect('/Home');
       }
     });
   }

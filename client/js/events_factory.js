@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 const search = new Vue({
     el: "#searchbar",
     data: {
@@ -7,7 +5,6 @@ const search = new Vue({
     }
 });
 
->>>>>>> 12e20389f197212c4b055b1e4bba59b7f607dee5
 const events = new Vue ({
   el: "#listings",
   data: {
@@ -40,7 +37,7 @@ const events = new Vue ({
 const getEvents = () => {
   console.log(events);
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "/events", true);
+  xhr.open("GET", "/Home/Events", true);
   xhr.onreadystatechange = () => {
     console.log(xhr);
     if (xhr.readyState === 4) {

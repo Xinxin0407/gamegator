@@ -52,10 +52,10 @@ module.exports.init = function() {
   // Use the events router for requests to the api */
   // app.use(eventsRouter);
   // include routes
-  var userRoutes = require('../routes/users.server.routes.js');
+  var userRouter = require('../routes/users.server.routes.js');
   var eventRouter = require('../routes/events.server.routes');
-  app.use('/', userRoutes);
-  app.use('/Home', eventRouter);
+  app.use(userRouter);
+  app.use(eventRouter);
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {
@@ -73,7 +73,7 @@ module.exports.init = function() {
 
   // go to homepage for all routes not specified */
   app.all('/*', function(req, res) {
-    res.redirect('/');
+    res.redirect('/Home');
   });
 
   return app;
