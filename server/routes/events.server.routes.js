@@ -10,7 +10,7 @@ var express = require('express'),
   These method calls are responsible for routing requests to the correct request handler.
   Take note that it is possible for different controller functions to handle requests to the same route.
  */
-router.route('/Home/Events')
+router.route('/Home/events')
   .get(events.list)
   .post(events.create);
 

@@ -49,8 +49,7 @@ module.exports.init = function() {
   app.use('/Home', express.static(__dirname + '/../../client/'));
   app.use('/MyEvents', express.static(__dirname + '/../../client/MyEvents'));
   app.use('/About', express.static(__dirname + '/../../client/About'));
-  // Use the events router for requests to the api */
-  // app.use(eventsRouter);
+
   // include routes
   var userRouter = require('../routes/users.server.routes.js');
   var eventRouter = require('../routes/events.server.routes');
