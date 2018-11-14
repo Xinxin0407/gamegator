@@ -48,6 +48,11 @@ h1 {
     background-size: cover;
 }
 
+.underline {
+  text-decoration: underline;
+  width: 100%;
+}
+
 /*--signin-form--*/
 .w3 {
     float: left;
