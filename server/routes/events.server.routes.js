@@ -31,6 +31,11 @@ router.route('/:eventId')
   It will then pass control to the routing function specified above, where it will either
   get, update, or delete that specific listing (depending on the HTTP verb specified)
  */
+<<<<<<< HEAD
 router.param('eventId', Events.eventByID);
+=======
+router.param('eventId', events.eventByID);
+//router.param('username', users.userByName);
+>>>>>>> 12e20389f197212c4b055b1e4bba59b7f607dee5
 
 module.exports = router;
