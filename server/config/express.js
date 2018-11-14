@@ -6,18 +6,36 @@ var path = require('path'),
   config = require('./config'),
   cors = require('cors'),
   eventsRouter = require('../routes/events.server.routes');
+var expressSession = require('express-session');
+var MongoStore = require('connect-mongo')(expressSession);
 
 module.exports.init = function() {
   // connect to database
   mongoose.connect(config.db.uri, {
     useNewUrlParser: true
   });
+  var db = mongoose.connection;
 
   // initialize app
   var app = express();
 
   // enable request logging for development debugging
   app.use(morgan('dev'));
+  
+   db.on('error', console.error.bind(console, 'connection error:'));
+   db.once('open', function () {
+        // we're connected!
+    });
+    //use sessions for tracking logins
+    app.use(expressSession({
+        secret: 'work hard',
+        resave: true,
+        saveUninitialized: false,
+        store: new MongoStore({
+            mongooseConnection: db
+        })
+    }));
+
 
   // body parsing middleware
   app.use(bodyParser.json());
