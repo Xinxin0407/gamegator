@@ -2,9 +2,9 @@
 
 /* Import mongoose and define any variables needed to create the schema */
 var mongoose = require('mongoose'),
+  Schema = mongoose.Schema;
 
-  Schema = mongoose.Schema,
-  bcrypt = require('bcrypt');
+const bcrypt = require('../config/app.js').bcrypt;
 
 /* Create schema */
 var UserSchema = new Schema({
