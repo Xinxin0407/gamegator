@@ -37,7 +37,7 @@ const events = new Vue ({
 const getEvents = () => {
   console.log(events);
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "/events", true);
+  xhr.open("GET", "https://gamegator-demo2.herokuapp.com/events", true);
   xhr.onreadystatechange = () => {
     console.log(xhr);
     if (xhr.readyState === 4) {
