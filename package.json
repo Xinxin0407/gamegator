@@ -19,7 +19,7 @@
   "homepage": "https://github.com/Xinxin0407/gamegator#readme",
   "dependencies": {
     "angular": "^1.7.5",
-    "bcrypt": "^3.0.2",
+    "bcrypt": "*",
     "body-parser": "^1.14.1",
     "cheerio": "^1.0.0-rc.2",
     "connect-mongo": "^2.0.1",
