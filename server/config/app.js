@@ -2,9 +2,6 @@ var config = require('./config'),
   mongoose = require('mongoose'),
   express = require('./express');
 
-const bcrypt = require('bcrypt');
-module.exports.bcrypt = bcrypt;
-
 module.exports.start = function() {
   var app = express.init();
   // app.listen using process.env.PORT to run with heroku
