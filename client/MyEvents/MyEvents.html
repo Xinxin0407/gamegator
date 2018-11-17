@@ -86,12 +86,12 @@
 	  		<div class="eventInfo">
 		<h3>Add your event!</h3>
         <form novalidate class = "simple-form">
-			<input type="text" name="eventname" placeholder="Event Name"><br>
-			<input type="text" name="eventAd" placeholder="Address"><br>
-			<input type="text" name="eventTime" placeholder="Time/Date"><br>
-			<input type="text" name="eventFee" placeholder="Entry Fee"><br>
+			<input type="text" id="eventname" placeholder="Event Name"><br>
+			<input type="text" id="eventAd" placeholder="Address"><br>
+			<input type="date" id="eventTime" placeholder="Time/Date"><br>
+			<input type="number" id="eventFee" placeholder="Entry Fee"><br>
 					
-			<button ng-click="create()">Create Event</button>             
+			<button onclick="submit();">Create Event</button>
         </form>	
 		</div>
     </article>
@@ -148,7 +148,9 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
   <!-- OUR APP JS -->
-  <script src="js/app.js"></script>
-  <script src="js/events_factory.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/events_factory.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../js/MyEvents.js"></script>
  </body>
 </html>
