@@ -9,3 +9,5 @@
 .idea/workspace.xml
 
 /node_modules
+package.json
+package-lock.json
