@@ -45,6 +45,6 @@ router.route(':users/:username')
  */
 
 router.param('eventId', events.eventByID);
-router.param('username', users.userByName);
+router.param('username', users.UserByName);
 
 module.exports = router;

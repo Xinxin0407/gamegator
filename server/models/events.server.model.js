@@ -22,6 +22,17 @@ var EventSchema = new Schema({
     type: Date,
     required: true
   },
+    image: {
+        data: Buffer,
+        contentType: String
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    Keywords: [{
+        name:String
+    }],
   price: Number,
   created_at: Date,
   updated_at: Date

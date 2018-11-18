@@ -2,6 +2,5 @@
 .DS_Store
 
 # later add config file
-node_modules/
 .idea/
 node_modules/

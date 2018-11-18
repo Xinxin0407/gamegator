@@ -6,7 +6,9 @@ var path = require('path'),
   bodyParser = require('body-parser'),
   config = require('./config'),
   cors = require('cors'),
-  MongoStore = require('connect-mongo')(session);
+  eventsRouter = require('../routes/events.server.routes');
+var expressSession = require('express-session');
+var MongoStore = require('connect-mongo')(expressSession);
 
 module.exports.init = function() {
   // connect to database
@@ -14,7 +16,7 @@ module.exports.init = function() {
     useNewUrlParser: true
   });
   var db = mongoose.connection;
-
+  
   //handle mongo error
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function() {
@@ -36,6 +38,21 @@ module.exports.init = function() {
 
   // enable request logging for development debugging
   app.use(morgan('dev'));
+  
+   db.on('error', console.error.bind(console, 'connection error:'));
+   db.once('open', function () {
+        // we're connected!
+    });
+    //use sessions for tracking logins
+    app.use(expressSession({
+        secret: 'work hard',
+        resave: true,
+        saveUninitialized: false,
+        store: new MongoStore({
+            mongooseConnection: db
+        })
+    }));
+
 
   // body parsing middleware
   app.use(bodyParser.json());
