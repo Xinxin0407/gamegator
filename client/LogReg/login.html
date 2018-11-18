@@ -8,43 +8,39 @@
   <title>GamerGator</title>
   <link rel="shortcut icon" href="http://spyrestudios.com/favicon.ico">
   <link rel="icon" href="http://spyrestudios.com/favicon.ico">
-  <link rel="stylesheet" type="text/css" media="all" href="../styles/styles.css"> <!-- change back to styles/styles.css -->
+  <link rel="stylesheet" type="text/css" media="all" href="styles.css"> <!-- change back to styles/styles.css -->
   <link rel="stylesheet" type="text/css" media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script src="../js/script.js"></script>
+  <script src="script.js"></script>
+
+
 </head>
 
 
 <body id="gamegatorApp">
 
-  <!------------------------------------------------- top nav bar ----------------------------------------------------------------------->
+  <!-- top nav bar -->
   <header id="topbar" class="clearfix">
     <nav id="topnav">
-
+      <div class="yeet">
       <ul>
-        <li><a href="../index.html" style="font-size:30px;">GamerGator</a></li>
+        <li><a href="index.html" style="font-size:30px;background: #0021A5">GamerGator</a></li>
         <li><a href="#" id="searchtoggl" style="font-size:30px;">Search  </a></li>
-        <li><a href="../About/about.html" class="headerLink" style="text-decoration: none;font-size:30px;">About</a></li>
-        <li><a href="myevents.html" style="font-size:30px;background: #0021A5">My Events</a></li>
+        <li><a href="about.html" class="headerLink" style="text-decoration: none;font-size:30px;">About</a></li>
+        <li><a href="#" style="font-size:30px;">My Events</a></li>
+        </div>
         <li>
-          <a href="#" style="padding-bottom: -16px;padding-left: 50px;"> <!-- profile view pop up -->
-            <div class="dropdown" style="float:right;">
-              <input type="image"  id="profile dropdown" src="profile.png " alt="User Options" width="75" height="75"  />
-              <!--
-              <button class="dropbtn">Dropdown </button>
-               <img src="profile.png" class="dropimg" alt="Default Profile Pic" style="width:75px;height:75px;float:right;margin: 0px 20px" vspace="0"> --></a>
-              <div class="dropdown-content">
-                <a href="#" style="color: #000000">View Profile</a>
-                <a href="#" style="color: #000000">Favorited Events</a>
-                <a href="#" style="color: #000000">Log Off</a>
-              </div>
-            </div>
+          <div class="navbut" style="float: right;padding-right: 20px;">      
+          <a href="#" style="padding-bottom: 5px;padding-left: 5px;"> <!-- profile view pop up -->
+            <button onclick="document.getElementById('id01').style.display='block'" style="border-radius: 12px;border: 2px solid #000000;font-size : 20px;height: 60px;width:200px"><h2>Login</h2></button>
+          </a>
+        </div>
          </li>
       </ul>
      </nav>
    </header>
 
-  <!----------------------------------------------- SEARCH BAR ---------------------------------------------->
+
   <div id="searchbar" class="clearfix">
     <form id="searchform" method="get" action="searchpage.php">
       <button type="submit" id="searchsubmit" class="fa fa-search fa-4x"></button>
@@ -52,28 +48,47 @@
     </form>
   </div>
 
+<!------------------------->
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal" style="color: red;">&times;</span>
+      <img src="loginpic.jpg" alt="image" class="avatar">
+    </div>
+
+    <div class="login">
+      <label for="uname" style="color: orange;"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw" style="color: orange;"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      <div id="outer">
+      <div class="inner"><button type="submit" onclick="location.href='index.html';">Login</button></div>
+      <div class="inner"><button type="new submit">Create Account</button></div>
+      </div>
+      
+      <br>
+      <label style="color: blue;">
+        <input type="checkbox" checked="checked" name="remember" > Remember me
+      </label>
+    </div>
+
+    <div class="bottom" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
 
 
-  <!--------------------------------------------- Events section ------------------------------------------------>
+  <!-- Events section -->
   <section>
     <article>
-    <div align="center">
-    <h2 style="color: #0021A5;font-size: 30px;margin-top: 15px;margin-bottom: 15px;">Your Events </h2>
-<hr>
-	<label class="events">Created Events</label>
-    <input type="checkbox" checked>
-    <span class="checkmark"></span>
-    </label>
-    <label class="events">Favorited Events</label>
-    <input type="checkbox" checked>
-    <span class="checkmark"></span>
-    </label>
-    <label class="events">RSVPed Events</label>
-    <input type="checkbox" checked>
-    <span class="checkmark"></span>
-    </label>
-    </div>
-    <hr>
+      <h2 style="color: black;font-size: 20px;">My Events </h2>
+
+ 
 
       <ul id="listings">
         <li v-for="event in events">
@@ -85,9 +100,7 @@
     </article>
   </section>
 
-
-
-  <!---------------------------------------------------------------- Tags section ------------------------------------------->
+  <!-- Tags section -->
 <div class="nav">
   <nav id="tags">
     <p style="color: white;padding:10px;font-size: 30px;">Tags
@@ -99,7 +112,6 @@
         <option value="Casual">Casual</option>
       </select>
     </p>
-
     <label class="container">Role Playing
     <input type="checkbox">
     <span class="checkmark"></span>

@@ -42,12 +42,13 @@ a:hover { color: blue; text-decoration: none; font-weight: none }
 /*********************************************** top of the page structure ********************************************/
 #topbar {
   display: block;
-  height: 80px;
+  height: 100px;
   width: 100%;
   background: #FF4616;
 }
 
 #topnav {
+    line-height: 50px;
 }
 
 #topnav ul {
@@ -70,16 +71,14 @@ a:hover { color: blue; text-decoration: none; font-weight: none }
 #topnav ul li a {
   display: block;
   float: middle;
-  line-height: 80px;
   margin-right: 8px;
   color: #FFF;
   text-decoration: none;
 }
 
 #topnav ul li :hover {
-  margin-bottom: 0px;
-  transition:0.2s;
-  background: #0021A5;
+
+  background: #0099CC;
 }
 
 #topnav ul li a #searchtoggl {
@@ -173,7 +172,9 @@ html[xmlns] .clearfix {
     font-size: 15px;
     background: white;
     display: block;
-    width: 244px;
+    width: 249px;
+    height: 50px;
+    padding-top: 10px;
 }
 
 .dropdown:hover .dropdown-content {
@@ -271,7 +272,7 @@ html[xmlns] .clearfix {
     transform: rotate(45deg);
 }
 
-/*************************************************My Events checkmarks *********************************/ 
+/*************************************************My Events checkmarks & button *********************************/ 
 
 .events {
     display: inline;
@@ -281,6 +282,26 @@ html[xmlns] .clearfix {
     margin-bottom: 12px;
     cursor: pointer;
     font-size: 20px;
+}
+
+.round-button {
+    display:block;
+    float: left;
+    width:50px;
+    height:50px;
+    line-height:50px;
+    border: 2px solid #f5f5f5;
+    border-radius: 50%;
+    color:#f5f5f5;
+    text-align:center;
+    text-decoration:none;
+    background: green;
+    box-shadow: 0 0 3px gray;
+    font-size:20px;
+    font-weight:bold;
+}
+.round-button:hover {
+    background: #FF4616;
 }
 
 
@@ -432,6 +453,91 @@ span.psw {
     }
 }
 
+
+/************************************************Profile popup**********************************/
+/* login button */
+.viewprofile button {
+    background-color: #FA4616;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.profile-button {
+    width:auto; 
+    float: right; 
+    padding: 0px 87px; 
+    background-color: #FF4616; 
+    border: none;
+}
+
+.profile-button:hover { background: #383; }
+
+.viewprofile button:hover {
+    opacity: 0.8;
+}
+
+.viewprofile {
+      font-size: 16px;
+      padding: 16px;
+}
+
+.piccontainer {
+    text-align: center;
+    margin: 12px 0 12px 0;
+    position: relative;
+}
+
+.profile {
+    height: 75px;
+    width: 75px;
+}
+
+/***************************** actual pop up action ****************/
+.profile-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+}
+
+/* Modal Content/Box */
+.profile-modal-content {
+    background-color: #d3d3d3;
+    border: 3px solid #0021A5;
+    width: 40%; 
+    float: right;
+    vertical-align: top;
+}
+
+
+.profile-inner
+{
+    display: inline-block;
+    width: 45%
+}
+
+#profile-outer
+{
+    width:100%;
+    text-align: center;
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
 
 /*Events*/
 .card{

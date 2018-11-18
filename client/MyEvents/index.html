@@ -8,43 +8,75 @@
   <title>GamerGator</title>
   <link rel="shortcut icon" href="http://spyrestudios.com/favicon.ico">
   <link rel="icon" href="http://spyrestudios.com/favicon.ico">
-  <link rel="stylesheet" type="text/css" media="all" href="styles.css"> <!-- change back to styles/styles.css -->
+  <link rel="stylesheet" type="text/css" media="all" href="/Home/styles/styles.css"> <!-- change back to styles/styles.css -->
   <link rel="stylesheet" type="text/css" media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script src="script.js"></script>
+  <script src="/Home/js/script.js"></script>
 </head>
 
 
 <body id="gamegatorApp">
 
-  <!-- top nav bar -->
+ <!-- top nav bar -->
   <header id="topbar" class="clearfix">
     <nav id="topnav">
 
       <ul>
-        <li><a href="index.html" style="font-size:30px;">GamerGator</a></li>
+        <li><a href="/Home" style="font-size:30px;">GamerGator</a></li>
         <li><a href="#" id="searchtoggl" style="font-size:30px;">Search  </a></li>
         <li><a href="/About" class="headerLink" style="text-decoration: none;font-size:30px;">About</a></li>
-        <li><a href="/MyEvents" style="font-size:30px;">My Events</a></li>
+        <li><a href="/MyEvents" style="font-size:30px;background: #0021A5">My Events</a></li>
+
         <li>
-          <a href="#" style="padding-bottom: -16px;padding-left: 50px;"> <!-- profile view pop up -->
-            <div class="dropdown" style="float:right;">
-              <input type="image"  id="profile dropdown" src="profile.png " alt="User Options" width="75" height="75"  />
-              <!--
-              <button class="dropbtn">Dropdown </button>
-               <img src="profile.png" class="dropimg" alt="Default Profile Pic" style="width:75px;height:75px;float:right;margin: 0px 20px" vspace="0"> --></a>
-              <div class="dropdown-content">
+          <div class="dropdown" style="float: right;">
+          <a href="#" > <!-- profile view pop up -->
+            <button class="profile-button" onclick="document.getElementById('id02').style.display='block'">
+            <input type="image"  id="profile dropdown" src="/Home/profile.png " alt="User Options" width="75" height="75" style="padding-top: 11px; padding-bottom: 9px;" /></a>
+              <div class="dropdown-content" id="dropdown-content">
                 <a href="#" style="color: #000000">View Profile</a>
-                <a href="#" style="color: #000000">Favorited Events</a>
-                <a href="#" style="color: #000000">Log Off</a>
+                <a href="/MyEvents" style="color: #000000">My Events</a>
+                <a href="/" style="color: #000000">Log Off</a>
               </div>
             </div>
+          </button>
          </li>
+
       </ul>
      </nav>
    </header>
 
 
+<div id="id02" class="profile-modal">
+  <form class="profile-modal-content profile-animate" action="/action_page.php">
+    <div class="piccontainer" style="padding-right: 92px;">
+      <img src="/Home/profile.png" alt="image" class="profile" style="float: right;">
+    </div>
+
+    <div class="viewprofile">
+      <label for="uname" style="color: #0021A5; font-size: 40px;"><b>Username</b></label>
+     <br><br><hr>
+
+      <label style="color: #0021A5; font-size: 25px;" ><b>Bio:</b></label>
+      <p>This is where a user bio would be located</p>
+      <label style="color: #0021A5; font-size: 25px;"><b>Interests:</b></label>
+      <p>This is where a user could display any games they are interested in</p>
+      <div id="profile-outer">
+      <div class="profile-inner"><button href="/" type="submit">Log Out</button></div>
+      <div class="profile-inner"><button href="/profile" type="new submit">Edit Profile</button></div>
+      </div>
+    </div>
+
+
+    </div>
+  </form>
+</div>
+
+  <script>  var modal = document.getElementById('id02'); window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";} }   </script>
+
+
+  <!-- SEARCH BAR -->
   <div id="searchbar" class="clearfix">
     <form id="searchform" method="get" action="searchpage.php">
       <button type="submit" id="searchsubmit" class="fa fa-search fa-4x"></button>
@@ -58,21 +90,30 @@
   <section>
     <article>
     <div align="center">
-    <h2 style="color: #0021A5;font-size: 30px;margin-top: 15px;margin-bottom: 15px;">Your Events </h2>
-<hr>
-	<label class="events">Created Events</label>
-    <input type="checkbox" checked>
+    	<br>
+       <a href="http://example.com" class="round-button">+</a>
+    	<select class="eventNav" style="float:right;margin: 0px 20px;margin-top: 6px">
+        <option value="Tournaments">Event Date</option>
+        <option value="Most Recent">Recently Created</option>
+        <option value="Most Popular">Most Popular</option>
+        <option value="No buy-in">Alphabetical</option>
+      </select>
+
+
+  <label class="events">Created Events</label>
+    <input type="checkbox">
     <span class="checkmark"></span>
     </label>
     <label class="events">Favorited Events</label>
-    <input type="checkbox" checked>
+    <input type="checkbox">
     <span class="checkmark"></span>
     </label>
     <label class="events">RSVPed Events</label>
-    <input type="checkbox" checked>
+    <input type="checkbox">
     <span class="checkmark"></span>
     </label>
-    </div>
+    <br><br><br>
+</nav>
     <hr>
 
       <ul id="listings">
@@ -90,16 +131,7 @@
   <!-- Tags section -->
 <div class="nav">
   <nav id="tags">
-    <p style="color: white;padding:10px;font-size: 30px;">Tags
-      <select class="eventNav" style="float:right;margin: 0px 20px;margin-top: 6px">
-        <option value="Most Recent">Most Recent</option>
-        <option value="Most Popular">Most Popular</option>
-        <option value="No buy-in">No Buy-in</option>
-        <option value="Tournaments">Tournaments</option>
-        <option value="Casual">Casual</option>
-      </select>
-    </p>
-
+    <p style="color: white;padding:10px;font-size: 30px;">Tags    </p>
     <label class="container">Role Playing
     <input type="checkbox">
     <span class="checkmark"></span>
@@ -115,15 +147,35 @@
       <span class="checkmark"></span>
     </label>
 
-    <label class="container">Console Games
+    <label class="container">Xbox Games
       <input type="checkbox">
       <span class="checkmark"></span>
-    </label> 
+    </label>
+
+    <label class="container">PS4 Games
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
 
     <label class="container">Card Games
       <input type="checkbox">
       <span class="checkmark"></span>
-    </label> 
+    </label>
+
+    <label class="container">No Buy-in
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Tournaments
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Casual
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
   </nav>
 </div>
 
@@ -136,7 +188,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
   <!-- OUR APP JS -->
-  <script src="js/app.js"></script>
-  <script src="js/events_factory.js"></script>
+  <script src="/Home/js/app.js"></script>
+  <script src="/Home/js/events_factory.js"></script>
  </body>
 </html>
