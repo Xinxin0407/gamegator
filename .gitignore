@@ -2,12 +2,5 @@
 .DS_Store
 
 # later add config file
-.idea/gamergator.iml
-.idea/misc.xml
-.idea/modules.xml
-.idea/vcs.xml
-.idea/workspace.xml
-
 node_modules/
-package.json
-package-lock.json
+.idea/
