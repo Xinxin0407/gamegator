@@ -72,14 +72,25 @@ function getCookie(key) {
 //------------------------------------------------------------
 function sendXHR(method, path, body, callback){
   let xhr = new XMLHttpRequest();
-
   xhr.open(method, path);
 
-  xhr.onreadystatechange(() => {
+  xhr.onreadystatechange = () => {
     if (xhr.readyState === 4){
-      if (callback) callback();
+      if (callback) callback(xhr.response);
     }
-  });
+  };
 
-  xhr.send();
+  if (body) xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.send(body);
 }
+
+
+function getUsername(){
+  return "default user";
+}
+
+function isSignedIn(){
+  return true;
+}
+
+function getEmail();
