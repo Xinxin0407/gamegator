@@ -42,7 +42,13 @@ map.on("load", function () {
                       new mapboxgl.Marker()
                           .setLngLat(feature.center)
                           .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-                          .setHTML('<h3>' + event.name + '</h3><p>' + event.description + '</p>'))
+                          .setHTML(
+                            '<h3>' + event.name + '</h3>' +
+                            '<p>' + event.description + '</p>' +
+                            '<p>' + event.time + '</p>' +
+                            '<p>' + "Organized by: " + event.organizer + "</p>"
+
+                          ))
                           .addTo(map);
                   }
               });
