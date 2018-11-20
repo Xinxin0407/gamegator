@@ -8,7 +8,7 @@ const defaultZoom = 12;
 /* Map: This represents the map on the page. */
 var map = new mapboxgl.Map({
   container: "map",
-  style: "mapbox://styles/mapbox/light-v9",
+  style: "mapbox://styles/mapbox/bright-v9",
   zoom:12,
   center: [defaultLong,defaultLat]
 });
