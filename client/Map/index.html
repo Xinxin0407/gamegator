@@ -14,9 +14,9 @@
   <script src="../Home/js/script.js"></script>
 
   <!-- map bokusu https://www.mapbox.com/help/how-web-apps-work/ -->
-  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.js"></script>  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css" rel="stylesheet" />
+<script src='https://unpkg.com/es6-promise@4.2.4/dist/es6-promise.auto.min.js'></script>
+<script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
 
 <link rel="stylesheet" type="text/css" media="all" href="map.css">
 </head>
@@ -45,7 +45,6 @@
               <a href="/" style="color: #000000">Log Off</a>
             </div>
           </div>
-          </button>
         </li>
 
       </ul>
@@ -76,8 +75,6 @@
       </div>
 
 
-  </div>
-  </form>
   </div>
 
 
@@ -116,7 +113,5 @@
 
   <script src="../Home/js/events_factory.js"></script>
   <script src="../Home/js/map.js"></script>
-
-  <script>window.onload = mapsInit</script>
  </body>
 </html>
