@@ -1,0 +1,15 @@
+div.box {
+  float: down;
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}

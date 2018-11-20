@@ -34,14 +34,16 @@ const events = new Vue ({
   }
 });
 
-const getEvents = () => {
+const getEvents = (callback) => {
   console.log(events);
   const xhr = new XMLHttpRequest();
   xhr.open("GET", "/Home/Events", true);
   xhr.onreadystatechange = () => {
     console.log(xhr);
     if (xhr.readyState === 4) {
-        events._data.events = JSON.parse(xhr.response);
+        let json = JSON.parse(xhr.response);
+        if (callback) callback(json);
+        events._data.events = json;
         for (let i = 0; i < events._data.events.length; i++){
           events._data.events[i].moreInfo = false;
         }
