@@ -66,6 +66,7 @@ module.exports.init = function() {
   app.use('/Home', express.static(__dirname + '/../../client/'));
   app.use('/MyEvents', express.static(__dirname + '/../../client/MyEvents'));
   app.use('/About', express.static(__dirname + '/../../client/About'));
+  app.use('/Map', express.static(__dirname + '/../../client/Map'));
 
   // include routes
   var userRouter = require('../routes/users.server.routes.js');

@@ -92,4 +92,6 @@ function isSignedIn(){
   return true;
 }
 
-function getEmail();
+function getEmail(){
+  return "";
+};
