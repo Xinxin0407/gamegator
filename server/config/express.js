@@ -16,7 +16,7 @@ module.exports.init = function() {
     useNewUrlParser: true
   });
   var db = mongoose.connection;
-  
+
   //handle mongo error
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function() {
@@ -38,7 +38,7 @@ module.exports.init = function() {
 
   // enable request logging for development debugging
   app.use(morgan('dev'));
-  
+
    db.on('error', console.error.bind(console, 'connection error:'));
    db.once('open', function () {
         // we're connected!

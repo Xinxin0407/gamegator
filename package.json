@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Xinxin0407/gamegator#readme",
   "dependencies": {
     "angular": "^1.7.5",
+<<<<<<< HEAD
     "bcrypt": "*",
     "body-parser": "^1.14.1",
     "cheerio": "^1.0.0-rc.2",
@@ -30,6 +31,17 @@
     "milligram": "^1.3.0",
     "mocha": "^5.2.0",
     "mongoose": "^5.3.12",
+=======
+    "bcrypt": "^3.0.2",
+    "body-parser": "^1.14.1",
+    "cheerio": "^1.0.0-rc.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "http": "0.0.0",
+    "milligram": "^1.3.0",
+    "mocha": "^5.2.0",
+    "mongoose": "^5.3.1",
+>>>>>>> event_submission_testing
     "morgan": "^1.6.1",
     "promise": "^8.0.2",
     "request": "^2.88.0",

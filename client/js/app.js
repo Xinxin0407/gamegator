@@ -1,5 +1,6 @@
 // similar to app.js for listings project
 
+
 //Tags module
 new Vue({
   el: "#tags",

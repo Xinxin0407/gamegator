@@ -126,7 +126,7 @@ a:hover { color: blue; text-decoration: none; font-weight: none }
 }
 
 /** clearfix **/
-.clearfix:after { 
+.clearfix:after {
   content: ".";
 display: block;
 clear: both;
@@ -185,7 +185,7 @@ html[xmlns] .clearfix {
 #tags{
    float: left;
    width: 20%;
-   height: 500px; 
+   height: 500px;
    background: #A9A9A9;
    font-size: 5px;
 }
@@ -246,7 +246,7 @@ html[xmlns] .clearfix {
 /* checked color */
 .container input:checked ~ .checkmark {
     background-color: #0021A5;
-    
+
 }
 
 .checkmark:after {
@@ -272,7 +272,7 @@ html[xmlns] .clearfix {
     transform: rotate(45deg);
 }
 
-/*************************************************My Events checkmarks & button *********************************/ 
+/*************************************************My Events checkmarks *********************************/
 
 .events {
     display: inline;
@@ -383,23 +383,23 @@ span.psw {
 
 /***************************** actual pop up action ****************/
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
+    width: 100%;
+    height: 100%;
+    overflow: auto;
     padding-top: 10px;
 }
 
 /* Modal Content/Box */
 .modal-content {
     background-color: #000000;
-    margin: 1% auto 10% auto; 
+    margin: 1% auto 10% auto;
     border: 1px solid #888;
-    width: 40%; 
+    width: 40%;
 }
 
 /* X button   */
@@ -433,12 +433,12 @@ span.psw {
 }
 
 @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
+    from {-webkit-transform: scale(0)}
     to {-webkit-transform: scale(1)}
 }
-    
+
 @keyframes animatezoom {
-    from {transform: scale(0)} 
+    from {transform: scale(0)}
     to {transform: scale(1)}
 }
 
@@ -466,10 +466,10 @@ span.psw {
     width: 100%;
 }
 .profile-button {
-    width:auto; 
-    float: right; 
-    padding: 0px 87px; 
-    background-color: #FF4616; 
+    width:auto;
+    float: right;
+    padding: 0px 87px;
+    background-color: #FF4616;
     border: none;
 }
 
@@ -497,21 +497,21 @@ span.psw {
 
 /***************************** actual pop up action ****************/
 .profile-modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
+    width: 100%;
+    height: 100%;
+    overflow: auto;
 }
 
 /* Modal Content/Box */
 .profile-modal-content {
     background-color: #d3d3d3;
     border: 3px solid #0021A5;
-    width: 40%; 
+    width: 40%;
     float: right;
     vertical-align: top;
 }
@@ -530,12 +530,12 @@ span.psw {
 }
 
 @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
+    from {-webkit-transform: scale(0)}
     to {-webkit-transform: scale(1)}
 }
-    
+
 @keyframes animatezoom {
-    from {transform: scale(0)} 
+    from {transform: scale(0)}
     to {transform: scale(1)}
 }
 
