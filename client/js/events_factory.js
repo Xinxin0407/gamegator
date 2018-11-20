@@ -41,12 +41,12 @@ const getEvents = () => {
   xhr.onreadystatechange = () => {
     console.log(xhr);
     if (xhr.readyState === 4) {
-        let events = JSON.parse(xhr.response);
-        events._data.events = events;
+        let json = JSON.parse(xhr.response);
+        events._data.events = json;
         for (let i = 0; i < events._data.events.length; i++){
           events._data.events[i].moreInfo = false;
         }
-        return events;
+        return json;
     }
   };
   xhr.send();
