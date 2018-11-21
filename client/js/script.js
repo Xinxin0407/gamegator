@@ -105,13 +105,14 @@ function insertNavBar(){
         "<li><a href=\"/Home\" style=\"font-size:30px;background: #0021A5\">GamerGator</a></li>"+
         "<li><a href=\"#\" id=\"searchtoggl\" style=\"font-size:30px;\">Search  </a></li>"+
         "<li><a href=\"/About\" class=\"headerLink\" style=\"text-decoration: none;font-size:30px;\">About</a></li>"+
+        "<li><a href=\"/Map\" style=\"font-size:30px;\">Map</a></li>"+
         "<li><a href=\"/MyEvents\" style=\"font-size:30px;\">My Events</a></li>"+
 
-        "<li>"+
+        "<li style=\"float: right;\">"+
           "<div class=\"dropdown\" style=\"float: right;\">"+
-          "<a href=\"#\" > <!-- profile view pop up -->"+
+          "<a href=\"#\"> <!-- profile view pop up -->"+
             "<button class=\"profile-button\" onclick=\"document.getElementById('id02').style.display='block'\">"+
-            "<input type=\"image\"  id=\"profile dropdown\" src=\"/Home/profile.png \" alt=\"User Options\" width=\"75\" height=\"75\" style=\"padding-top: 11px; padding-bottom: 9px;\" /></a>"+
+            "<input type=\"image\"  id=\"profile dropdown\" src=\"/Home/profile.png \" alt=\"User Options\" width='75' height='75' style=\"padding-top: 11px; padding-bottom: 9px;\" /></a>"+
               "<div class=\"dropdown-content\" id=\"dropdown-content\">"+
                 "<a href=\"#\" style=\"color: #000000\">View Profile</a>"+
                 "<a href=\"/MyEvents\" style=\"color: #000000\">My Events</a>"+
