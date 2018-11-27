@@ -98,25 +98,26 @@ function getEmail(){return ""};
 function insertNavBar(){
   let navbar = getElement("navbar");
   navbar.innerHTML = ""+
+  "<div class=\"height\" >"+
   "<header id=\"topbar\" class=\"clearfix\">"+
     "<nav id=\"topnav\">"+
 
       "<ul>"+
-        "<li><a href=\"/Home\" style=\"font-size:30px;background: #0021A5\">GamerGator</a></li>"+
-        "<li><a href=\"#\" id=\"searchtoggl\" style=\"font-size:30px;\">Search  </a></li>"+
-        "<li><a href=\"/About\" class=\"headerLink\" style=\"text-decoration: none;font-size:30px;\">About</a></li>"+
-        "<li><a href=\"/Map\" style=\"font-size:30px;\">Map</a></li>"+
-        "<li><a href=\"/MyEvents\" style=\"font-size:30px;\">My Events</a></li>"+
+        "<li><a href=\"/Home\" > GamerGator</a></li>"+
+        "<li><a href=\"#\" id=\"searchtoggl\" >Search  </a></li>"+
+        "<li><a href=\"/About\" class=\"headerLink\" style=\"text-decoration: none;\">About</a></li>"+
+        "<li><a href=\"/Map\" >Map</a></li>"+
+        "<li><a href=\"/MyEvents\" >My Events</a></li>"+
 
         "<li style=\"float: right;\">"+
-          "<div class=\"dropdown\" style=\"float: right;\">"+
+          "<div class=\"dropdown\" style=\"float: middle;\">"+
           "<a href=\"#\"> <!-- profile view pop up -->"+
             "<button class=\"profile-button\" onclick=\"document.getElementById('id02').style.display='block'\">"+
-            "<input type=\"image\"  id=\"profile dropdown\" src=\"/Home/profile.png \" alt=\"User Options\" width='75' height='75' style=\"padding-top: 11px; padding-bottom: 9px;\" /></a>"+
+            "<input type=\"image\"  id=\"profile dropdown\" src=\"/Home/profile.png \" alt=\"User Options\" width='75' height='75' /></a>"+
               "<div class=\"dropdown-content\" id=\"dropdown-content\">"+
-                "<a href=\"#\" style=\"color: #000000\">View Profile</a>"+
-                "<a href=\"/MyEvents\" style=\"color: #000000\">My Events</a>"+
-                "<a href=\"/\" style=\"color: #000000\">Log Off</a>"+
+                "<a href=\"#\" style=\"color: #000000; font-size: 15px;\">View Profile</a>"+
+                "<a href=\"/MyEvents\" style=\"color: #000000; font-size: 15px;\">My Events</a>"+
+                "<a href=\"/\" style=\"color: #000000; font-size: 15px;\">Log Off</a>"+
               "</div>"+
             "</div>"+
           "</button>"+
@@ -125,6 +126,7 @@ function insertNavBar(){
       "</ul>"+
      "</nav>"+
    "</header>"+
+   "</div>"+
 
 
 "<div id=\"id02\" class=\"profile-modal\">"+

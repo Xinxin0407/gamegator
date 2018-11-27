@@ -4,7 +4,7 @@ article {
     padding: 20px;
     width: 80%;
     background-color: #D3D3D3;
-    height: 500px;  only for demonstration, /*should be removed */
+    height: 500px;
 }
 
 /************************************************************* Constants ****************************************************************/
@@ -74,6 +74,7 @@ a:hover { color: blue; text-decoration: none; font-weight: none }
   margin-right: 0px;
   color: #FFF;
   text-decoration: none;
+  font-size: 30px;
 }
 
 #topnav ul li :hover {
@@ -161,7 +162,7 @@ html[xmlns] .clearfix {
     position: absolute;
     right: 0;
     background-color: #FF4616;
-    min-width: 200px;
+    min-width: 16.667%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     font-size:15px;
@@ -466,9 +467,9 @@ span.psw {
     width: 100%;
 }
 .profile-button {
-    width:auto;
-    float: right;
-    padding: 0px 87px;
+    width:16.667%;
+    float: center;
+        padding-right: 87px;
     background-color: #FF4616;
     border: none;
 }
@@ -565,3 +566,29 @@ span.psw {
 .event-address{
     font-style: italic;
 }
+
+/*about page mobile functionality*/
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #A9A9A9;
+    color: white;
+    text-align: center;
+    height: 50px;
+    font-size: 30px;
+
+}
+
+.info {
+  font-size:17px;
+  padding-left: 35px;
+  padding-right: 35px; 
+  padding-bottom: 35px;
+  padding-top: 25px;
+  text-align:center;
+  color: white
+
+  }
+
