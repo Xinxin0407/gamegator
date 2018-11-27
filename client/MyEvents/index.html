@@ -10,7 +10,7 @@
   <link rel="icon" href="http://spyrestudios.com/favicon.ico">
   <link rel="stylesheet" type="text/css" media="screen and (max-width: 799px)" href="/Home/styles/mobile.css">
   <link rel="stylesheet" type="text/css" media="screen and (min-width: 800px) and (max-width: 1249px)" href="/Home/styles/mid.css">
-  <link rel="stylesheet" type="text/css" media="screen and (min-width: 1250px)" href="/Home/styles/styles.css"> 
+  <link rel="stylesheet" type="text/css" media="screen and (min-width: 1250px)" href="/Home/styles/styles.css">
   <link rel="stylesheet" type="text/css" media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="/Home/js/script.js"></script>
@@ -121,23 +121,25 @@
 
 <div class="form-popup" id="myForm">
   <form class="form-container" onsubmit="return submitEvent();">
-    <h1>Create event</h1>
-
+    <h1 style="font-size: 30px">Create event</h1>
+    <br>
     <label for="name"><b>Event</b></label>
     <input id="eventName" type="text" placeholder="Event name" name="name" required>
-
-    <lable for="description"><b>Description</b></label>
+    <br>
+    <label for="description"><b>Description</b></label>
     <input id="eventDesc" type="text" placeholder="Detailed description" name="description" required>
-
+    <br>
     <label for="address"><b>Address</b></label>
     <input id="eventAd" type="text" placeholder="Enter Address" name="address" required>
-
+    <br>
+    <label for="tags"><b>Tags (comma-seperated)</b></label>
+    <textarea id="eventTags" placeholder="Xbox, Call of duty, Tournament, free"></textarea>
+    <br><br>
     <label for="time"><b>Time</b></label>
     <input id="eventTime" type="date" name="time" required>
-
     <label for="price"><b>Price</b></label>
     <input id="eventFee" type="number" name="price" required>
-
+    <br>
     <button type="button" class="btn" onclick="submitEvent()">Create</button>
     <button type="submit" class="btn cancel" onclick="closeForm()">Cancel</button>
   </form>
