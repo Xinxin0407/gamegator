@@ -76,9 +76,20 @@ const getEvents = (callback) => {
   const xhr = new XMLHttpRequest();
   xhr.open("GET", "/Home/Events", true);
   xhr.onreadystatechange = () => {
-    console.log(xhr);
+    //console.log(xhr);
     if (xhr.readyState === 4) {
         let json = JSON.parse(xhr.response);
+        json.sort((e1,e2) => {
+          let sortBy = getElement('sorting').value;
+          if (sortBy === 'time' || sortBy==='created_at'){
+            return new Date(e1[sortBy]) - new Date(e2[sortBy]);
+          }
+          console.log("sorting by " + sortBy);
+          console.log('e1[sortBy] = ' + e1[sortBy]);
+          console.log('e2[sortBy] = ' + e2[sortBy]);
+          return e1[sortBy] - e2[sortBy];
+        });
+
         if (callback) callback(json);
         events._data.events = json;
         for (let i = 0; i < events._data.events.length; i++){
@@ -88,3 +99,7 @@ const getEvents = (callback) => {
   };
   xhr.send();
 };
+
+function applySorting(events){
+
+}

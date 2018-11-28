@@ -30,12 +30,12 @@
     <div align="center">
     	<br>
        <a class="round-button" onclick="openForm()" style="cursor: pointer;">+</a>
-    	<select class="eventNav" style="float:right;margin: 0px 20px;margin-top: 6px">
-        <option value="Tournaments">Event Date</option>
-        <option value="Most Recent">Recently Created</option>
-        <option value="Most Popular">Most Popular</option>
-        <option value="No buy-in">Alphabetical</option>
+    	<select id="sorting" class="eventNav" style="float:right;margin: 0px 20px;margin-top: 6px" onchange="getEvents()">
+        <option value="created_at">Recently Created</option>
+        <option value="time">Event Date</option>
+        <option value="name">Event name</option>
       </select>
+      <button onclick="console.log(getElement('sorting').value)">print selection</button>
 
 
   <label class="events">Created Events</label>
