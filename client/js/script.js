@@ -83,17 +83,32 @@ function sendXHR(method, path, body, callback){
   xhr.send(body);
 }
 
-
+//TODO
 function getUsername(){
   return "default user";
 }
-
+//TODO
 function isSignedIn(){
   return true;
 }
+//TODO
+function getEmail(){
+  return "";
+}
 
-function getEmail(){return ""};
+function isCreatorOfEvent(event){
+  return event.organizer === getUsername();
+}
 
+//TODO
+function eventIsFavorited(event){
+  return true;
+}
+
+//TODO
+function eventIsRSVPd(event){
+  return true;
+}
 
 function insertNavBar(){
   let navbar = getElement("navbar");
