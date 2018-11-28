@@ -9,8 +9,14 @@ function closeForm() {
 
 function submitEvent() {
 
-  const tags = getElement("eventTags").value.split(",").map(x => x.trim().toLowerCase());
+  let tags = getElement("eventTags").value.split(",").map(x => x.trim().toLowerCase());
   console.log(tags);
+  const tagobjs = tags.map(tag => {
+    const obj = {};
+    obj.name = tag;
+    return obj;
+  });
+  console.log(tagobjs);
   const event = {
         organizer: getUsername(),
         name: getElement("eventName").value,
@@ -18,7 +24,7 @@ function submitEvent() {
         time: getElement("eventTime").value,
         price: getElement("eventFee").value,
         description: getElement("eventDesc").value,
-        tags: tags
+        Keywords: tagobjs
   };
   sendXHR("POST", "/Home/events", JSON.stringify(event), () => alert("Success!"));
 }
