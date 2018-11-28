@@ -29,35 +29,34 @@ const events = new Vue ({
       let keywords = search._data.search;
       return this.events.filter(event => {
         let match = false;
+
+        //check the name
         if (event.name.toLowerCase().includes(keywords.toLowerCase())) match = true;
         event.Keywords.map(ekw => {
           match |= (ekw && ekw.name && ekw.name.toLowerCase().includes(keywords));
         });
 
+        if (!match) return false;
+
+        //check the tags
+
         const TAGS = [
           'role-playing', 'board-games', 'pc-games', 'xbox-games', 'ps4-games', 'card-games', 'no-buy-in', 'tournaments', 'casual'
         ]
+
+        const rsvpBool = getElement('rsvpd').checked;
+        const favoritedBool = getElement('favorited').checked;
+        const createdBool = getElement('created').checked;
+
+        if (rsvpBool) match &= eventIsRSVPd(event);
+        if (favoritedBool) match &= eventIsFavorited(event);
+        if (createdBool) match &= isCreatorOfEvent(event);
 
         for (tagg in TAGS){
           const tag = TAGS[tagg];
           const tagtrue = getElement(tag).checked;
           if (tagtrue) match &= eventHasKeyword(event, tag.replace("-", " "));
         }
-
-        //match |= event.description.contains(keywords);
-        /*
-        if (getElement("role-playing").checked) match &= event.Keywords && event.Keywords.map(kw => kw && kw.name.includes("role-playing"));
-        if (getElement("board-games").checked) match &= event.Keywords && event.Keywords.map(kw => kw && kw.name.includes("board-games"));
-        if (getElement("pc-games").checked) match &= event.Keywords && event.Keywords.map(kw => kw && kw.name.includes("pc-games"));
-        if (getElement("xbox-games").checked) match &= event.Keywords && event.Keywords.map(kw => kw && kw.name.includes("xbox-games"));
-        if (getElement("ps4-games").checked) match &= event.Keywords && event.Keywords.map(kw => kw && kw.name.includes("ps4-games"));
-        if (getElement("card-games").checked) match &= event.Keywords && event.Keywords.map(kw => kw && kw.name.includes("card-games"));
-        if (getElement("no-buy-in").checked) match &= event.Keywords && event.Keywords.map(kw => kw && kw.name.includes("no-buy-in"));
-        if (getElement("tournaments").checked) match &= event.Keywords && event.Keywords.map(kw => kw && kw.name.includes("tournaments"));
-        if (getElement("casual").checked) match &= event.Keywords && event.Keywords.map(kw => kw && kw.name.includes("casual"));
-        */
-
-        console.log(getElement("casual").checked);
         return match;
       })
     }
