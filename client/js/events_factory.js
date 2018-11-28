@@ -44,9 +44,9 @@ const events = new Vue ({
           'role-playing', 'board-games', 'pc-games', 'xbox-games', 'ps4-games', 'card-games', 'no-buy-in', 'tournaments', 'casual'
         ]
 
-        const rsvpBool = getElement('rsvpd').checked;
-        const favoritedBool = getElement('favorited').checked;
-        const createdBool = getElement('created').checked;
+        const rsvpBool = getElement('rsvpd') && getElement('rsvpd').checked;
+        const favoritedBool = getElement('favorited') && getElement('favorited').checked;
+        const createdBool = getElement('created') && getElement('created').checked;
 
         if (rsvpBool) match &= eventIsRSVPd(event);
         if (favoritedBool) match &= eventIsFavorited(event);
