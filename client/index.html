@@ -44,7 +44,7 @@
             <p class="event-address">{{event.address}}</p>
             <p class="event-time">{{event.time}}</p>
             <p class="event-desc">{{event.description}}</p>
-            <p class="event-tags">Tags: {{event.Keywords.map(keyword => keyword ? keyword.name: null)}}</p>
+            <p class="event-tags">Tags: {{event.Keywords.map(keyword => keyword ? keyword.name : null)}}</p>
           </div>
         </div>
 
@@ -65,37 +65,37 @@
     </label>
 
     <label class="container">Board Games
-      <input type="checkbox">
+      <input id="board-games" type="checkbox">
       <span class="checkmark"></span>
     </label>
 
     <label class="container">PC Games
-      <input type="checkbox">
+      <input id="pc-games"  type="checkbox">
       <span class="checkmark"></span>
     </label>
 
     <label class="container">Xbox Games
-      <input type="checkbox">
+      <input id="xbox-games"  type="checkbox">
       <span class="checkmark"></span>
     </label>
 
     <label class="container">PS4 Games
-      <input type="checkbox">
+      <input id="ps4-games"  type="checkbox">
       <span class="checkmark"></span>
     </label>
 
     <label class="container">Card Games
-      <input type="checkbox">
+      <input id="card-games"  type="checkbox">
       <span class="checkmark"></span>
     </label>
 
-    <label class="container">No Buy-in
-      <input type="checkbox">
+    <label class="container">Free
+      <input id="no-buy-in"  type="checkbox">
       <span class="checkmark"></span>
     </label>
 
     <label class="container">Tournaments
-      <input type="checkbox">
+      <input id="tournament"  type="checkbox">
       <span class="checkmark"></span>
     </label>
 

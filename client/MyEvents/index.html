@@ -122,6 +122,7 @@
 <div class="form-popup" id="myForm">
   <form class="form-container" onsubmit="return submitEvent();">
     <h1 style="font-size: 30px">Create event</h1>
+    <button onclick="refreshTags()"></button>
     <br>
     <label for="name"><b>Event</b></label>
     <input id="eventName" type="text" placeholder="Event name" name="name" required>
@@ -133,7 +134,48 @@
     <input id="eventAd" type="text" placeholder="Enter Address" name="address" required>
     <br>
     <label for="tags"><b>Tags (comma-seperated)</b></label>
-    <textarea id="eventTags" placeholder="Xbox, Call of duty, Tournament, free"></textarea>
+    <textarea id="eventTags" onkeypress="console.log('press!'); refreshTags()" placeholder="Xbox, Call of duty, Tournament, free"></textarea>
+    <br>
+
+
+    <div id="role-playing" class="tag-container absent">
+      <label class="tag" onclick="addTag('Role Playing')">Role Playing</label>
+    </div>
+
+
+    <div id="board-games" class="tag-container absent">
+      <label class="tag" onclick="addTag('Board Games')">Board Games</label>
+    </div>
+
+
+    <div id="pc-games" class="tag-container absent">
+      <label class="tag" onclick="addTag('PC Games')">PC Games</label>
+    </div>
+
+    <div id="xbox-games" class="tag-container absent">
+      <label class="tag" onclick="addTag('Xbox Games')">Xbox Games</label>
+    </div>
+
+    <div id="ps4-games" class="tag-container absent">
+      <label class="tag" onclick="addTag('PS4 Games')">PS4 Games</label>
+    </div>
+
+    <div id="card-games" class="tag-container absent">
+      <label class="tag" onclick="addTag('Card Games')">Card Games</label>
+    </div>
+
+    <div id="no-buy-in" class="tag-container absent">
+      <label class="tag" onclick="addTag('No Buy-in')">No Buy-in</label>
+    </div>
+
+    <div id="tournaments" class="tag-container absent">
+      <label class="tag" onclick="addTag('Tournaments')">Tournaments</label>
+    </div>
+
+    <div id="casual" class="tag-container absent">
+      <label class="tag" onclick="addTag('Casual')">Casual</label>
+    </div>
+
     <br><br>
     <label for="time"><b>Time</b></label>
     <input id="eventTime" type="date" name="time" required>

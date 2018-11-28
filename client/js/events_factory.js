@@ -33,6 +33,8 @@ const events = new Vue ({
         event.Keywords.map(ekw => {
           match |= (ekw && ekw.name && ekw.name.toLowerCase().includes(keywords));
         });
+
+        //match |= event.description.contains(keywords);
         return match;
       })
     }
