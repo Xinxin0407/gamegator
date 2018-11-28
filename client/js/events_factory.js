@@ -28,7 +28,12 @@ const events = new Vue ({
     filteredList: function (){
       let keywords = search._data.search;
       return this.events.filter(event => {
-        return event.name.toLowerCase().includes(keywords.toLowerCase());
+        if (event.name.toLowerCase().includes(keywords.toLowerCase())) return true;
+        let match = false;
+        event.Keywords.map(ekw => {
+          match |= (ekw && ekw.name && ekw.name.toLowerCase().includes(keywords));
+        });
+        return match;
       })
     }
   }
