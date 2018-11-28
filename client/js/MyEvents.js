@@ -56,7 +56,7 @@ function refreshTags(){
   //console.log("tags: " + tags);
   for (tag in TAGS) {
     //console.log(TAGS[tag].replace(" ", "-").trim());
-    const element = getElement(TAGS[tag].replace(" ", "-").trim());
+    const element = getElement(TAGS[tag].replace(" ", "-").trim() + "-create");
     if (element) element.classList.toggle("absent", tags.indexOf(TAGS[tag]) === -1);
   }
 

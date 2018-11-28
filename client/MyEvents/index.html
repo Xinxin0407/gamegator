@@ -54,75 +54,82 @@
 </nav>
     <hr>
 
-      <ul id="listings">
-        <li v-for="event in events">
-          <p><h1>{{event.title}}</h1></p>
-          <p><h3>{{event.desc}}</h3></p>
-        </li>
-        <button onclick="getEvents()">Load events (debug)</button>
-      </ul>
+    <div class="container" id="listings">
+
+      <div class='card' v-for="(event, index) in filteredList">
+        <div class="container">
+          <h4 class="event-name"><b>{{event.name}}</b></h4>
+          <br>
+          <p class="event-address">{{event.address}}</p>
+          <p class="event-time">{{event.time}}</p>
+          <p class="event-desc">{{event.description}}</p>
+          <p class="event-tags">Tags: {{event.Keywords.map(keyword => keyword ? keyword.name : null)}}</p>
+        </div>
+      </div>
+
+
+    </div>
     </article>
   </section>
 
 
 
   <!-- Tags section -->
-<div class="nav">
-  <nav id="tags">
-    <p style="color: white;padding:10px;font-size: 30px;">Tags    </p>
-    <label class="container">Role Playing
-    <input type="checkbox">
-    <span class="checkmark"></span>
-    </label>
-
-    <label class="container">Board Games
-      <input type="checkbox">
+  <div class="nav">
+    <nav id="tags">
+      <p style="color: white;padding:10px;font-size: 30px;">Tags    </p>
+      <label class="container">Role Playing
+      <input id="role-playing" type="checkbox" onclick="getEvents()">
       <span class="checkmark"></span>
-    </label>
+      </label>
 
-    <label class="container">PC Games
-      <input type="checkbox">
-      <span class="checkmark"></span>
-    </label>
+      <label class="container">Board Games
+        <input id="board-games" type="checkbox" onclick="getEvents()">
+        <span class="checkmark"></span>
+      </label>
 
-    <label class="container">Xbox Games
-      <input type="checkbox">
-      <span class="checkmark"></span>
-    </label>
+      <label class="container">PC Games
+        <input id="pc-games"  type="checkbox" onclick="getEvents()">
+        <span class="checkmark"></span>
+      </label>
 
-    <label class="container">PS4 Games
-      <input type="checkbox">
-      <span class="checkmark"></span>
-    </label>
+      <label class="container">Xbox Games
+        <input id="xbox-games"  type="checkbox" onclick="getEvents()">
+        <span class="checkmark"></span>
+      </label>
 
-    <label class="container">Card Games
-      <input type="checkbox">
-      <span class="checkmark"></span>
-    </label>
+      <label class="container">PS4 Games
+        <input id="ps4-games"  type="checkbox" onclick="getEvents()">
+        <span class="checkmark"></span>
+      </label>
 
-    <label class="container">No Buy-in
-      <input type="checkbox">
-      <span class="checkmark"></span>
-    </label>
+      <label class="container">Card Games
+        <input id="card-games"  type="checkbox" onclick="getEvents()">
+        <span class="checkmark"></span>
+      </label>
 
-    <label class="container">Tournaments
-      <input type="checkbox">
-      <span class="checkmark"></span>
-    </label>
+      <label class="container">No Buy-in
+        <input id="no-buy-in"  type="checkbox" onclick="getEvents()">
+        <span class="checkmark"></span>
+      </label>
 
-    <label class="container">Casual
-      <input type="checkbox">
-      <span class="checkmark"></span>
-    </label>
-  </nav>
-</div>
+      <label class="container">Tournaments
+        <input id="tournaments"  type="checkbox" onclick="getEvents()">
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container">Casual
+        <input id="casual" type="checkbox" onclick="getEvents()">
+        <span class="checkmark"></span>
+      </label>
+    </nav>
+  </div>
 
 
 
 <div class="form-popup" id="myForm">
   <form class="form-container" onsubmit="return submitEvent();">
     <h1 style="font-size: 30px">Create event</h1>
-    <button onclick="refreshTags()"></button>
     <br>
     <label for="name"><b>Event</b></label>
     <input id="eventName" type="text" placeholder="Event name" name="name" required>
@@ -138,41 +145,41 @@
     <br>
 
 
-    <div id="role-playing" class="tag-container absent">
+    <div id="role-playing-create" class="tag-container absent">
       <label class="tag" onclick="addTag('Role Playing')">Role Playing</label>
     </div>
 
 
-    <div id="board-games" class="tag-container absent">
+    <div id="board-games-create" class="tag-container absent">
       <label class="tag" onclick="addTag('Board Games')">Board Games</label>
     </div>
 
 
-    <div id="pc-games" class="tag-container absent">
+    <div id="pc-games-create" class="tag-container absent">
       <label class="tag" onclick="addTag('PC Games')">PC Games</label>
     </div>
 
-    <div id="xbox-games" class="tag-container absent">
+    <div id="xbox-games-create" class="tag-container absent">
       <label class="tag" onclick="addTag('Xbox Games')">Xbox Games</label>
     </div>
 
-    <div id="ps4-games" class="tag-container absent">
+    <div id="ps4-games-create" class="tag-container absent">
       <label class="tag" onclick="addTag('PS4 Games')">PS4 Games</label>
     </div>
 
-    <div id="card-games" class="tag-container absent">
+    <div id="card-games-create" class="tag-container absent">
       <label class="tag" onclick="addTag('Card Games')">Card Games</label>
     </div>
 
-    <div id="no-buy-in" class="tag-container absent">
+    <div id="no-buy-in-create" class="tag-container absent">
       <label class="tag" onclick="addTag('No Buy-in')">No Buy-in</label>
     </div>
 
-    <div id="tournaments" class="tag-container absent">
+    <div id="tournaments-create" class="tag-container absent">
       <label class="tag" onclick="addTag('Tournaments')">Tournaments</label>
     </div>
 
-    <div id="casual" class="tag-container absent">
+    <div id="casual-create" class="tag-container absent">
       <label class="tag" onclick="addTag('Casual')">Casual</label>
     </div>
 
@@ -199,5 +206,6 @@
   <!-- OUR APP JS -->
   <script src="/Home/js/app.js"></script>
   <script src="/Home/js/events_factory.js"></script>
+  <script>getEvents()</script>
  </body>
 </html>
