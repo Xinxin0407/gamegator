@@ -24,11 +24,11 @@ const events = new Vue ({
 
     clicked: function(event) {
       const form = getElement("form-contents");
-      const rsvpd = eventIsRSVPd(event);
+      const rsvpd = eventIsRSVPd(event._id);
       let rsvp_msg = rsvpd ? "Already RSVPd'!":"RSVP";
       let rsvp_f = rsvpd ? 'console.log' : 'rsvp';
 
-      const favorited = eventIsFavorited(event);
+      const favorited = eventIsFavorited(event._id);
 
       let favorite_msg = favorited ? "Remove from favorites" : "Add to favorites!";
       let favorite_f = favorited ? 'unfavorite' : 'favorite';
@@ -40,9 +40,9 @@ const events = new Vue ({
         `<label style='font-size: 25px'>${(new Date(event.time)).toLocaleString()}</label><br>`+
         `<label style='font-size: 15px'>${event.address}</label><br><br><br>`+
         "" +
-        `<button type='button' class='btn' onclick=\"${rsvp_f}('${event._id}')\">${rsvp_msg}</button><button type='button' class='btn' onclick=\"${favorite_f}('${event._id}')\">${favorite_msg}</button>` +
+        `<button type='button' class='btn' onclick=\"${rsvp_f}('${event._id}'); closeForm();\">${rsvp_msg}</button><button type='button' class='btn' onclick=\"${favorite_f}('${event._id}'); closeForm();\">${favorite_msg}</button>` +
         "<label style='font-size: 12px'>Organized by " + `${event.organizer}`+ "</label><br>" +
-        "<label style='font-size: 12px'>Created on " + `${(new Date(event.created_at)).toLocaleDateString()}`+ "</label><br>" +
+        "<label style='font-size: 12px'>Created " + `${(new Date(event.created_at)).toLocaleString()}`+ "</label><br>" +
         "<label style='font-size: 12px'>Keywords: " + `${event.Keywords.map(kw => kw.name)}`+ "</label><br>" +
         "";
 
@@ -76,8 +76,8 @@ const events = new Vue ({
         const createdBool = getElement('created') && getElement('created').checked;
 
         if (rsvpBool) match &= eventIsRSVPd(event._id);
-        if (favoritedBool) match &= eventIsFavorited(event_id);
-        if (createdBool) match &= isCreatorOfEvent(event_id);
+        if (favoritedBool) match &= eventIsFavorited(event._id);
+        if (createdBool) match &= isCreatorOfEvent(event._id);
 
         for (tagg in TAGS){
           const tag = TAGS[tagg];

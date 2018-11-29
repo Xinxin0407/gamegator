@@ -38,10 +38,9 @@
 
         <div class='card' v-for="(event, index) in filteredList" style="cursor: pointer">
           <div class="container" v-on:click="clicked(event)">
-            <h4 class="event-name"><b>{{event.name}}</b></h4>
+            <h4 class="event-name"><b>{{event.name}}</b><span style="font-size: 20px; float:right;">{{(new Date(event.time)).toLocaleDateString()}}</span></h4>
             <br>
             <p class="event-desc">{{event.description}}</p>
-            <p class="event-time">{{(new Date(event.time)).toLocaleDateString()}}</p>
           </div>
         </div>
 
@@ -107,7 +106,7 @@
 </div>
 
 <div class="form-popup" id="myForm">
-  <form class="form-container" onsubmit="return submitEvent();" id="form-contents">
+  <form class="form-container" onsubmit="return false;" id="form-contents">
     <h1>hi</h1>
     <h1></h1>
   </form>

@@ -97,7 +97,7 @@ function getEmail(){
 }
 
 function isCreatorOfEvent(eventid){
-  return event.organizer === getUsername();
+  return false;
 }
 
 //TODO
