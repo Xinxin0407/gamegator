@@ -40,10 +40,8 @@
           <div class="container" v-on:click="clicked(event)">
             <h4 class="event-name"><b>{{event.name}}</b></h4>
             <br>
-            <p class="event-address">{{event.address}}</p>
-            <p class="event-time">{{event.time}}</p>
             <p class="event-desc">{{event.description}}</p>
-            <p class="event-tags">Tags: {{event.Keywords.map(keyword => keyword ? keyword.name : null)}}</p>
+            <p class="event-time">{{(new Date(event.time)).toLocaleDateString()}}</p>
           </div>
         </div>
 

@@ -96,18 +96,36 @@ function getEmail(){
   return "";
 }
 
-function isCreatorOfEvent(event){
+function isCreatorOfEvent(eventid){
   return event.organizer === getUsername();
 }
 
 //TODO
-function eventIsFavorited(event){
+function eventIsFavorited(eventid){
   return true;
 }
 
 //TODO
-function eventIsRSVPd(event){
+function eventIsRSVPd(eventid){
   return true;
+}
+
+//TODO
+function favorite(eventid){
+  //return void\
+  console.log("favorited " + eventid);
+}
+
+//TODO
+function unfavorite(eventid){
+  //return void
+  console.log("unfavorited " + eventid);
+}
+
+//TODO
+function rsvp(eventid){
+  console.log("rsvp'd " + eventid);
+  //return void
 }
 
 function insertNavBar(){
