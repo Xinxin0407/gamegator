@@ -39,14 +39,25 @@ map.on("load", function () {
               .then(function (response) {
                   if (response && response.body && response.body.features && response.body.features.length) {
                       var feature = response.body.features[0];
+                      const rsvpd = eventIsRSVPd(event._id);
+                      let rsvp_msg = rsvpd ? "Already RSVPd'!":"RSVP";
+                      let rsvp_f = rsvpd ? 'console.log' : 'rsvp';
+
+                      const favorited = eventIsFavorited(event._id);
+
+                      let favorite_msg = favorited ? "Remove from favorites" : "Add to favorites!";
+                      let favorite_f = favorited ? 'unfavorite' : 'favorite';
                       new mapboxgl.Marker()
                           .setLngLat(feature.center)
                           .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
                           .setHTML(
-                            '<h3>' + event.name + '</h3>' +
-                            '<p>' + event.description + '</p>' +
-                            '<p>' + event.time + '</p>' +
-                            '<p>' + "Organized by: " + event.organizer + "</p>"
+                            `<label style='font-size: 20px'>${event.name}</label><br>` +
+                            `<label style='font-size: 15px'><b>${event.description}</b></label><br><br>` +
+                            `<label style='font-size: 15px'>${(new Date(event.time)).toLocaleDateString()}</label><br>`+
+                            `<label style='font-size: 15px'>${event.address}</label><br>`+
+                            "" +
+                            `<button type='button' class='btn' onclick=\"${rsvp_f}('${event._id}'); closeForm();\">${rsvp_msg}</button><button type='button' class='btn' onclick=\"${favorite_f}('${event._id}'); closeForm();\">${favorite_msg}</button>`+
+                            ""
 
                           ))
                           .addTo(map);
