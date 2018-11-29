@@ -30,7 +30,7 @@ function submitEvent() {
         description: getElement("eventDesc").value,
         Keywords: tagobjs
   };
-  sendXHR("POST", "/Home/events", JSON.stringify(event), () => alert("Success!"));
+  sendXHR("POST", "/Home/events", JSON.stringify(event));
 }
 
 

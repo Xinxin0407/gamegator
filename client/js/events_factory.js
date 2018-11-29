@@ -30,7 +30,7 @@ const events = new Vue ({
         "<br>" +
         `<label style='font-size: 25px'>${(new Date(event.time)).toLocaleString()}</label><br><br>`+
         "<br><br><br>" +
-        "<button class='btn'>RSVP</button><button class='btn'>Add to favorites!</button>" +
+        "<button type='button' class='btn'>RSVP</button><button type='button' class='btn'>Add to favorites!</button>" +
         "<label style='font-size: 12px'>Organized by " + `${event.organizer}`+ "</label><br>" +
         "<label style='font-size: 12px'>Created on " + `${(new Date(event.created_at)).toLocaleDateString()}`+ "</label><br>" +
         "<label style='font-size: 12px'>Keywords: " + `${event.Keywords.map(kw => kw.name)}`+ "</label><br>" +
