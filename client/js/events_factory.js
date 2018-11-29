@@ -34,7 +34,7 @@ const events = new Vue ({
       let favorite_f = favorited ? 'unfavorite' : 'favorite';
 
       form.innerHTML =
-        `<label style='font-size: 40px'>${event.name}</label><br><br>` +
+        `<label style='font-size: 40px;'>${event.name}</label><br><br>` +
         `<label style='font-size: 25px'><b>${event.description}</b></label><br><br><br>` +
         "<br><br>" +
         `<label style='font-size: 25px'>${(new Date(event.time)).toLocaleString()}</label><br>`+

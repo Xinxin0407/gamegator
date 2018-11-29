@@ -35,7 +35,7 @@ body {
   color: #414141;
 }
 
-br { display: block; line-height: 1.6em; }
+/*br { display: block; line-height: 1.6em; }*/
 
 a:hover { color: blue; text-decoration: none; font-weight: none }
 
