@@ -6,8 +6,21 @@ function openForm() {
   }
 }
 
+function openForm2() {
+  if (!isSignedIn()) alert("You must be signed in!");
+  else {
+    document.getElementById("myForm2").style.display = "block";
+    if (getElement("form-background")) getElement("form-background").style.display = "block";
+  }
+}
+
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
+  if (getElement("form-background")) getElement("form-background").style.display = "none";
+}
+
+function closeForm2() {
+  document.getElementById("myForm2").style.display = "none";
   if (getElement("form-background")) getElement("form-background").style.display = "none";
 }
 

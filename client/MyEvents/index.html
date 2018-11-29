@@ -121,7 +121,7 @@
     </nav>
   </div>
 
-  <div class="form-popup-background" id="form-background" onclick="closeForm()">
+  <div class="form-popup-background" id="form-background" onclick="closeForm(); closeForm2()">
   </div>
 
 <div class="form-popup" id="myForm">
@@ -190,6 +190,14 @@
     <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
   </form>
 </div>
+
+<div class="form-popup" id="myForm2">
+  <form class="form-container" onsubmit="return false;" id="form-contents">
+    <h1>hi</h1>
+    <h1></h1>
+  </form>
+</div>
+
 
 
   <!-- myevents.js -->

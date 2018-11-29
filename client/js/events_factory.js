@@ -40,14 +40,14 @@ const events = new Vue ({
         `<label style='font-size: 25px'>${(new Date(event.time)).toLocaleString()}</label><br>`+
         `<label style='font-size: 15px'>${event.address}</label><br><br><br>`+
         "" +
-        `<button type='button' class='btn' onclick=\"${rsvp_f}('${event._id}'); closeForm();\">${rsvp_msg}</button><button type='button' class='btn' onclick=\"${favorite_f}('${event._id}'); closeForm();\">${favorite_msg}</button>` +
+        `<button type='button' class='btn' onclick=\"${rsvp_f}('${event._id}'); closeForm2();\">${rsvp_msg}</button><button type='button' class='btn' onclick=\"${favorite_f}('${event._id}'); closeForm2();\">${favorite_msg}</button>` +
         "<label style='font-size: 12px'>Organized by " + `${event.organizer}`+ "</label><br>" +
         "<label style='font-size: 12px'>Created " + `${(new Date(event.created_at)).toLocaleString()}`+ "</label><br>" +
         "<label style='font-size: 12px'>Updated " + `${(new Date(event.updated_at)).toLocaleString()}`+ "</label><br>" +
         "<label style='font-size: 12px'>Keywords: " + `${event.Keywords.map(kw => kw.name)}`+ "</label><br>" +
         "";
 
-      openForm();
+      openForm2();
     }
 
   },
