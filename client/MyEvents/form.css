@@ -18,10 +18,14 @@
 .form-popup {
   display: none;
   position: fixed;
-  bottom: 0;
-  right: 15px;
+  width: auto;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  margin-top: -250px;
+  margin-left: -400px;
   border: 3px solid #f1f1f1;
-  z-index: 9;
+  z-index: 20;
 }
 
 /* Add styles to the form container */
@@ -90,4 +94,15 @@
 
 .tag-container.absent:hover{
   color: black;
+}
+
+
+.form-popup-background{
+  transition: 1s;
+  display: none;
+  position:fixed;
+  height:100%;
+  width:100%;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 19;
 }

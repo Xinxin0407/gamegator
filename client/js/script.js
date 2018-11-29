@@ -185,3 +185,11 @@ function insertNavBar(){
 }
 
 insertNavBar();
+
+function saveEvent(e){
+  const form = getElement("form-contents");
+  form.innerHTML =
+    `<h1>${e}</h1>` +
+    `<h1>${e.address}</h1>`;
+
+}

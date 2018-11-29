@@ -20,6 +20,23 @@ const events = new Vue ({
 
     moreInfo: function (event) {
       return event.moreInfo;
+    },
+
+    clicked: function(event) {
+      const form = getElement("form-contents");
+      form.innerHTML =
+        `<label style='font-size: 40px'>${event.name}</label><br><br>` +
+        `<label style='font-size: 25px'><b>${event.description}</b></label><br><br>` +
+        "<br>" +
+        `<label style='font-size: 25px'>${(new Date(event.time)).toLocaleString()}</label><br><br>`+
+        "<br><br><br>" +
+        "<button class='btn'>RSVP</button><button class='btn'>Add to favorites!</button>" +
+        "<label style='font-size: 12px'>Organized by " + `${event.organizer}`+ "</label><br>" +
+        "<label style='font-size: 12px'>Created on " + `${(new Date(event.created_at)).toLocaleDateString()}`+ "</label><br>" +
+        "<label style='font-size: 12px'>Keywords: " + `${event.Keywords.map(kw => kw.name)}`+ "</label><br>" +
+        "";
+
+      openForm();
     }
 
   },
@@ -79,14 +96,19 @@ const getEvents = (callback) => {
     //console.log(xhr);
     if (xhr.readyState === 4) {
         let json = JSON.parse(xhr.response);
+
+        //sort
         json.sort((e1,e2) => {
+          if (!getElement('sorting')) return 1;
           let sortBy = getElement('sorting').value;
           if (sortBy === 'time' || sortBy==='created_at'){
             return new Date(e1[sortBy]) - new Date(e2[sortBy]);
           }
+          /*
           console.log("sorting by " + sortBy);
           console.log('e1[sortBy] = ' + e1[sortBy]);
           console.log('e2[sortBy] = ' + e2[sortBy]);
+          */
           return e1[sortBy] - e2[sortBy];
         });
 
@@ -99,7 +121,3 @@ const getEvents = (callback) => {
   };
   xhr.send();
 };
-
-function applySorting(events){
-
-}

@@ -36,8 +36,8 @@
 
       <div class="container" id="listings">
 
-        <div class='card' v-for="(event, index) in filteredList">
-          <div class="container">
+        <div class='card' v-for="(event, index) in filteredList" style="cursor: pointer">
+          <div class="container" v-on:click="clicked(event)">
             <h4 class="event-name"><b>{{event.name}}</b></h4>
             <br>
             <p class="event-address">{{event.address}}</p>
@@ -105,6 +105,16 @@
   </nav>
 </div>
 
+<div class="form-popup-background" id="form-background" onclick="closeForm()">
+</div>
+
+<div class="form-popup" id="myForm">
+  <form class="form-container" onsubmit="return submitEvent();" id="form-contents">
+    <h1>hi</h1>
+    <h1></h1>
+  </form>
+</div>
+
 
   <!-- JQUERY -->
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -115,6 +125,8 @@
   <!-- OUR APP JS -->
   <script src="js/app.js"></script>
   <script src="js/events_factory.js"></script>
+  <script src="js/MyEvents.js"></script>
+  <link rel="stylesheet" href="./MyEvents/form.css">
 <script>window.onload = getEvents();</script>
  </body>
 </html>

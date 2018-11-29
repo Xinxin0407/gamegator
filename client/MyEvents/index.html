@@ -60,7 +60,7 @@
           <h4 class="event-name"><b>{{event.name}}</b></h4>
           <br>
           <p class="event-address">{{event.address}}</p>
-          <p class="event-time">{{event.time}}</p>
+          <p class="event-time">{{new Date(event.time)}}</p>
           <p class="event-desc">{{event.description}}</p>
           <p class="event-tags">Tags: {{event.Keywords.map(keyword => keyword ? keyword.name : null)}}</p>
         </div>
@@ -124,7 +124,8 @@
     </nav>
   </div>
 
-
+  <div class="form-popup-background" id="form-background" onclick="closeForm()">
+  </div>
 
 <div class="form-popup" id="myForm">
   <form class="form-container" onsubmit="return submitEvent();">
@@ -137,7 +138,7 @@
     <input id="eventDesc" type="text" placeholder="Detailed description" name="description" required>
     <br>
     <label for="address"><b>Address</b></label>
-    <input id="eventAd" type="text" placeholder="Enter Address" name="address" required>
+    <input id="eventAdd" type="text" placeholder="Enter Address" name="address" required>
     <br>
     <label for="tags"><b>Tags (comma-seperated)</b></label>
     <textarea id="eventTags" onkeypress="console.log('press!'); refreshTags()" placeholder="Xbox, Call of duty, Tournament, free"></textarea>
