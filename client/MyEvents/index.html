@@ -55,7 +55,7 @@
 
     <div class="container" id="listings">
 
-      <div class='card' style="cursor: normal;" v-for="(event, index) in filteredList" style="cursor: pointer">
+      <div class='card' style="cursor: pointer;" v-for="(event, index) in filteredList" style="cursor: pointer">
         <div class="container" v-on:click="clicked(event)">
           <h4 class="event-name"><b>{{event.name}}</b><span style="font-size: 20px; float:right;">{{(new Date(event.time)).toLocaleDateString()}}</span></h4>
           <br>

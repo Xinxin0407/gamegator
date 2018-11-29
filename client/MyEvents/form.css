@@ -100,7 +100,7 @@
 .form-popup-background{
   transition: 1s;
   display: none;
-  position:fixed;
+  position: fixed;
   height:100%;
   width:100%;
   background-color: rgba(0,0,0,0.7);
