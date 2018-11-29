@@ -83,17 +83,50 @@ function sendXHR(method, path, body, callback){
   xhr.send(body);
 }
 
-
+//TODO
 function getUsername(){
   return "default user";
 }
-
+//TODO
 function isSignedIn(){
   return true;
 }
+//TODO
+function getEmail(){
+  return "";
+}
 
-function getEmail(){return ""};
+function isCreatorOfEvent(eventid){
+  return false;
+}
 
+//TODO
+function eventIsFavorited(eventid){
+  return true;
+}
+
+//TODO
+function eventIsRSVPd(eventid){
+  return true;
+}
+
+//TODO
+function favorite(eventid){
+  //return void\
+  console.log("favorited " + eventid);
+}
+
+//TODO
+function unfavorite(eventid){
+  //return void
+  console.log("unfavorited " + eventid);
+}
+
+//TODO
+function rsvp(eventid){
+  console.log("rsvp'd " + eventid);
+  //return void
+}
 
 function insertNavBar(){
   let navbar = getElement("navbar");
@@ -170,3 +203,11 @@ function insertNavBar(){
 }
 
 insertNavBar();
+
+function saveEvent(e){
+  const form = getElement("form-contents");
+  form.innerHTML =
+    `<h1>${e}</h1>` +
+    `<h1>${e.address}</h1>`;
+
+}
