@@ -121,8 +121,11 @@
     </nav>
   </div>
 
-  <div class="form-popup-background" id="form-background" onclick="closeForm(); closeForm2()">
+
+  <div class="form-popup-background" id="form-background" onclick="closeForm(); closeForm2(); closeFormIGDB()">
   </div>
+
+  <!--CREATE AN EVENT Form-->
 
 <div class="form-popup" id="myForm">
   <form class="form-container" onsubmit="return submitEvent();">
@@ -137,45 +140,36 @@
     <label for="address"><b>Address</b></label>
     <input id="eventAdd" type="text" placeholder="Enter Address" name="address" required>
     <br>
+    <button class="btn" type="button" onclick="switchToFormIGDB()" style="background-color: yellow; color: black;">Attach a game...</button><br>
+
     <label for="tags"><b>Tags (comma-seperated)</b></label>
     <textarea id="eventTags" onkeypress="console.log('press!'); refreshTags()" placeholder="Xbox, Call of duty, Tournament, free"></textarea>
     <br>
 
-
     <div id="role-playing-create" class="tag-container absent">
       <label class="tag" onclick="addTag('Role Playing')">Role Playing</label>
     </div>
-
-
     <div id="board-games-create" class="tag-container absent">
       <label class="tag" onclick="addTag('Board Games')">Board Games</label>
     </div>
-
-
     <div id="pc-games-create" class="tag-container absent">
       <label class="tag" onclick="addTag('PC Games')">PC Games</label>
     </div>
-
     <div id="xbox-games-create" class="tag-container absent">
       <label class="tag" onclick="addTag('Xbox Games')">Xbox Games</label>
     </div>
-
     <div id="ps4-games-create" class="tag-container absent">
       <label class="tag" onclick="addTag('PS4 Games')">PS4 Games</label>
     </div>
-
     <div id="card-games-create" class="tag-container absent">
       <label class="tag" onclick="addTag('Card Games')">Card Games</label>
     </div>
-
     <div id="no-buy-in-create" class="tag-container absent">
       <label class="tag" onclick="addTag('No Buy-in')">No Buy-in</label>
     </div>
-
     <div id="tournaments-create" class="tag-container absent">
       <label class="tag" onclick="addTag('Tournaments')">Tournaments</label>
     </div>
-
     <div id="casual-create" class="tag-container absent">
       <label class="tag" onclick="addTag('Casual')">Casual</label>
     </div>
@@ -193,10 +187,20 @@
 
 <div class="form-popup" id="myForm2">
   <form class="form-container" onsubmit="return false;" id="form-contents">
-    <h1>hi</h1>
-    <h1></h1>
   </form>
 </div>
+
+<div class="form-popup" id="myFormIGDB">
+  <form class="form-container" onsubmit="return false;" style="width: 500px">
+    <h1 style="font-size: 30px">Game selection</h1>
+    <input style="width: 80%; float: left;" id="gameSearch"><button onclick="searchGames()">search</button>
+  </form>
+
+  <table id="games">
+
+  </table>
+</div>
+
 
 
 

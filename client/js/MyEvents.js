@@ -14,14 +14,48 @@ function openForm2() {
   }
 }
 
+function switchToFormIGDB(){
+  //close form2
+  document.getElementById("myForm").style.display = "none";
+
+  document.getElementById("myFormIGDB").style.display = "block";
+  if (getElement("form-background")) getElement("form-background").style.display = "block";
+}
+
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
   if (getElement("form-background")) getElement("form-background").style.display = "none";
 }
-
 function closeForm2() {
   document.getElementById("myForm2").style.display = "none";
   if (getElement("form-background")) getElement("form-background").style.display = "none";
+}
+function closeFormIGDB(){
+  document.getElementById("myFormIGDB").style.display = "none";
+  if (getElement("form-background")) getElement("form-background").style.display = "none";
+}
+
+function searchGames(){
+  const search = getElement("gameSearch").value;
+  //sendXHR("GET", `https://api-endpoint.igdb.com/games/?search=${search}`, undefined, res => console.log(res));
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", `https://api-endpoint.igdb.com/games/?search=${search}`);
+
+  xhr.onreadystatechange = () => {
+    console.log(xhr.readyState);
+    if (xhr.readyState === 4){
+      console.log(xhr.response);
+    }
+  };
+
+  xhr.open("GET", `/cors/search?kw=${search}`);
+  console.log("sending xhr");
+  xhr.send();
+
+
+
+
 }
 
 function submitEvent() {
