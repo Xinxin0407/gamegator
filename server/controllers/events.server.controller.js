@@ -50,8 +50,13 @@ exports.update = function(req, res) {
     });
   }
   //else if the user is admin
-  else {
-    connection((db) => {
+};
+
+/* Update an event by admin*/
+exports.update_by_admin = function(req, res) {
+  var event = req.event;
+  // IF the user is the organizer
+  connection((db) => {
       db.collection('User')
         .find({ username: req.body.username, admin: true })
         .then((user) => {
@@ -75,11 +80,10 @@ exports.update = function(req, res) {
           sendError(err, res);
         });
     });
-  }
-
 };
 
-/* Delete a listing */
+
+/* Delete a event */
 exports.delete = function(req, res) {
   var event = req.event;
   // if the user is the organizer
@@ -93,9 +97,13 @@ exports.delete = function(req, res) {
       }
     });
   }
-  //else if the user is admin
-  else {
-    connection((db) => {
+};
+
+/* Delete a listing */
+exports.delete_by_admin = function(req, res) {
+  var event = req.event;
+  // if the user is admin
+  connection((db) => {
       db.collection('User')
         .find({ username: req.body.username, admin: true })
         .then((user) => {
@@ -109,7 +117,6 @@ exports.delete = function(req, res) {
           });
         });
     });
-  }
 };
 
 /* Retreive all the directory listings, sorted alphabetically by listing code */
@@ -121,6 +128,23 @@ exports.list = function(req, res) {
     } else {
       res.json(events);
     }
+  });
+};
+
+/* Retreive all the directory listings by admin, sorted alphabetically by listing code */
+exports.list_by_admin = function(req, res) {
+  connection((db) => {
+      db.collection('User')
+        .find({ username: req.body.username, admin: true })
+        .then((user) => {
+          Event.find().sort('name').exec(function(err, events) {
+            if (err) {
+              res.status(400).send(err);
+            } else {
+              res.json(events);
+            }
+        });
+    });
   });
 };
 
