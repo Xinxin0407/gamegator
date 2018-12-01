@@ -25,7 +25,7 @@ exports.create_user = function(req, res) {
 };
 
 exports.display_all_users = function(req, res) {
-  /* send back the event as json from the request */
+  /* send back all users as json from the request */
   connection((db) => {
     db.collection('User')
       .find()
@@ -87,6 +87,19 @@ exports.delete_user = function(req, res) {
       .then((user) => {
         response.data = req.params.username;
         res.json(response);
+      })
+      .catch((err) => {
+        sendError(err, res);
+      });
+  });
+};
+
+exports.verify_admin = function(req, res) {
+  connection((db) => {
+    db.collection('User')
+      .find({ username: req.body.username, admin: true })
+      .then((user) => {
+        next();
       })
       .catch((err) => {
         sendError(err, res);
