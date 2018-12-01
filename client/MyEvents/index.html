@@ -192,13 +192,12 @@
 
 <div class="form-popup" id="myFormIGDB">
   <form class="form-container" onsubmit="return false;" style="width: 500px">
-    <h1 style="font-size: 30px">Game selection</h1>
+    <h1 style="font-size: 30px">Create Event: Game selection</h1>
+    <table style="font-size: 20px; overflow: auto;"id="games">
+    </table>
     <input style="width: 80%; float: left;" id="gameSearch"><button onclick="searchGames()">search</button>
+    <button type="button" class="btn" onclick="switchBackToForm2()">Back</button>
   </form>
-
-  <table id="games">
-
-  </table>
 </div>
 
 

@@ -22,7 +22,7 @@ router.route('/search')
     const options = {
       protocol: 'http:',
       host: 'api-endpoint.igdb.com',
-      path: `/games/?search=zelda`,
+      path: `/games/?search=${kw}`,
       headers: {
         'user-key': 'eb48183bf7289d82e1d2e575c52eeb01',
         'Accept': 'application/json'
@@ -48,6 +48,42 @@ router.route('/search')
   });
 
 router.route('/game')
+.get((req, res) => {
+  const id = req.query.id;
+  console.log("getting: " + id);
+  //open the http request
+
+  const options = {
+    protocol: 'http:',
+    host: 'api-endpoint.igdb.com',
+    path: `/games/${id}?fields=name,cover`,
+    headers: {
+      'user-key': 'eb48183bf7289d82e1d2e575c52eeb01',
+      'Accept': 'application/json'
+    },
+    method: 'GET'
+  };
+
+  const callback = response => {
+    //console.log(`STATUS: ${response.statusCode}`);
+    //console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
+    response.setEncoding('utf8');
+    response.on('data', (chunk) => {
+      //console.log(`BODY: ${chunk}`);
+      const game = JSON.parse(chunk);
+      res.status(200).end(chunk);
+    });
+    response.on('end', () => {
+      //console.log('No more data in response.');
+    });
+  };
+
+  http.request(options, callback).end();
+
+});
+
+
+
 /*
   The 'router.param' method allows us to specify middleware we would like to use to handle
   requests with a parameter.

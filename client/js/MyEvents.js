@@ -1,6 +1,8 @@
 function openForm() {
   if (!isSignedIn()) alert("You must be signed in!");
   else {
+    getElement("form-background").onclick= closeForm;
+    document.body.style.overflow = "hidden";
     document.getElementById("myForm").style.display = "block";
     if (getElement("form-background")) getElement("form-background").style.display = "block";
   }
@@ -9,12 +11,16 @@ function openForm() {
 function openForm2() {
   if (!isSignedIn()) alert("You must be signed in!");
   else {
+    getElement("form-background").onclick=closeForm2;
+    document.body.style.overflow = "hidden";
     document.getElementById("myForm2").style.display = "block";
     if (getElement("form-background")) getElement("form-background").style.display = "block";
   }
 }
 
 function switchToFormIGDB(){
+  getElement("form-background").onclick = switchBackToForm1;
+  document.body.style.overflow = "hidden";
   //close form2
   document.getElementById("myForm").style.display = "none";
 
@@ -23,40 +29,85 @@ function switchToFormIGDB(){
 }
 
 function closeForm() {
+  getElement("form-background").onclick= () => {};
+  document.body.style.overflow = "initial";
   document.getElementById("myForm").style.display = "none";
   if (getElement("form-background")) getElement("form-background").style.display = "none";
 }
 function closeForm2() {
+  getElement("form-background").onclick= () => {};
+  document.body.style.overflow = "initial";
   document.getElementById("myForm2").style.display = "none";
   if (getElement("form-background")) getElement("form-background").style.display = "none";
 }
-function closeFormIGDB(){
+function switchBackToForm1(){
+  getElement("form-background").onclick=closeForm;
   document.getElementById("myFormIGDB").style.display = "none";
-  if (getElement("form-background")) getElement("form-background").style.display = "none";
+  document.getElementById("myForm2").style.display = "block";
+  if (getElement("form-background")) getElement("form-background").style.display = "block";
+  openForm();
 }
 
 function searchGames(){
+
+  let games = [];
+
   const search = getElement("gameSearch").value;
   //sendXHR("GET", `https://api-endpoint.igdb.com/games/?search=${search}`, undefined, res => console.log(res));
 
   let xhr = new XMLHttpRequest();
-  xhr.open("GET", `https://api-endpoint.igdb.com/games/?search=${search}`);
-
   xhr.onreadystatechange = () => {
-    console.log(xhr.readyState);
     if (xhr.readyState === 4){
-      console.log(xhr.response);
+      //xhr.response.forEach(entry => console.log(entry));
+      //[{"id":41240},{"id":8533},{"id":8593},{"id":1039},{"id":45141},{"id":45142},{"id":1034},{"id":1027},{"id":38319},{"id":2909}]
+      if (!xhr.response) return;
+      const gameids = JSON.parse(xhr.response);
+
+      let gameTable = getElement("games");
+      gameTable.innerHTML = "";
+
+      const renderGame = (game) => {
+        console.log("rendering: " + game[0].name);
+        gameTable.innerHTML = gameTable.innerHTML + "<tr>";
+
+        if (game[0].cover){
+          gameTable.innerHTML = gameTable.innerHTML +  `<td><img src=\"http:${game[0].cover.url}\"></td>`;
+        } else {
+          gameTable.innerHTML = gameTable.innerHTML +  '<td>Image not available</td>';
+        }
+        if (game[0].name){
+          gameTable.innerHTML = gameTable.innerHTML +  `<td>${game[0].name}</td>`;
+        } else {
+          gameTable.innerHTML = gameTable.innerHTML +  "<td>Name not available</td>";
+        }
+
+        gameTable.innerHTML = gameTable.innerHTML +  "</tr>";
+
+      };
+
+      gameids.forEach(entry => getGame(entry.id, renderGame));
+
+      console.log("Query done");
     }
   };
 
   xhr.open("GET", `/cors/search?kw=${search}`);
-  console.log("sending xhr");
   xhr.send();
-
-
-
-
 }
+
+function getGame(id, callback){
+  console.log(`getGame(${id})`);
+  let xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === 4 && xhr.status === 200){
+      if (callback) callback(JSON.parse(xhr.response));
+    };
+  };
+
+  xhr.open("GET", `/cors/game?id=${id}`);
+  xhr.send();
+}
+
 
 function submitEvent() {
 
@@ -67,7 +118,6 @@ function submitEvent() {
     obj.name = tag;
     return obj;
   });
-  console.log(tagobjs);
   const event = {
         organizer: getUsername(),
         name: getElement("eventName").value,
