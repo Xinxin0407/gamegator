@@ -32,7 +32,24 @@ router.route(':users/:username')
   .put(users.update_user)
   .delete(users.delete_user);
 
+//These are for admins
+router.route(':users/events')
+  .get(users.verify_admin, events.list)
+  .post(users.verify_admin, events.create);
 
+router.route(':users/events/:eventId')
+  .get(users.verify_admin, events.read)
+  .put(users.verify_admin, events.update)
+  .delete(users.verify_admin, events.delete);
+
+router.route(':users/users')
+  .get(users.verify_admin, users.display_all_users)
+  .post(users.verify_admin, users.create_user);
+
+router.route(':users/users/:username')
+  .get(users.verify_admin, users.display_user)
+  .put(users.verify_admin, users.update_user)
+  .delete(users.verify_admin, users.delete_user);
 /*
   The 'router.param' method allows us to specify middleware we would like to use to handle
   requests with a parameter.
