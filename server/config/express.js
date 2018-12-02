@@ -6,7 +6,8 @@ var path = require('path'),
   bodyParser = require('body-parser'),
   config = require('./config'),
   cors = require('cors'),
-  eventsRouter = require('../routes/events.server.routes');
+  eventsRouter = require('../routes/events.server.routes'),
+  corsRouter = require('../routes/cors.server.routes');
 var expressSession = require('express-session');
 var MongoStore = require('connect-mongo')(expressSession);
 
@@ -16,7 +17,7 @@ module.exports.init = function() {
     useNewUrlParser: true
   });
   var db = mongoose.connection;
-  
+
   //handle mongo error
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function() {
@@ -38,7 +39,7 @@ module.exports.init = function() {
 
   // enable request logging for development debugging
   app.use(morgan('dev'));
-  
+
    db.on('error', console.error.bind(console, 'connection error:'));
    db.once('open', function () {
         // we're connected!
@@ -67,6 +68,8 @@ module.exports.init = function() {
   app.use('/MyEvents', express.static(__dirname + '/../../client/MyEvents'));
   app.use('/About', express.static(__dirname + '/../../client/About'));
   app.use('/Map', express.static(__dirname + '/../../client/Map'));
+
+  app.use('/cors', corsRouter);
 
   // include routes
   var userRouter = require('../routes/users.server.routes.js');
