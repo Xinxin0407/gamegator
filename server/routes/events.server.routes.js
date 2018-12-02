@@ -14,9 +14,12 @@ router.route('/Home/events')
   .get(events.list)
   .post(events.create);
 
-router.route(':users')
-  .get(users.display_all_users)
-  .post(users.create_user);
+router.route('/users/admin')
+  .get(users.verify_admin);
+
+router.route('/users')
+  .get(users.display_all_users);
+
 
 
 /*

@@ -27,7 +27,8 @@ router.post('/', function (req, res, next) {
       email: req.body.email,
       username: req.body.username,
       password: req.body.password,
-      passwordConf: req.body.passwordConf
+      passwordConf: req.body.passwordConf,
+      admin: false
     }
 
     // use schema.create to insert data into the db

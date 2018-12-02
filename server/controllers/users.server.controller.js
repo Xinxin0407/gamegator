@@ -26,18 +26,8 @@ exports.create_user = function(req, res) {
 
 exports.display_all_users = function(req, res) {
   /* send back all users as json from the request */
-  connection((db) => {
-    db.collection('User')
-      .find()
-      .toArray()
-      .then((users) => {
-        response.data = user;
-        res.json(response);
-      })
-      .catch((err) => {
-        sendError(err, res);
-      });
-  });
+  //change : to /
+  User.find((err, docs) => res.status(200).end(JSON.stringify(docs)));
 };
 
 /* Show the current user */
@@ -95,16 +85,15 @@ exports.delete_user = function(req, res) {
 };
 
 exports.verify_admin = function(req, res) {
-  connection((db) => {
-    db.collection('User')
-      .find({ username: req.body.username, admin: true })
-      .then((user) => {
-        next();
-      })
-      .catch((err) => {
-        sendError(err, res);
-      });
+  if (!req.session.userId) {
+    res.status(403).send("you must be logged in");
+    return;
+  }
+  User.findById(req.session.userId, (err, user) => {
+    if (user.admin) res.status(200).send("Ye endtimes draw near, for the admin Himself has cometh.")
+    else res.status(200).send("Thou art not He who administrates");
   });
+
 };
 
 /*
