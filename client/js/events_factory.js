@@ -36,7 +36,7 @@ const events = new Vue ({
       form.innerHTML =
         `<label style='font-size: 40px;'>${event.name}</label><br><br>` +
         `<label style='font-size: 25px'><b>${event.description}</b></label><br><br><br>` +
-        `<img src='${event.games[0].coverUrl}'><br><br>`+
+        `<img src='${(event && event.games && event.games[0]) ? event.games[0].coverUrl : "/Home/styles/missing.png"}'><br><br>`+
         `<label style='font-size: 25px'>${(new Date(event.time)).toLocaleString()}</label><br>`+
         `<label style='font-size: 15px'>${event.address}</label><br><br><br>`+
         "" +
