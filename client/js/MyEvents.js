@@ -82,7 +82,7 @@ function searchGames(){
           gameTable.innerHTML = gameTable.innerHTML +  "<h3>Name not available</h3>";
         }
 
-        gameTable.innerHTML += `<button onclick="alert(${game.id}); attach(${game.id}); this.innerText = 'Selected'; this.disabled = true;" type="button" style="">Select</button>`
+        gameTable.innerHTML += `<button onclick="attach(${game.id}); this.innerText = 'Selected'; this.disabled = true;" type="button" style="">Select</button>`
 
         gameTable.innerHTML = gameTable.innerHTML +  "</div>";
 
@@ -139,7 +139,7 @@ function submitEvent() {
         Keywords: tagobjs,
         games: games
   };
-  alert(JSON.stringify(games));
+  //alert(JSON.stringify(games));
   sendXHR("POST", "/Home/events", JSON.stringify(event));
 }
 
