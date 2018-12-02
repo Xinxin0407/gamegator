@@ -57,6 +57,7 @@
 
       <div class='card' style="cursor: pointer;" v-for="(event, index) in filteredList" style="cursor: pointer">
         <div class="container" v-on:click="clicked(event)">
+          <img :src="event.games[0].coverUrl" style="float: left; margin-bottom: 10px;">
           <h4 class="event-name"><b>{{event.name}}</b><span style="font-size: 20px; float:right;">{{(new Date(event.time)).toLocaleDateString()}}</span></h4>
           <br>
           <p class="event-desc">{{event.description}}</p>
@@ -128,7 +129,7 @@
   <!--CREATE AN EVENT Form-->
 
 <div class="form-popup" id="myForm">
-  <form class="form-container" onsubmit="return submitEvent();">
+  <form class="form-container" onsubmit="submitEvent(); return false; closeForm();">
     <h1 style="font-size: 30px">Create event</h1>
     <br>
     <label for="name"><b>Event</b></label>
@@ -191,12 +192,12 @@
 </div>
 
 <div class="form-popup" id="myFormIGDB">
-  <form class="form-container" onsubmit="return false;" style="width: 500px">
+  <form class="form-container" onsubmit="searchGames(); return false;" style="width: auto;">
     <h1 style="font-size: 30px">Create Event: Game selection</h1>
-    <table style="font-size: 20px; overflow: auto;"id="games">
-    </table>
-    <input style="width: 80%; float: left;" id="gameSearch"><button onclick="searchGames()">search</button>
-    <button type="button" class="btn" onclick="switchBackToForm2()">Back</button>
+    <input style="width: 100%; height: 30px; float: left; margin-bottom: 0px; margin-top: 20px" id="gameSearch">
+    <button type="button" class="btn" onclick="searchGames()">Search</button>
+    <div style="font-size: 20px; overflow: auto;"id="games">
+    </div>
   </form>
 </div>
 

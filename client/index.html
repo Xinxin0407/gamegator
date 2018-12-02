@@ -37,7 +37,9 @@
       <div class="container" id="listings">
 
         <div class='card' v-for="(event, index) in filteredList" style="cursor: pointer">
+
           <div class="container" v-on:click="clicked(event)">
+            <img v-bind:src="event.games[0].coverUrl" style="float: left; margin-right: 20px; margin-bottom: 20px;">
             <h4 class="event-name"><b>{{event.name}}</b><span style="font-size: 20px; float:right;">{{(new Date(event.time)).toLocaleDateString()}}</span></h4>
             <br>
             <p class="event-desc">{{event.description}}</p>

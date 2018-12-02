@@ -33,6 +33,12 @@ var EventSchema = new Schema({
     Keywords: [{
         name:String
     }],
+    games: [{
+      id:Number,
+      name:String,
+      coverUrl:String,
+      keywords:[Number]
+    }],
   price: Number,
   created_at: Date,
   updated_at: Date

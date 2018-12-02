@@ -56,7 +56,7 @@ router.route('/game')
   const options = {
     protocol: 'http:',
     host: 'api-endpoint.igdb.com',
-    path: `/games/${id}?fields=name,cover`,
+    path: `/games/${id}?fields=name,cover,keywords`,
     headers: {
       'user-key': 'eb48183bf7289d82e1d2e575c52eeb01',
       'Accept': 'application/json'

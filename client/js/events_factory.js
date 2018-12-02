@@ -36,7 +36,7 @@ const events = new Vue ({
       form.innerHTML =
         `<label style='font-size: 40px;'>${event.name}</label><br><br>` +
         `<label style='font-size: 25px'><b>${event.description}</b></label><br><br><br>` +
-        "<br><br>" +
+        `<img src='${event.games[0].coverUrl}'><br><br>`+
         `<label style='font-size: 25px'>${(new Date(event.time)).toLocaleString()}</label><br>`+
         `<label style='font-size: 15px'>${event.address}</label><br><br><br>`+
         "" +
@@ -112,9 +112,8 @@ const getEvents = (callback) => {
         json.sort((e1,e2) => {
           if (!getElement('sorting')) return 1;
           let sortBy = getElement('sorting').value;
-          if (sortBy === 'time' || sortBy==='created_at'){
-            return new Date(e1[sortBy]) - new Date(e2[sortBy]);
-          }
+          if (sortBy === 'time') return new Date(e1[sortBy]) - new Date(e2[sortBy]);
+          if (sortBy === 'created_at') return new Date(e2[sortBy]) - new Date(e1[sortBy]);
           /*
           console.log("sorting by " + sortBy);
           console.log('e1[sortBy] = ' + e1[sortBy]);

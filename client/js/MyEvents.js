@@ -67,21 +67,24 @@ function searchGames(){
       gameTable.innerHTML = "";
 
       const renderGame = (game) => {
-        console.log("rendering: " + game[0].name);
-        gameTable.innerHTML = gameTable.innerHTML + "<tr>";
+        console.log("rendering: " + game.name);
+        if (!game.coverUrl) return;
+        gameTable.innerHTML = gameTable.innerHTML + "<div style='display: block; float: down; height: 90px'>";
 
-        if (game[0].cover){
-          gameTable.innerHTML = gameTable.innerHTML +  `<td><img src=\"http:${game[0].cover.url}\"></td>`;
+        if (game.coverUrl){
+          gameTable.innerHTML = gameTable.innerHTML +  `<img src=\"${game.coverUrl}\" style='float: left;'>`;
         } else {
-          gameTable.innerHTML = gameTable.innerHTML +  '<td>Image not available</td>';
+          gameTable.innerHTML = gameTable.innerHTML +  "<img src='/Home/styles/missing.png'>";
         }
-        if (game[0].name){
-          gameTable.innerHTML = gameTable.innerHTML +  `<td>${game[0].name}</td>`;
+        if (game.name){
+          gameTable.innerHTML = gameTable.innerHTML +  `<h3 style='width: 100%; margin-left: 10px; float: down; height: 100%;'>${game.name}</h3>`;
         } else {
-          gameTable.innerHTML = gameTable.innerHTML +  "<td>Name not available</td>";
+          gameTable.innerHTML = gameTable.innerHTML +  "<h3>Name not available</h3>";
         }
 
-        gameTable.innerHTML = gameTable.innerHTML +  "</tr>";
+        gameTable.innerHTML += `<button onclick="alert(${game.id}); attach(${game.id}); this.innerText = 'Selected'; this.disabled = true;" type="button" style="">Select</button>`
+
+        gameTable.innerHTML = gameTable.innerHTML +  "</div>";
 
       };
 
@@ -100,7 +103,15 @@ function getGame(id, callback){
   let xhr = new XMLHttpRequest();
   xhr.onreadystatechange = () => {
     if (xhr.readyState === 4 && xhr.status === 200){
-      if (callback) callback(JSON.parse(xhr.response));
+      if (callback) {
+        const game = {};
+        const json = JSON.parse(xhr.response);
+        game.id = json[0].id;
+        game.name = json[0].name;
+        game.coverUrl = "http:" + json[0].cover.url;
+        game.keywords = json[0].keywords;
+        callback(game);
+      }
     };
   };
 
@@ -125,8 +136,10 @@ function submitEvent() {
         time: getElement("eventTime").value,
         price: getElement("eventFee").value,
         description: getElement("eventDesc").value,
-        Keywords: tagobjs
+        Keywords: tagobjs,
+        games: games
   };
+  alert(JSON.stringify(games));
   sendXHR("POST", "/Home/events", JSON.stringify(event));
 }
 
@@ -160,5 +173,9 @@ function refreshTags(){
     const element = getElement(TAGS[tag].replace(" ", "-").trim() + "-create");
     if (element) element.classList.toggle("absent", tags.indexOf(TAGS[tag]) === -1);
   }
+}
 
+let games = [];
+function attach(gameID){
+  getGame(gameID, (game) => games.push(game));
 }
