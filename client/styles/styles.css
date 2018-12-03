@@ -3,8 +3,9 @@ article {
     float: left;
     padding: 20px;
     width: 80%;
+    height: 100%;
     background-color: #D3D3D3;
-    height: 500px;
+
 }
 
 /************************************************************* Constants ****************************************************************/
@@ -186,7 +187,7 @@ html[xmlns] .clearfix {
 #tags{
    float: left;
    width: 20%;
-   height: 500px;
+    height: article.height;
    background: #A9A9A9;
    font-size: 5px;
 }
