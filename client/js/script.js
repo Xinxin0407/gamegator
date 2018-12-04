@@ -85,7 +85,7 @@ function sendXHR(method, path, body, callback){
 
 //TODO
 function getUsername(){
-  return "default user";
+  return "Default User (change later)";
 }
 //TODO
 function isSignedIn(){
@@ -169,16 +169,18 @@ function insertNavBar(){
     "</div>"+
 
     "<div class=\"viewprofile\">"+
-      "<label for=\"uname\" style=\"color: #0021A5; font-size: 40px;\"><b>Username</b></label>"+
+      "<label for=\"uname\" style=\"color: #0021A5; font-size: 40px;\"><b>"+getUsername()+"</b></label>"+
      "<br><br><hr>"+
 
-      "<label style=\"color: #0021A5; font-size: 25px;\" ><b>Bio:</b></label>"+
-      "<p>This is where a user bio would be located</p>"+
-      "<label style=\"color: #0021A5; font-size: 25px;\"><b>Interests:</b></label>"+
-      "<p>This is where a user could display any games they are interested in</p>"+
+     "<form id=\"form1\">"+
+        "<label style=\"color: #0021A5; font-size: 25px;\" ><b>Bio:</b></label>"+
+        "<br><input type=\"text\" placeholder=\"Default bio...\" name=\"bio\"></br>"+
+        "<label style=\"color: #0021A5; font-size: 25px;\"><b>Interests:</b></label>"+
+        "<br><input type=\"text\" placeholder=\"Default interests...\" name=\"interests\"></br>"+
+      "</form>"+
       "<div id=\"profile-outer\">"+
-      "<div class=\"profile-inner\"><button href=\"/\" type=\"submit\">Log Out</button></div>"+
-      "<div class=\"profile-inner\"><button href=\"/profile\" type=\"new submit\">Edit Profile</button></div>"+
+      "<div class=\"profile-inner\"><button><a href=\"/\" type=\"submit\">Log Out</a></button></div>"+
+      "<div class=\"profile-inner\"><button type=\"button\" id=\"formButton\">Edit Profile</button></div>"+
       "</div>"+
     "</div>"+
   "</form>"+

@@ -18,9 +18,9 @@
 
 <body id="gamegatorApp">
 
- <!--- top nav bar -->
- <div id="navbar"></div>
- <script src="/Home/js/script.js"></script>
+  <!--- top nav bar -->
+  <div id="navbar"></div>
+  <script src="/Home/js/script.js"></script>
 
 
   <!------------------------------------------------------- Events section ---------------------------------->
@@ -54,65 +54,63 @@
   </section>
 
   <!----------------------------------------------------- Tags section ------------------------------------->
-<div class="nav">
-  <nav id="tags">
-    <p style="color: white;padding:10px;font-size: 30px;">Tags    </p>
-    <label class="container">Role Playing
+  <div class="nav">
+    <nav id="tags">
+      <p style="color: white;padding:10px;font-size: 30px;">Tags </p>
+      <label class="container">Role Playing
     <input id="role-playing" type="checkbox" onclick="getEvents()">
     <span class="checkmark"></span>
     </label>
 
-    <label class="container">Board Games
+      <label class="container">Board Games
       <input id="board-games" type="checkbox" onclick="getEvents()">
       <span class="checkmark"></span>
     </label>
 
-    <label class="container">PC Games
+      <label class="container">PC Games
       <input id="pc-games"  type="checkbox" onclick="getEvents()">
       <span class="checkmark"></span>
     </label>
 
-    <label class="container">Xbox Games
+      <label class="container">Xbox Games
       <input id="xbox-games"  type="checkbox" onclick="getEvents()">
       <span class="checkmark"></span>
     </label>
 
-    <label class="container">PS4 Games
+      <label class="container">PS4 Games
       <input id="ps4-games"  type="checkbox" onclick="getEvents()">
       <span class="checkmark"></span>
     </label>
 
-    <label class="container">Card Games
+      <label class="container">Card Games
       <input id="card-games"  type="checkbox" onclick="getEvents()">
       <span class="checkmark"></span>
     </label>
 
-    <label class="container">No Buy-in
+      <label class="container">No Buy-in
       <input id="no-buy-in"  type="checkbox" onclick="getEvents()">
       <span class="checkmark"></span>
     </label>
 
-    <label class="container">Tournaments
+      <label class="container">Tournaments
       <input id="tournaments"  type="checkbox" onclick="getEvents()">
       <span class="checkmark"></span>
     </label>
 
-    <label class="container">Casual
+      <label class="container">Casual
       <input id="casual" type="checkbox" onclick="getEvents()">
       <span class="checkmark"></span>
     </label>
-  </nav>
-</div>
+    </nav>
+  </div>
 
-<div class="form-popup-background" id="form-background" onclick="closeForm2()">
-</div>
+  <div class="form-popup-background" id="form-background" onclick="closeForm2()">
+  </div>
 
-<div class="form-popup" id="myForm2">
-  <form class="form-container" onsubmit="return false;" id="form-contents">
-    <h1>hi</h1>
-    <h1></h1>
-  </form>
-</div>
+  <div class="form-popup" id="myForm2">
+    <form class="form-container" onsubmit="return false;" id="form-contents">
+    </form>
+  </div>
 
 
   <!-- JQUERY -->
@@ -122,14 +120,23 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
   <!-- close profile popup -->
-    <script>  var modal = document.getElementById('id02'); window.onclick = function(event) {
-      if (event.target == modal) { modal.style.display = "none";} }   </script>
+  <script>
+    var modal = document.getElementById('id02');
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 
   <!-- OUR APP JS -->
   <script src="js/app.js"></script>
   <script src="js/events_factory.js"></script>
   <script src="js/MyEvents.js"></script>
   <link rel="stylesheet" href="./MyEvents/form.css">
-<script>window.onload = getEvents();</script>
- </body>
+  <script>
+    window.onload = getEvents();
+  </script>
+</body>
+
 </html>

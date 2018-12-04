@@ -36,7 +36,7 @@ router.post('/', function (req, res, next) {
         return next(error);
       } else {
         req.session.userId = user._id;
-        return res.redirect('/profile');
+        return res.redirect('/Home');
       }
     });
 
@@ -60,7 +60,7 @@ router.post('/', function (req, res, next) {
 })
 
 // GET route after registering
-router.get('/profile', function (req, res, next) {
+router.get('/Home', function (req, res, next) {
   users.findById(req.session.userId)
     .exec(function (error, user) {
       if (error) {
@@ -86,7 +86,7 @@ router.get('/logout', function (req, res, next) {
       if (err) {
         return next(err);
       } else {
-        return res.redirect('/Home');
+        return res.redirect('/');
       }
     });
   }
