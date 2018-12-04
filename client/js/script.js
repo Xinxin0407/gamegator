@@ -140,7 +140,8 @@ function insertNavBar(){
         "<li><a href=\"#\" id=\"searchtoggl\" >Search  </a></li>"+
         "<li><a href=\"/About\" class=\"headerLink\" style=\"text-decoration: none;\">About</a></li>"+
         "<li><a href=\"/Map\" >Map</a></li>"+
-        "<li><a href=\"/MyEvents\" >My Events</a></li>"+
+        "<li class=\"notadmin\"><a href=\"/MyEvents\" >My Events</a></li>"+
+        "<li class=\"admin\"><a href=\"/Admin\">ADMIN CONSOLE</a></li>"+
 
         "<li style=\"float: right;\">"+
           "<div class=\"dropdown\" style=\"float: middle;\">"+
@@ -200,6 +201,8 @@ function insertNavBar(){
       "<input type=\"search\" name=\"s\" id=\"s\" placeholder=\"Keywords...\" autocomplete=\"off\" v-model=\"search\">"+
     "</form>"+
   "</div>";
+
+  renderAdminView();
 }
 
 insertNavBar();
@@ -284,6 +287,11 @@ function renderAdminView(){
     for (let i = 0; i < adminsOnly.length; i++){
       const element = adminsOnly[i];
       element.style.display = "block";
+    }
+    const nonAdminsOnly = document.getElementsByClassName("notadmin");
+    for (let i = 0; i < nonAdminsOnly.length; i++){
+      const element = nonAdminsOnly[i];
+      element.style.display = "none";
     }
   });
 }
