@@ -90,8 +90,8 @@ exports.verify_admin = function(req, res) {
     return;
   }
   User.findById(req.session.userId, (err, user) => {
-    if (user.admin) res.status(200).send("Ye endtimes draw near, for the admin Himself has cometh.")
-    else res.status(200).send("Thou art not He who administrates");
+    if (user.admin) res.status(200).send(/*"Ye endtimes draw near, for the admin Himself has cometh."*/true)
+    else res.status(200).send(/*"Thou art not He who administrates"*/false);
   });
 
 };

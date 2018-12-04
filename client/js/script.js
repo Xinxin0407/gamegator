@@ -212,6 +212,13 @@ function saveEvent(e){
 
 }
 
+function isAdmin(callback){
+  sendXHR("GET", "/users/admin", null, res => callback(res));
+}
+
+
+isAdmin(res => console.log(res));
+
 
 // DESKTOP
 // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
@@ -263,4 +270,20 @@ function disable_scroll_mobile(){
 }
 function enable_scroll_mobile(){
   document.removeEventListener('touchmove',preventDefault, false);
+}
+
+
+function deleteEvent(eventid){
+  sendXHR("DELETE", `/Home/events/?eventId=${eventid}`, null, () => getEvents());
+}
+
+function renderAdminView(){
+
+  isAdmin(res => {
+    const adminsOnly = document.getElementsByClassName("admin");
+    for (let i = 0; i < adminsOnly.length; i++){
+      const element = adminsOnly[i];
+      element.style.display = "block";
+    }
+  });
 }
