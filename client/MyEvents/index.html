@@ -129,7 +129,7 @@
   <!--CREATE AN EVENT Form-->
 
 <div class="form-popup" id="myForm">
-  <form class="form-container" onsubmit="submitEvent(); closeForm(); getEvents(); return false;">
+  <form class="form-container" onsubmit="submitEvent(); closeForm(); getEvents(); this.reset(); return false;">
     <h1 style="font-size: 30px">Create event</h1>
     <br>
     <label for="name"><b>Event</b></label>
