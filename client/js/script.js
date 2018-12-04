@@ -130,7 +130,7 @@ function rsvp(eventid){
 
 function insertNavBar(){
   let navbar = getElement("navbar");
-  navbar.innerHTML = ""+
+  const navbarhtml = ""+
   "<div class=\"height\" >"+
   "<header id=\"topbar\" class=\"clearfix\">"+
     "<nav id=\"topnav\">"+
@@ -140,7 +140,8 @@ function insertNavBar(){
         "<li><a href=\"#\" id=\"searchtoggl\" >Search  </a></li>"+
         "<li><a href=\"/About\" class=\"headerLink\" style=\"text-decoration: none;\">About</a></li>"+
         "<li><a href=\"/Map\" >Map</a></li>"+
-        "<li><a href=\"/MyEvents\" >My Events</a></li>"+
+        "<li class=\"notadmin\"><a href=\"/MyEvents\" >My Events</a></li>"+
+        "<li class=\"admin\"><a href=\"/Admin\">ADMIN CONSOLE</a></li>"+
 
         "<li style=\"float: right;\">"+
           "<div class=\"dropdown\" style=\"float: middle;\">"+
@@ -202,6 +203,10 @@ function insertNavBar(){
       "<input type=\"search\" name=\"s\" id=\"s\" placeholder=\"Keywords...\" autocomplete=\"off\" v-model=\"search\">"+
     "</form>"+
   "</div>";
+
+  navbar.innerHTML = navbarhtml;
+
+  renderAdminView();
 }
 
 insertNavBar();
@@ -213,6 +218,13 @@ function saveEvent(e){
     `<h1>${e.address}</h1>`;
 
 }
+
+function isAdmin(callback){
+  sendXHR("GET", "/users/admin", null, res => callback(res));
+}
+
+
+isAdmin(res => console.log(res));
 
 
 // DESKTOP
@@ -265,4 +277,34 @@ function disable_scroll_mobile(){
 }
 function enable_scroll_mobile(){
   document.removeEventListener('touchmove',preventDefault, false);
+}
+
+
+function deleteEvent(eventid){
+  sendXHR("DELETE", `/Home/events/?eventId=${eventid}`, null, () => getEvents());
+}
+
+function deleteUser(userid){
+  sendXHR("DELETE", `/users/?userId=${userid}`, null, () => getUsers());
+}
+
+function renderAdminView(callback){
+
+  isAdmin(res => {
+    if (res === 'false') console.log("You are not admin");
+    else {
+      console.log("you are admin");
+      const adminsOnly = document.getElementsByClassName("admin");
+      for (let i = 0; i < adminsOnly.length; i++){
+        const element = adminsOnly[i];
+        element.style.display = "block";
+      }
+      const nonAdminsOnly = document.getElementsByClassName("notadmin");
+      for (let i = 0; i < nonAdminsOnly.length; i++){
+        const element = nonAdminsOnly[i];
+        element.style.display = "none";
+      }
+    }
+    if (callback) callback();
+  });
 }

@@ -612,3 +612,10 @@ div.popup {
   color: white
 
   }
+
+.admin {
+  display: none;
+}
+
+.notadmin{
+}

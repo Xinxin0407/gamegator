@@ -2,7 +2,8 @@
 
 /* Dependencies */
 var mongoose = require('mongoose'),
-  Event = require('../models/events.server.model.js');
+  Event = require('../models/events.server.model.js'),
+  User = require('../models/users.server.model.js');
 
 /* Create a listing */
 exports.create = function(req, res) {
@@ -85,6 +86,20 @@ exports.update_by_admin = function(req, res) {
 
 /* Delete a event */
 exports.delete = function(req, res) {
+  //verify user is an admin
+  //get user
+  //console.log(req);
+  //Event.findByIdAndDelete(req.query.eventId, (something) => res.status(200).send(something));
+
+  User.findById(req.session.userId, (err, user) => {
+    console.log("User: " + user);
+    //check if is admin
+    if (user && user.admin)
+      Event.findByIdAndDelete(req.query.eventId, res.status(200).end);
+    else
+      res.status(403).end();
+  });
+  /*
   var event = req.event;
   // if the user is the organizer
   if (req.body.username == req.body.organizer) {
@@ -97,6 +112,7 @@ exports.delete = function(req, res) {
       }
     });
   }
+  */
 };
 
 /* Delete a listing */

@@ -8,7 +8,9 @@ const search = new Vue({
 const events = new Vue ({
   el: "#listings",
   data: {
-    events: []
+    events: [],
+    users: [],
+    mode: ""
   },
   methods: {
     appendDescription: function (index){
@@ -20,6 +22,18 @@ const events = new Vue ({
 
     moreInfo: function (event) {
       return event.moreInfo;
+    },
+    clicked2: function(user){
+      const form = getElement("form-contents");
+      form.innerHTML =
+        `<label style='font-size: 40px;'>${user.username}</label><br><br>` +
+        `<label style='font-size: 25px'><b>ID: ${user._id}</b></label><br><br><br>` +
+        `<label style='font-size: 15px'>${user.email}</label><br><br><br>`+
+        "" +
+        `<button type="button" class="admin btn cancel" onclick="deleteUser('${user._id}'); closeForm2()">(ADMIN) DELETE USER</button>` +
+        "";
+
+        renderAdminView(openForm2);
     },
 
     clicked: function(event) {
@@ -40,20 +54,21 @@ const events = new Vue ({
         `<label style='font-size: 25px'>${(new Date(event.time)).toLocaleString()}</label><br>`+
         `<label style='font-size: 15px'>${event.address}</label><br><br><br>`+
         "" +
-        `<button type='button' class='btn' onclick=\"${rsvp_f}('${event._id}'); closeForm2();\">${rsvp_msg}</button><button type='button' class='btn' onclick=\"${favorite_f}('${event._id}'); closeForm2();\">${favorite_msg}</button>` +
+        `<button type='button' class='btn notadmin' onclick=\"${rsvp_f}('${event._id}'); closeForm2();\">${rsvp_msg}</button><button type='button' class='btn notadmin' onclick=\"${favorite_f}('${event._id}'); closeForm2();\">${favorite_msg}</button><button type="button" class="admin btn cancel" onclick="deleteEvent('${event._id}'); closeForm2()">(ADMIN) DELETE EVENT</button>` +
         "<label style='font-size: 12px'>Organized by " + `${event.organizer}`+ "</label><br>" +
         "<label style='font-size: 12px'>Created " + `${(new Date(event.created_at)).toLocaleString()}`+ "</label><br>" +
         "<label style='font-size: 12px'>Updated " + `${(new Date(event.updated_at)).toLocaleString()}`+ "</label><br>" +
         "<label style='font-size: 12px'>Keywords: " + `${event.Keywords.map(kw => kw.name)}`+ "</label><br>" +
         "";
 
-      openForm2();
+        renderAdminView(openForm2);
     }
 
   },
 
   computed: {
     filteredList: function (){
+      if (this.mode !== 'events') return [];
       let keywords = search._data.search;
       return this.events.filter(event => {
         let match = false;
@@ -87,7 +102,13 @@ const events = new Vue ({
         }
         return match;
       })
+    },
+    filteredListUsers: function (){
+      if (this.mode !== 'users') return [];
+      return this.users;
     }
+
+
   }
 });
 
@@ -124,9 +145,27 @@ const getEvents = (callback) => {
 
         if (callback) callback(json);
         events._data.events = json;
+        events._data.mode = "events";
         for (let i = 0; i < events._data.events.length; i++){
           events._data.events[i].moreInfo = false;
         }
+    }
+  };
+  xhr.send();
+};
+
+const getUsers = (callback) => {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "/users", true);
+  xhr.onreadystatechange = () => {
+    //console.log(xhr);
+    if (xhr.readyState === 4) {
+      console.log("xhr.resopnse" + xhr.response);
+        let json = JSON.parse(xhr.response);
+        events._data.users = json;
+        events._data.mode = "users";
+
+        if (callback) callback(json);
     }
   };
   xhr.send();

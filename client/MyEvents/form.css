@@ -32,7 +32,8 @@
 
 /* Add styles to the form container */
 .form-container {
-  max-width: 500px;
+  max-width: 800px;
+  min-width: 500px;
   padding: 10px;
   background-color: white;
   overflow:hidden;

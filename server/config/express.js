@@ -68,6 +68,7 @@ module.exports.init = function() {
   app.use('/MyEvents', express.static(__dirname + '/../../client/MyEvents'));
   app.use('/About', express.static(__dirname + '/../../client/About'));
   app.use('/Map', express.static(__dirname + '/../../client/Map'));
+  app.use('/Admin', express.static(__dirname + '/../../client/Admin'));
 
   app.use('/cors', corsRouter);
 

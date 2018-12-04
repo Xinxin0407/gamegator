@@ -43,7 +43,7 @@ function closeForm2() {
 function switchBackToForm1(){
   getElement("form-background").onclick=closeForm;
   document.getElementById("myFormIGDB").style.display = "none";
-  document.getElementById("myForm2").style.display = "block";
+  document.getElementById("myForm2").style.display = "none";
   if (getElement("form-background")) getElement("form-background").style.display = "block";
   openForm();
 }
