@@ -83,17 +83,35 @@ function sendXHR(method, path, body, callback){
   xhr.send(body);
 }
 
+function getUser(callback){
+  if (cache && cache.user) return callback(cache.user)
+
+  const path = "/user";
+  sendXHR("GET", path, {}, user => {
+    cache.user = JSON.parse(user);
+    callback(cache.user);
+  });
+}
 //TODO
-function getUsername(){
-  return "Default User (change later)";
+
+const cache = {};
+
+function getUsername(callback){
+  if (cache && cache.user && cache.user.username) callback(cache.user.username);
+  else getUser(user => {
+    callback(user.username)
+  });
 }
 //TODO
 function isSignedIn(){
   return true;
 }
 //TODO
-function getEmail(){
-  return "";
+function getEmail(callback){
+  if (cache && cache.user && cache.user.email) callback(cache.user.email);
+  else getUser(user => {
+    callback(user.email)
+  });
 }
 
 function isCreatorOfEvent(eventid){
@@ -128,7 +146,7 @@ function rsvp(eventid){
   //return void
 }
 
-function insertNavBar(){
+function insertNavBar(user){
   let navbar = getElement("navbar");
   const navbarhtml = ""+
   "<div class=\"height\" >"+
@@ -170,7 +188,7 @@ function insertNavBar(){
     "</div>"+
 
     "<div class=\"viewprofile\">"+
-      "<label for=\"uname\" style=\"color: #0021A5; font-size: 40px;\"><b>"+getUsername()+"</b></label>"+
+      "<label for=\"uname\" style=\"color: #0021A5; font-size: 40px;\"><b>"+user.username+"</b></label>"+
      "<br><br><hr>"+
 
      "<form id=\"form1\">"+
@@ -208,8 +226,6 @@ function insertNavBar(){
 
   renderAdminView();
 }
-
-insertNavBar();
 
 function saveEvent(e){
   const form = getElement("form-contents");
@@ -308,3 +324,6 @@ function renderAdminView(callback){
     if (callback) callback();
   });
 }
+
+
+getUser(user => insertNavBar(user));

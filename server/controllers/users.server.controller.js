@@ -94,6 +94,16 @@ exports.verify_admin = function(req, res) {
 
 };
 
+exports.get_user = function (req, res) {
+  if (!req.session.userId){
+    res.status(200).send(false);
+  } else {
+    User.findById(req.session.userId, (err, user) => {
+      res.status(200).send(user);
+    });
+  }
+}
+
 /*
   Middleware: find a listing by its ID, then pass it to the next request handler.
   HINT: Find the listing using a mongoose query,
