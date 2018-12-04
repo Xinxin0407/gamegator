@@ -141,7 +141,7 @@ function insertNavBar(){
         "<li><a href=\"/About\" class=\"headerLink\" style=\"text-decoration: none;\">About</a></li>"+
         "<li><a href=\"/Map\" >Map</a></li>"+
         "<li class=\"notadmin\"><a href=\"/MyEvents\" >My Events</a></li>"+
-        "<li class=\"admin\"><a href=\"/Admin\">ADMIN CONSOLE</a></li>"+
+        "<li class=\"admin\"><a href=\"/Admin\">ADMIN</a></li>"+
 
         "<li style=\"float: right;\">"+
           "<div class=\"dropdown\" style=\"float: middle;\">"+
