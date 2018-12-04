@@ -130,7 +130,7 @@ function rsvp(eventid){
 
 function insertNavBar(){
   let navbar = getElement("navbar");
-  navbar.innerHTML = ""+
+  const navbarhtml = ""+
   "<div class=\"height\" >"+
   "<header id=\"topbar\" class=\"clearfix\">"+
     "<nav id=\"topnav\">"+
@@ -201,6 +201,8 @@ function insertNavBar(){
       "<input type=\"search\" name=\"s\" id=\"s\" placeholder=\"Keywords...\" autocomplete=\"off\" v-model=\"search\">"+
     "</form>"+
   "</div>";
+
+  navbar.innerHTML = navbarhtml;
 
   renderAdminView();
 }
@@ -280,18 +282,27 @@ function deleteEvent(eventid){
   sendXHR("DELETE", `/Home/events/?eventId=${eventid}`, null, () => getEvents());
 }
 
-function renderAdminView(){
+function deleteUser(userid){
+  sendXHR("DELETE", `/users/?userId=${userid}`, null, () => getUsers());
+}
+
+function renderAdminView(callback){
 
   isAdmin(res => {
-    const adminsOnly = document.getElementsByClassName("admin");
-    for (let i = 0; i < adminsOnly.length; i++){
-      const element = adminsOnly[i];
-      element.style.display = "block";
+    if (res === 'false') console.log("You are not admin");
+    else {
+      console.log("you are admin");
+      const adminsOnly = document.getElementsByClassName("admin");
+      for (let i = 0; i < adminsOnly.length; i++){
+        const element = adminsOnly[i];
+        element.style.display = "block";
+      }
+      const nonAdminsOnly = document.getElementsByClassName("notadmin");
+      for (let i = 0; i < nonAdminsOnly.length; i++){
+        const element = nonAdminsOnly[i];
+        element.style.display = "none";
+      }
     }
-    const nonAdminsOnly = document.getElementsByClassName("notadmin");
-    for (let i = 0; i < nonAdminsOnly.length; i++){
-      const element = nonAdminsOnly[i];
-      element.style.display = "none";
-    }
+    if (callback) callback();
   });
 }

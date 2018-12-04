@@ -19,7 +19,8 @@ router.route('/users/admin')
   .get(users.verify_admin);
 
 router.route('/users')
-  .get(users.display_all_users);
+  .get(users.display_all_users)
+  .delete(users.delete_user);
 
 
 /*

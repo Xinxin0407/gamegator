@@ -24,6 +24,18 @@ exports.create_user = function(req, res) {
   });
 };
 
+exports.delete_user = function(req, res) {
+  User.findById(req.session.userId, (err, user) => {
+    if (err) console.log(err);
+    console.log("User: " + user);
+    //check if is admin
+    if (user && user.admin)
+      User.findByIdAndDelete(req.query.userId, res.status(200).end);
+    else
+      res.status(403).end();
+  });
+};
+
 exports.display_all_users = function(req, res) {
   /* send back all users as json from the request */
   //change : to /
@@ -69,24 +81,10 @@ exports.update_user = function(req, res) {
   });
 };
 
-/* Delete a user */
-exports.delete_user = function(req, res) {
-  connection((db) => {
-    db.collection('User')
-      .findOneAndRemove({ username: req.params.username })
-      .then((user) => {
-        response.data = req.params.username;
-        res.json(response);
-      })
-      .catch((err) => {
-        sendError(err, res);
-      });
-  });
-};
 
 exports.verify_admin = function(req, res) {
   if (!req.session.userId) {
-    res.status(403).send("you must be logged in");
+    res.status(403).send(false);
     return;
   }
   User.findById(req.session.userId, (err, user) => {

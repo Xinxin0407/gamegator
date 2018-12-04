@@ -1,12 +1,136 @@
-<html>
+
+
+<!doctype html>
+
+<html lang="en-US">
+
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <title>GamerGator</title>
+  <link rel="shortcut icon" href="http://spyrestudios.com/favicon.ico">
+  <link rel="icon" href="http://spyrestudios.com/favicon.ico">
+  <link rel="stylesheet" type="text/css" media="screen and (max-width: 799px)" href="../styles/mobile.css">
+  <link rel="stylesheet" type="text/css" media="screen and (min-width: 800px) and (max-width: 1249px)" href="../styles/mid.css">
+  <link rel="stylesheet" type="text/css" media="screen and (min-width: 1250px)" href="/Home/styles/styles.css">
+  <link rel="stylesheet" type="text/css" media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script src="index.js"></script>
-  <script src="/Home/js/script.js"></script>
-  </head>
-<body>
-  <label>eventid</label>
-  <input type="text" id="eventid">
-<button onclick="deleteEvent();">Delete event</button>
-</body>
+</head>
+
+
+<body id="gamegatorApp">
+
+ <!--- top nav bar -->
+ <div id="navbar"></div>
+ <script src="/Home/js/script.js"></script>
+
+
+  <!------------------------------------------------------- Events section ---------------------------------->
+  <section>
+    <article>
+      <h2 style="color: black;font-size: 50px; padding: 15px; font-weight: bold">ADMIN CONSOLE
+        <button style="font-size: 30px; height: 50px; width: 30%; margin-left:20px;" onclick="getUsers();">Users</button>
+        <button style="font-size: 30px; height: 50px; width: 30%; margin-right:20px;" onclick="getEvents();">Events</button>
+      </h2>
+
+      <div class="container" id="listings">
+
+        <div class='card' v-for="(event, index) in filteredList" style="cursor: pointer">
+
+          <div class="container" v-on:click="clicked(event)">
+            <img v-if="event.games[0]" v-bind:src="event.games[0].coverUrl" style="float: left; margin-right: 20px; margin-bottom: 20px;">
+            <h4 class="event-name"><b>{{event.name}}</b><span style="font-size: 20px; float:right;">{{(new Date(event.time)).toLocaleDateString()}}</span></h4>
+            <br>
+            <p class="event-desc">{{event.description}}</p>
+            <span style="float: right;"><button style="height:30px; margin-bottom: 10px; width: 100px; background-color: red; color: white;" onclick="">DELETE</button></span>
+          </div>
+        </div>
+
+        <div class='card' v-for="(user, index) in filteredListUsers" style="cursor: pointer" v-on:click="clicked2(user)">
+
+          <div class="container">
+            <h4>{{user.username}}</h4>
+            <span style="float: right;"><button style="height:30px; margin-bottom: 10px; width: 100px; background-color: red; color: white;" onclick="">DELETE</button></span>
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </article>
+  </section>
+
+  <!----------------------------------------------------- Tags section ------------------------------------->
+<div class="nav">
+  <nav id="tags">
+    <p style="color: white;padding:10px;font-size: 30px;">Tags    </p>
+    <label class="container">Role Playing
+    <input id="role-playing" type="checkbox" onclick="getEvents()">
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Board Games
+      <input id="board-games" type="checkbox" onclick="getEvents()">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">PC Games
+      <input id="pc-games"  type="checkbox" onclick="getEvents()">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Xbox Games
+      <input id="xbox-games"  type="checkbox" onclick="getEvents()">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">PS4 Games
+      <input id="ps4-games"  type="checkbox" onclick="getEvents()">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Card Games
+      <input id="card-games"  type="checkbox" onclick="getEvents()">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">No Buy-in
+      <input id="no-buy-in"  type="checkbox" onclick="getEvents()">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Tournaments
+      <input id="tournaments"  type="checkbox" onclick="getEvents()">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Casual
+      <input id="casual" type="checkbox" onclick="getEvents()">
+      <span class="checkmark"></span>
+    </label>
+  </nav>
+</div>
+
+<div class="form-popup-background" id="form-background" onclick="closeForm2()">
+</div>
+
+<div class="form-popup" id="myForm2">
+  <form class="form-container" onsubmit="return false;" id="form-contents">
+  </form>
+</div>
+
+
+  <!-- JQUERY -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+  <!-- VUE JS -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- OUR APP JS -->
+  <script src="/Home/js/app.js"></script>
+  <script src="/Home/js/events_factory.js"></script>
+  <script src="/Home/js/MyEvents.js"></script>
+  <link rel="stylesheet" href="../MyEvents/form.css">
+ </body>
 </html>
