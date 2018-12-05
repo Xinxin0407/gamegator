@@ -29,7 +29,7 @@
     <article>
       <div style="padding: 18px">
         <br>
-        <a href="#form-popup" class="button button_primary">Add Event</a>
+        <a href="#event-form" class="button button_primary">Add Event</a>
         <select id="sorting" class="eventNav" style="float:right;margin: 0px 20px;margin-top: 30px" onchange="getEvents()">
               <option value="created_at">Recently Created</option>
               <option value="time">Event Date</option>
@@ -134,10 +134,10 @@
   </div>
 
   <!--CREATE AN EVENT Form-->
-  <div id="form-popup" class="modal-window">
+  <div id="event-form" class="modal-window">
     <div>
       <a href="#modal-close" title="Close" class="modal-close" onclick="enable_scroll()">close&times;</a>
-      <form class="form-container" onsubmit="submitEvent(); closeForm(); getEvents(); enable_scroll(); this.reset(); return false;">
+      <form class="form-container" onsubmit="submitEvent(); closeForm(); getEvents(); enable_scroll(); this.reset(); return false;" action="#" method="post">
         <h1 style="font-size: 24px; text-align: center"><u>Create Event</u></h1>
         <br>
         <label for="name"><b> Event</b></label>
@@ -188,7 +188,8 @@
         <label for="price" style="padding-left:7.2em"><b>Price</b></label>
         <input id="eventFee" type="number" name="price" required>
         <br><br><br><br>
-        <a align="center" type="submit" class="btn button" href="#modal-close" style="margin: 0; width: 100%">Create</a>
+        <button align="center" type="submit" value="Create" class="btn button" href="#modal-close" style="margin: 0; width: 100%">Create</button>
+        <!-- <button align="center" type="submit" class="btn" oncick="submitEvent(); closeForm();">Create</button> -->
       </form>
     </div>
   </div>
@@ -208,8 +209,6 @@
       <button type="button" class="btn cancel" onclick="switchBackToForm1()">Back</button>
     </form>
   </div>
-
-
 
 
   <!-- myevents.js -->

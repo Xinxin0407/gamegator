@@ -3,7 +3,7 @@ function openForm() {
   else {
     getElement("form-background").onclick= closeForm;
     document.body.style.overflow = "hidden";
-    document.getElementById("myForm").style.display = "block";
+    document.getElementById("event-form").style.display = "block";
     if (getElement("form-background")) getElement("form-background").style.display = "block";
   }
 }
@@ -22,7 +22,7 @@ function switchToFormIGDB(){
   getElement("form-background").onclick = switchBackToForm1;
   document.body.style.overflow = "hidden";
   //close form2
-  document.getElementById("myForm").style.display = "none";
+  document.getElementById("event-form").style.display = "none";
 
   document.getElementById("myFormIGDB").style.display = "block";
   if (getElement("form-background")) getElement("form-background").style.display = "block";
@@ -31,7 +31,7 @@ function switchToFormIGDB(){
 function closeForm() {
   getElement("form-background").onclick= () => {};
   document.body.style.overflow = "initial";
-  document.getElementById("myForm").style.display = "none";
+  document.getElementById("event-form").style.display = "none";
   if (getElement("form-background")) getElement("form-background").style.display = "none";
 }
 function closeForm2() {
@@ -121,7 +121,6 @@ function getGame(id, callback){
 
 
 function submitEvent() {
-
   let tags = getElement("eventTags").value.split(",").map(x => x.trim().toLowerCase());
   //console.log(tags);
   const tagobjs = tags.map(tag => {
@@ -130,7 +129,7 @@ function submitEvent() {
     return obj;
   });
   const event = {
-        organizer: "",
+        organizer: "Default User", //getUsername(),
         name: getElement("eventName").value,
         address: getElement("eventAdd").value,
         time: getElement("eventTime").value,
@@ -139,10 +138,8 @@ function submitEvent() {
         Keywords: tagobjs,
         games: games
   };
-  getUsername(username => {
-    event.organizer = username;
-    sendXHR("POST", "/Home/events", JSON.stringify(event));
-  });
+  //alert(JSON.stringify(games));
+  sendXHR("POST", "/Home/events", JSON.stringify(event));
 }
 
 
