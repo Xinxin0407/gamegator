@@ -12,9 +12,10 @@ router.get('/', function(req, res, next) {
 router.post('/', function (req, res, next) {
   // confirm that user typed same password twice
   if (req.body.password !== req.body.passwordConf) {
-    var err = new Error('Passwords do not match.');
-    err.status = 400;
-    // don't redirect
+    // var err = new Error('Passwords do not match.');
+    // err.status = 400;
+    // alert("Passwords do not match.");
+    // res.send("passwords dont match");
     return;
   }
 
@@ -46,10 +47,10 @@ router.post('/', function (req, res, next) {
       if (error || !user) {
         var err = new Error('Wrong email or password.');
         err.status = 401;
-        // don't redirect
-        return;
+        return next(err);
       } else {
         req.session.userId = user._id;
+        //return res.redirect('/profile');
         return res.redirect('/Home');
       }
     });
