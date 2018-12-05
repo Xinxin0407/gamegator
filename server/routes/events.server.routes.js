@@ -22,6 +22,9 @@ router.route('/users')
   .get(users.display_all_users)
   .delete(users.delete_user);
 
+router.route('/user')
+  .get(users.get_user);
+
 
 /*
   The ':' specifies a URL parameter.
@@ -37,6 +40,7 @@ router.route(':users/:username')
   ;//.delete(users.delete_user);
 
 //These are for admins
+
 router.route(':users/events')
   .get(users.verify_admin, events.list)
   .post(users.verify_admin, events.create);

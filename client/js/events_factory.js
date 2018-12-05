@@ -24,7 +24,7 @@ const events = new Vue ({
       return event.moreInfo;
     },
     clicked2: function(user){
-      const form = getElement("form-contents");
+      const form = document.getElementById("form-contents");
       form.innerHTML =
         `<label style='font-size: 40px;'>${user.username}</label><br><br>` +
         `<label style='font-size: 25px'><b>ID: ${user._id}</b></label><br><br><br>` +
@@ -37,7 +37,7 @@ const events = new Vue ({
     },
 
     clicked: function(event) {
-      const form = getElement("form-contents");
+      const form = document.getElementById("form-contents");
       const rsvpd = eventIsRSVPd(event._id);
       let rsvp_msg = rsvpd ? "Already RSVPd'!":"RSVP";
       let rsvp_f = rsvpd ? 'console.log' : 'rsvp';
@@ -85,22 +85,27 @@ const events = new Vue ({
 
         const TAGS = [
           'role-playing', 'board-games', 'pc-games', 'xbox-games', 'ps4-games', 'card-games', 'no-buy-in', 'tournaments', 'casual'
-        ]
+        ];
 
-        const rsvpBool = getElement('rsvpd') && getElement('rsvpd').checked;
-        const favoritedBool = getElement('favorited') && getElement('favorited').checked;
-        const createdBool = getElement('created') && getElement('created').checked;
+        const rsvpBool = document.getElementById('rsvpd') && document.getElementById('rsvpd').checked;
+        const favoritedBool = document.getElementById('favorited') && document.getElementById('favorited').checked;
+        const createdBool = document.getElementById('created') && document.getElementById('created').checked;
 
         if (rsvpBool) match &= eventIsRSVPd(event._id);
         if (favoritedBool) match &= eventIsFavorited(event._id);
-        if (createdBool) match &= isCreatorOfEvent(event._id);
 
         for (tagg in TAGS){
           const tag = TAGS[tagg];
-          const tagtrue = getElement(tag).checked;
+          const tagtrue = document.getElementById(tag).checked;
           if (tagtrue) match &= eventHasKeyword(event, tag.replace("-", " "));
         }
-        return match;
+
+        if (createdBool) getUsername(uname => {
+          match &= (event.organizer == uname);
+          console.log(match);
+          return match;
+        });
+        else return match;
       })
     },
     filteredListUsers: function (){
@@ -120,7 +125,7 @@ function eventHasKeyword(event, keyword){
   return match;
 }
 
-const getEvents = (callback) => {
+const getEvents = () => {
   console.log(events);
   const xhr = new XMLHttpRequest();
   xhr.open("GET", "/Home/Events", true);
@@ -131,8 +136,8 @@ const getEvents = (callback) => {
 
         //sort
         json.sort((e1,e2) => {
-          if (!getElement('sorting')) return 1;
-          let sortBy = getElement('sorting').value;
+          if (!document.getElementById('sorting')) return 1;
+          let sortBy = document.getElementById('sorting').value;
           if (sortBy === 'time') return new Date(e1[sortBy]) - new Date(e2[sortBy]);
           if (sortBy === 'created_at') return new Date(e2[sortBy]) - new Date(e1[sortBy]);
           /*
@@ -143,12 +148,9 @@ const getEvents = (callback) => {
           return e1[sortBy] - e2[sortBy];
         });
 
-        if (callback) callback(json);
+        //if (callback) callback(json);
         events._data.events = json;
         events._data.mode = "events";
-        for (let i = 0; i < events._data.events.length; i++){
-          events._data.events[i].moreInfo = false;
-        }
     }
   };
   xhr.send();
