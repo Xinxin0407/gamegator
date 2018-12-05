@@ -85,6 +85,9 @@ function sendXHR(method, path, body, callback){
 
 //TODO
 function getUsername(){
+  // request erver
+  // get req.session
+
   return "Default User (change later)";
 }
 //TODO
@@ -134,7 +137,6 @@ function insertNavBar(){
   "<div class=\"height\" >"+
   "<header id=\"topbar\" class=\"clearfix\">"+
     "<nav id=\"topnav\">"+
-
       "<ul>"+
         "<li><a href=\"/Home\" > GamerGator</a></li>"+
         "<li><a href=\"#\" id=\"searchtoggl\" >Search  </a></li>"+
@@ -168,6 +170,7 @@ function insertNavBar(){
     "<div class=\"piccontainer\" style=\"padding-right: 92px;\">"+
       "<img src=\"/Home/profile.png\" alt=\"image\" class=\"profile\" style=\"float: right;\">"+
     "</div>"+
+
 
     "<div class=\"viewprofile\">"+
       "<label for=\"uname\" style=\"color: #0021A5; font-size: 40px;\"><b>"+getUsername()+"</b></label>"+
@@ -289,7 +292,6 @@ function deleteUser(userid){
 }
 
 function renderAdminView(callback){
-
   isAdmin(res => {
     if (res === 'false') console.log("You are not admin");
     else {

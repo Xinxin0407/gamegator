@@ -6,75 +6,83 @@
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html">
   <title>GamerGator</title>
+
   <link rel="shortcut icon" href="http://spyrestudios.com/favicon.ico">
   <link rel="icon" href="http://spyrestudios.com/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="screen and (max-width: 799px)" href="/Home/styles/mobile.css">
   <link rel="stylesheet" type="text/css" media="screen and (min-width: 800px) and (max-width: 1249px)" href="/Home/styles/mid.css">
   <link rel="stylesheet" type="text/css" media="screen and (min-width: 1250px)" href="/Home/styles/styles.css">
   <link rel="stylesheet" type="text/css" media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css" />
+  <link rel="stylesheet" href="./form.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  
-  <link rel="stylesheet" type="text/css" media="all" href="form.css">
 </head>
 
 
 <body id="gamegatorApp">
-
   <div id="navbar"></div>
   <script src="/Home/js/script.js"></script>
-
 
   <!-- Events section -->
   <section>
     <article>
-    <div align="center">
-    	<br>
-       <a class="round-button" onclick="openForm()" style="cursor: pointer;">+</a>
-    	<select id="sorting" class="eventNav" style="float:right;margin: 0px 20px;margin-top: 6px" onchange="getEvents()">
-        <option value="created_at">Recently Created</option>
-        <option value="time">Event Date</option>
-        <option value="name">Event name</option>
-      </select>
+      <div style="padding: 18px">
+        <br>
+        <a href="#form-popup" class="button button_primary">Add Event</a>
+        <select id="sorting" class="eventNav" style="float:right;margin: 0px 20px;margin-top: 30px" onchange="getEvents()">
+              <option value="created_at">Recently Created</option>
+              <option value="time">Event Date</option>
+              <option value="name">Event name</option>
+          </select>
+
+        <!-- CheckBoxes -->
 
 
-  <label class="events">Created Events</label>
-    <input id="created" type="checkbox" onclick="getEvents()">
-    <span class="checkmark"></span>
-    </label>
-    <label class="events">Favorited Events</label>
-    <input id="favorited" type="checkbox" onclick="getEvents()">
-    <span class="checkmark"></span>
-    </label>
-    <label class="events">RSVPed Events</label>
-    <input id="rsvpd" type="checkbox" onclick="getEvents()">
-    <span class="checkmark"></span>
-    </label>
-    <br><br><br>
-</nav>
-    <hr>
+        <div class="pretty p-default">
+          <input type="checkbox" id="created" onclick="getEvents()" />
+          <div class="state p-success">
+            <font size="+1.8"><label>Created Events</label></font>
+          </div>
+        </div>
+        <div class="pretty p-default">
+          <input type="checkbox" id="favorited" onclick="getEvents()" />
+          <div class="state p-success">
+            <font size="+1.8"><label>Favorited Events</label></font>
+          </div>
+        </div>
+        <div class="pretty p-default">
+          <input type="checkbox" id="rsvpd" onclick="getEvents()" />
+          <div class="state p-success">
+            <font size="+1.8"><label>RSVP'd Events</label></font>
+          </div>
+        </div>
 
-    <div class="container" id="listings">
+        <br><br><br>
+        </nav>
+        <hr>
+      </div>
 
-      <div class='card' style="cursor: pointer;" v-for="(event, index) in filteredList" style="cursor: pointer">
-        <div class="container" v-on:click="clicked(event)">
-          <img v-if="event.games && event.games[0]" :src="event.games[0].coverUrl" style="float: left; margin-bottom: 10px;">
-          <h4 class="event-name"><b>{{event.name}}</b><span style="font-size: 20px; float:right;">{{(new Date(event.time)).toLocaleDateString()}}</span></h4>
-          <br>
-          <p class="event-desc">{{event.description}}</p>
+      <div class="container" id="listings">
+
+        <div class='card' v-for="(event, index) in filteredList" style="cursor: pointer;">
+
+          <div class="container" v-on:click="clicked(event)">
+            <img v-if="event.games && event.games[0]" v-bind:src="event.games[0].coverUrl" style="float: left; margin-right: 20px; margin-bottom: 20px;">
+            <h4 class="event-name"><b>{{event.name}}</b><span style="font-size: 20px; float:right;">{{(new Date(event.time)).toLocaleDateString()}}</span></h4>
+            <br>
+            <p class="event-desc">{{event.description}}</p>
+          </div>
         </div>
       </div>
 
-
-    </div>
     </article>
   </section>
-
-
 
   <!-- Tags section -->
   <div class="nav">
     <nav id="tags">
-      <p style="color: white;padding:10px;font-size: 30px;">Tags    </p>
+      <p style="color: white;padding:10px;font-size: 30px;">Tags </p>
       <label class="container">Role Playing
       <input id="role-playing" type="checkbox" onclick="getEvents()">
       <span class="checkmark"></span>
@@ -122,85 +130,84 @@
     </nav>
   </div>
 
-
-  <div class="form-popup-background" id="form-background" onclick="closeForm(); closeForm2(); closeFormIGDB()">
+  <div class="form-popup-background" id="form-background" onclick="closeForm(); closeForm2(); closeFormIGDB(); enable_scroll()">
   </div>
 
   <!--CREATE AN EVENT Form-->
+  <div id="form-popup" class="modal-window">
+    <div>
+      <a href="#modal-close" title="Close" class="modal-close" onclick="enable_scroll()">close&times;</a>
+      <form class="form-container" onsubmit="submitEvent(); closeForm(); getEvents(); enable_scroll(); this.reset(); return false;">
+        <h1 style="font-size: 24px; text-align: center"><u>Create Event</u></h1>
+        <br>
+        <label for="name"><b> Event</b></label>
+        <input id="eventName" type="text" placeholder="Event name" name="name" required>
+        <br>
+        <label for="description"><b> Description</b></label>
+        <input id="eventDesc" type="text" placeholder="Detailed description" name="description" required>
+        <br>
+        <label for="address"><b> Address</b></label>
+        <input id="eventAdd" type="text" placeholder="Enter Address" name="address" required>
+        <br>
+        <button class="btn" type="button" onclick="switchToFormIGDB()" style="background-color: yellow; color: black;">Attach a game...</button><br>
 
-<div class="form-popup" id="myForm">
-  <form class="form-container" onsubmit="submitEvent(); closeForm(); getEvents(); this.reset(); return false;">
-    <h1 style="font-size: 30px">Create event</h1>
-    <br>
-    <label for="name"><b>Event</b></label>
-    <input id="eventName" type="text" placeholder="Event name" name="name" required>
-    <br>
-    <label for="description"><b>Description</b></label>
-    <input id="eventDesc" type="text" placeholder="Detailed description" name="description" required>
-    <br>
-    <label for="address"><b>Address</b></label>
-    <input id="eventAdd" type="text" placeholder="Enter Address" name="address" required>
-    <br>
-    <button class="btn" type="button" onclick="switchToFormIGDB()" style="background-color: yellow; color: black;">Attach a game...</button><br>
+        <label for="tags"><b> Tags (comma-seperated)</b></label>
+        <textarea id="eventTags" onkeypress="console.log('press!'); refreshTags()" placeholder="Xbox, Call of duty, Tournament, free"></textarea>
+        <br>
 
-    <label for="tags"><b>Tags (comma-seperated)</b></label>
-    <textarea id="eventTags" onkeypress="console.log('press!'); refreshTags()" placeholder="Xbox, Call of duty, Tournament, free"></textarea>
-    <br>
+        <div id="role-playing-create" class="tag-container absent">
+          <label class="tag" onclick="addTag('Role Playing')">Role Playing</label>
+        </div>
+        <div id="board-games-create" class="tag-container absent">
+          <label class="tag" onclick="addTag('Board Games')">Board Games</label>
+        </div>
+        <div id="pc-games-create" class="tag-container absent">
+          <label class="tag" onclick="addTag('PC Games')">PC Games</label>
+        </div>
+        <div id="xbox-games-create" class="tag-container absent">
+          <label class="tag" onclick="addTag('Xbox Games')">Xbox Games</label>
+        </div>
+        <div id="ps4-games-create" class="tag-container absent">
+          <label class="tag" onclick="addTag('PS4 Games')">PS4 Games</label>
+        </div>
+        <div id="card-games-create" class="tag-container absent">
+          <label class="tag" onclick="addTag('Card Games')">Card Games</label>
+        </div>
+        <div id="no-buy-in-create" class="tag-container absent">
+          <label class="tag" onclick="addTag('No Buy-in')">No Buy-in</label>
+        </div>
+        <div id="tournaments-create" class="tag-container absent">
+          <label class="tag" onclick="addTag('Tournaments')">Tournaments</label>
+        </div>
+        <div id="casual-create" class="tag-container absent">
+          <label class="tag" onclick="addTag('Casual')">Casual</label>
+        </div>
+        <br><br>
+        <label for="time" style="padding-left:0.3em"><b>Time</b></label>
+        <input id="eventTime" type="date" name="time" required>
+        <label for="price" style="padding-left:7.2em"><b>Price</b></label>
+        <input id="eventFee" type="number" name="price" required>
+        <br><br><br><br>
+        <a align="center" type="submit" class="btn button" href="#modal-close" style="margin: 0; width: 100%">Create</a>
+      </form>
+    </div>
+  </div>
 
-    <div id="role-playing-create" class="tag-container absent">
-      <label class="tag" onclick="addTag('Role Playing')">Role Playing</label>
-    </div>
-    <div id="board-games-create" class="tag-container absent">
-      <label class="tag" onclick="addTag('Board Games')">Board Games</label>
-    </div>
-    <div id="pc-games-create" class="tag-container absent">
-      <label class="tag" onclick="addTag('PC Games')">PC Games</label>
-    </div>
-    <div id="xbox-games-create" class="tag-container absent">
-      <label class="tag" onclick="addTag('Xbox Games')">Xbox Games</label>
-    </div>
-    <div id="ps4-games-create" class="tag-container absent">
-      <label class="tag" onclick="addTag('PS4 Games')">PS4 Games</label>
-    </div>
-    <div id="card-games-create" class="tag-container absent">
-      <label class="tag" onclick="addTag('Card Games')">Card Games</label>
-    </div>
-    <div id="no-buy-in-create" class="tag-container absent">
-      <label class="tag" onclick="addTag('No Buy-in')">No Buy-in</label>
-    </div>
-    <div id="tournaments-create" class="tag-container absent">
-      <label class="tag" onclick="addTag('Tournaments')">Tournaments</label>
-    </div>
-    <div id="casual-create" class="tag-container absent">
-      <label class="tag" onclick="addTag('Casual')">Casual</label>
-    </div>
+  <div class="form-popup" id="myForm2">
+    <form class="form-container" onsubmit="return false;" id="form-contents">
+    </form>
+  </div>
 
-    <br><br>
-    <label for="time"><b>Time</b></label>
-    <input id="eventTime" type="date" name="time" required>
-    <label for="price"><b>Price</b></label>
-    <input id="eventFee" type="number" name="price" required>
-    <br>
-    <button type="submit" class="btn">Create</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
-  </form>
-</div>
-
-<div class="form-popup" id="myForm2">
-  <form class="form-container" onsubmit="return false;" id="form-contents">
-  </form>
-</div>
-
-<div class="form-popup" id="myFormIGDB">
-  <form class="form-container" onsubmit="searchGames(); return false;" style="width: auto;">
-    <h1 style="font-size: 30px">Create Event: Game selection</h1>
-    <input style="width: 100%; height: 30px; float: left; margin-bottom: 0px; margin-top: 20px" id="gameSearch">
-    <button type="button" class="btn" onclick="searchGames()">Search</button>
-    <div style="font-size: 20px; overflow: auto;"id="games">
-    </div>
-    <button type="button" class="btn cancel" onclick="switchBackToForm1()">Back</button>
-  </form>
-</div>
+  <div class="form-popup" id="myFormIGDB">
+    <form class="form-container" onsubmit="searchGames(); return false;" style="width: auto;">
+      <h1 style="font-size: 30px">Create Event: Game selection</h1>
+      <input style="width: 100%; height: 30px; float: left; margin-bottom: 0px; margin-top: 20px" id="gameSearch">
+      <button type="button" class="btn" onclick="searchGames()">Search</button>
+      <div style="font-size: 20px; overflow: auto;" id="games">
+      </div>
+      <button type="button" class="btn cancel" onclick="switchBackToForm1()">Back</button>
+    </form>
+  </div>
 
 
 
@@ -213,13 +220,22 @@
   <!-- VUE JS -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <!-- close profile popup -->
-    <script>  var modal = document.getElementById('id02'); window.onclick = function(event) {
-      if (event.target == modal) { modal.style.display = "none";} }   </script>
+  <!-- close profile popup -->
+  <script>
+    var modal = document.getElementById('id02');
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 
   <!-- OUR APP JS -->
   <script src="/Home/js/app.js"></script>
   <script src="/Home/js/events_factory.js"></script>
-  <script>getEvents()</script>
- </body>
+  <script>
+    getEvents()
+  </script>
+</body>
+
 </html>
