@@ -36,6 +36,13 @@ exports.delete_user = function(req, res) {
   });
 };
 
+exports.get_user = function(req, res){
+  User.findById(req.session.userId, (err, user) => {
+    if (err) res.status(500).send(err);
+    else res.status(200).send(user);
+
+  })
+}
 exports.display_all_users = function(req, res) {
   /* send back all users as json from the request */
   //change : to /
@@ -81,6 +88,45 @@ exports.update_user = function(req, res) {
   });
 };
 
+exports.rsvp = function(req, res){
+  //console.log(req);
+  const eventId = req.query.eventId;
+  User.findById(req.session.userId, (err, user) => {
+    if (err) console.log(err);
+    if (!user.rsvp) user.rsvp = [eventId];
+    console.log("success");
+    user.save((err, updatedUser) => {
+      if (err) res.status(500).send(err);
+      else res.status(200).send(updatedUser);
+    });
+    /*
+    tank.save(function (err, updatedTank) {
+    if (err) return handleError(err);
+    res.send(updatedTank);
+  });
+    */
+
+  });
+}
+
+exports.favorite = function(req, res){
+  const eventId = req.query.eventId;
+  Users.findById(req.session.userId, (err, user) => {
+    if (!user.favorites) user.favorites = [];
+    user.favorites.push(eventId);
+    user.save((err, updatedUser) => {
+      if (err) res.status(500).send(err);
+      else res.status(200).send(updatedUser);
+    });
+    /*
+    tank.save(function (err, updatedTank) {
+    if (err) return handleError(err);
+    res.send(updatedTank);
+  });
+    */
+
+  });
+}
 
 exports.verify_admin = function(req, res) {
   if (!req.session.userId) {

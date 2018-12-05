@@ -82,10 +82,17 @@ function sendXHR(method, path, body, callback){
   if (body) xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(body);
 }
-
+function getUser(callback){
+  sendXHR("GET", "/user", {}, (user) => {
+    if (callback) callback(user);
+    else return user;
+  });
+}
 //TODO
 function getUsername(){
-  return "Default User (change later)";
+  getUser((user) => {
+    return user.username;
+  });
 }
 //TODO
 function isSignedIn(){
@@ -93,7 +100,9 @@ function isSignedIn(){
 }
 //TODO
 function getEmail(){
-  return "";
+  getUser((user) => {
+    return user.email;
+  });
 }
 
 function isCreatorOfEvent(eventid){
@@ -102,29 +111,36 @@ function isCreatorOfEvent(eventid){
 
 //TODO
 function eventIsFavorited(eventid){
-  return true;
+  getUser((user) => {
+    if (!user.favorites) return false;
+    else return user.favorites.indexOf(eventId) !== -1;
+  });
 }
 
 //TODO
 function eventIsRSVPd(eventid){
-  return true;
+  getUser((user) => {
+    if (!user.rsvp) return false;
+    return user.rsvp.indexOf(eventId) !== -1;
+  });
 }
 
 //TODO
 function favorite(eventid){
-  //return void\
-  console.log("favorited " + eventid);
+  console.log("rsvp'd " + eventid);
+  sendXHR("POST", `/users/favorite/?eventId=${eventid}`, null, () => console.log("favorite successful"));
 }
 
 //TODO
 function unfavorite(eventid){
   //return void
-  console.log("unfavorited " + eventid);
+  console.log("did not unfavorited " + eventid);
 }
 
 //TODO
 function rsvp(eventid){
   console.log("rsvp'd " + eventid);
+  sendXHR("POST", `/users/rsvp/?eventId=${eventid}`, null, () => console.log("RSVP successful"));
   //return void
 }
 

@@ -18,42 +18,16 @@ router.route('/Home/events')
 router.route('/users/admin')
   .get(users.verify_admin);
 
+router.route('/users/rsvp').post(users.rsvp);
+router.route('/users/favorite').post(users.favorite);
+
 router.route('/users')
   .get(users.display_all_users)
   .delete(users.delete_user);
 
+router.route('/user')
+  .get(users.get_user);
 
-/*
-  The ':' specifies a URL parameter.
- */
-router.route('/:eventId')
-  .get(events.read)
-  .put(events.update)
-  ;//.delete(events.delete);
-
-router.route(':users/:username')
-  .get(users.display_user)
-  .put(users.update_user)
-  ;//.delete(users.delete_user);
-
-//These are for admins
-router.route(':users/events')
-  .get(users.verify_admin, events.list)
-  .post(users.verify_admin, events.create);
-
-router.route(':users/events/:eventId')
-  .get(users.verify_admin, events.read)
-  .put(users.verify_admin, events.update)
-  ;//.delete(users.verify_admin, events.delete);
-
-router.route(':users/users')
-  .get(users.verify_admin, users.display_all_users)
-  .post(users.verify_admin, users.create_user);
-
-router.route(':users/users/:username')
-  .get(users.verify_admin, users.display_user)
-  .put(users.verify_admin, users.update_user)
-  ;//.delete(users.verify_admin, users.delete_user);
 /*
   The 'router.param' method allows us to specify middleware we would like to use to handle
   requests with a parameter.
@@ -65,7 +39,5 @@ router.route(':users/users/:username')
   get, update, or delete that specific listing (depending on the HTTP verb specified)
  */
 
-router.param('eventId', events.eventByID);
-router.param('username', users.userByName);
 
 module.exports = router;

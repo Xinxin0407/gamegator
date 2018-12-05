@@ -75,8 +75,8 @@ module.exports.init = function() {
   // include routes
   var userRouter = require('../routes/users.server.routes.js');
   var eventRouter = require('../routes/events.server.routes');
-  app.use(userRouter);
   app.use(eventRouter);
+  app.use(userRouter);
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {
