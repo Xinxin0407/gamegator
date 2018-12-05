@@ -130,7 +130,7 @@ function submitEvent() {
     return obj;
   });
   const event = {
-        organizer: "",
+        organizer: getUsername(),
         name: getElement("eventName").value,
         address: getElement("eventAdd").value,
         time: getElement("eventTime").value,
@@ -139,10 +139,8 @@ function submitEvent() {
         Keywords: tagobjs,
         games: games
   };
-  getUsername(username => {
-    event.organizer = username;
-    sendXHR("POST", "/Home/events", JSON.stringify(event));
-  });
+  //alert(JSON.stringify(games));
+  sendXHR("POST", "/Home/events", JSON.stringify(event));
 }
 
 

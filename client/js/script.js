@@ -83,35 +83,20 @@ function sendXHR(method, path, body, callback){
   xhr.send(body);
 }
 
-function getUser(callback){
-  if (cache && cache.user) return callback(cache.user)
-
-  const path = "/user";
-  sendXHR("GET", path, {}, user => {
-    cache.user = JSON.parse(user);
-    callback(cache.user);
-  });
-}
 //TODO
+function getUsername(){
+  // request erver
+  // get req.session
 
-const cache = {};
-
-function getUsername(callback){
-  if (cache && cache.user && cache.user.username) callback(cache.user.username);
-  else getUser(user => {
-    callback(user.username)
-  });
+  return "Default User (change later)";
 }
 //TODO
 function isSignedIn(){
   return true;
 }
 //TODO
-function getEmail(callback){
-  if (cache && cache.user && cache.user.email) callback(cache.user.email);
-  else getUser(user => {
-    callback(user.email)
-  });
+function getEmail(){
+  return "";
 }
 
 function isCreatorOfEvent(eventid){
@@ -146,13 +131,12 @@ function rsvp(eventid){
   //return void
 }
 
-function insertNavBar(user){
+function insertNavBar(){
   let navbar = getElement("navbar");
   const navbarhtml = ""+
   "<div class=\"height\" >"+
   "<header id=\"topbar\" class=\"clearfix\">"+
     "<nav id=\"topnav\">"+
-
       "<ul>"+
         "<li><a href=\"/Home\" > GamerGator</a></li>"+
         "<li><a href=\"#\" id=\"searchtoggl\" >Search  </a></li>"+
@@ -187,8 +171,9 @@ function insertNavBar(user){
       "<img src=\"/Home/profile.png\" alt=\"image\" class=\"profile\" style=\"float: right;\">"+
     "</div>"+
 
+
     "<div class=\"viewprofile\">"+
-      "<label for=\"uname\" style=\"color: #0021A5; font-size: 40px;\"><b>"+user.username+"</b></label>"+
+      "<label for=\"uname\" style=\"color: #0021A5; font-size: 40px;\"><b>"+getUsername()+"</b></label>"+
      "<br><br><hr>"+
 
      "<form id=\"form1\">"+
@@ -226,6 +211,8 @@ function insertNavBar(user){
 
   renderAdminView();
 }
+
+insertNavBar();
 
 function saveEvent(e){
   const form = getElement("form-contents");
@@ -305,7 +292,6 @@ function deleteUser(userid){
 }
 
 function renderAdminView(callback){
-
   isAdmin(res => {
     if (res === 'false') console.log("You are not admin");
     else {
@@ -324,6 +310,3 @@ function renderAdminView(callback){
     if (callback) callback();
   });
 }
-
-
-getUser(user => insertNavBar(user));
